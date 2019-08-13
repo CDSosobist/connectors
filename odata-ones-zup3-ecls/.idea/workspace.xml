@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9bcb26ca-e9fa-40c6-aa1d-40c79827c295" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/companyStructureHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/contactInfoHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/currentEmpDataHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/empRolesHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/employeesHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/individualsHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/mainEmpOfIndividualsHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/orgUnitsHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/organizationsHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/positionsHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/resourceHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/staffListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/subordinationOfOrgHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/usersHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Filter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3FilterTranslator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test.properties" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="722">
+              <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/resourceHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Configuration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="903" selection-start-line="903" selection-end-line="903" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3621#4582#0" />
+                <element signature="e#4701#5575#0" />
+                <element signature="e#5581#7258#0" />
+                <element signature="e#7264#8787#0" />
+                <element signature="e#8793#9462#0" />
+                <element signature="e#11370#11894#0" />
+                <element signature="e#11900#14414#0" />
+                <element signature="e#14420#15465#0" />
+                <element signature="e#15471#17427#0" />
+                <element signature="e#17433#19419#0" />
+                <element signature="e#19425#20482#0" />
+                <element signature="e#20488#21825#0" />
+                <element signature="e#21831#22534#0" />
+                <element signature="e#22540#24379#0" />
+                <element signature="e#24387#24971#0" />
+                <element signature="e#24977#25431#0" />
+                <element signature="e#25437#26139#0" />
+                <element signature="e#26145#26593#0" />
+                <element signature="e#26599#29058#0" />
+                <element signature="e#29240#34177#0" />
+                <element signature="e#34183#35185#0" />
+                <element signature="e#35191#36028#0" />
+                <element signature="e#36034#36920#0" />
+                <element signature="e#36926#37751#0" />
+                <element signature="e#37757#38608#0" />
+                <element signature="e#38614#39614#0" />
+                <element signature="e#39620#40509#0" />
+                <element signature="e#45730#46787#0" />
+                <element signature="e#46793#47411#0" />
+                <element signature="e#47417#48489#0" />
+                <element signature="e#48495#49527#0" />
+                <element signature="e#49533#50413#0" />
+                <element signature="e#52580#53844#0" />
+                <element signature="e#56906#57761#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/mainEmpOfIndividualsHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" lean-forward="true" selection-start-line="4" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/contactInfoHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/test.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/usersHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="4" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>attrEmpSurName</find>
+      <find>onesConfiguration</find>
+      <find>ones</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>attrEmpSurNameBuilder</replace>
+      <replace>zup3Configuration</replace>
+      <replace>zup3</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/Resourcehandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/currentEmpDataHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/empRolesHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/mainEmpOfIndividualsHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/organizationsHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/orgUnitsHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/positionsHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/staffListHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/subordinationOfOrgHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/usersHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/companyStructureHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Configuration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/contactInfoHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/individualsHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Filter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3FilterTranslator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/employeesHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/resourceHandler.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/test.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="odata-ones-zup3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="odata-ones-zup3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="odata-ones-zup3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="odata-ones-zup3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="odata-ones-zup3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="odata-ones-zup3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="odata-ones-zup3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
+    <property name="Repository.Attach.Sources" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556621390460" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="cdsosobist.connectors.rest" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="testClient.testFindAll" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="odata-ones-zup3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cdsosobist.connectors.rest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cdsosobist.connectors.rest" />
+      <option name="MAIN_CLASS_NAME" value="cdsosobist.connectors.rest.testClient" />
+      <option name="METHOD_NAME" value="testFindAll" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.testClient.testFindAll" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9bcb26ca-e9fa-40c6-aa1d-40c79827c295" name="Default Changelist" comment="" />
+      <created>1553579469534</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553579469534</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="testClient_testFindAll - 2019.04.30 at 14h 59m 46s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.04.30 at 15h 01m 23s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.04.30 at 15h 03m 19s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.04.30 at 15h 07m 22s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.04.30 at 15h 13m 14s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.04.30 at 15h 14m 16s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.04.30 at 15h 15m 35s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.04.30 at 15h 17m 21s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.04.30 at 15h 26m 21s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.04.30 at 15h 31m 18s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Designer" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Learn" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.26332623" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Sequence" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32936078" />
+      <window_info anchor="bottom" x="1920" y="23" width="1920" height="1017" id="Run" order="6" type="WINDOWED" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32936078" />
+      <window_info anchor="right" id="Theme Preview" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="PlantUML" order="4" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="15" />
+          <folding>
+            <element signature="e#0#638#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3FilterTranslator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Filter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/positionsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/organizationsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="49" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/orgUnitsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/companyStructureHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/employeesHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/empRolesHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/currentEmpDataHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="4" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/individualsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="4" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/staffListHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="4" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/subordinationOfOrgHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="4" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/resourceHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/contactInfoHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/test.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/usersHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="4" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/mainEmpOfIndividualsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="4" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="903" selection-start-line="903" selection-end-line="903" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3621#4582#0" />
+            <element signature="e#4701#5575#0" />
+            <element signature="e#5581#7258#0" />
+            <element signature="e#7264#8787#0" />
+            <element signature="e#8793#9462#0" />
+            <element signature="e#11370#11894#0" />
+            <element signature="e#11900#14414#0" />
+            <element signature="e#14420#15465#0" />
+            <element signature="e#15471#17427#0" />
+            <element signature="e#17433#19419#0" />
+            <element signature="e#19425#20482#0" />
+            <element signature="e#20488#21825#0" />
+            <element signature="e#21831#22534#0" />
+            <element signature="e#22540#24379#0" />
+            <element signature="e#24387#24971#0" />
+            <element signature="e#24977#25431#0" />
+            <element signature="e#25437#26139#0" />
+            <element signature="e#26145#26593#0" />
+            <element signature="e#26599#29058#0" />
+            <element signature="e#29240#34177#0" />
+            <element signature="e#34183#35185#0" />
+            <element signature="e#35191#36028#0" />
+            <element signature="e#36034#36920#0" />
+            <element signature="e#36926#37751#0" />
+            <element signature="e#37757#38608#0" />
+            <element signature="e#38614#39614#0" />
+            <element signature="e#39620#40509#0" />
+            <element signature="e#45730#46787#0" />
+            <element signature="e#46793#47411#0" />
+            <element signature="e#47417#48489#0" />
+            <element signature="e#48495#49527#0" />
+            <element signature="e#49533#50413#0" />
+            <element signature="e#52580#53844#0" />
+            <element signature="e#56906#57761#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>net.tirasa.connid:connector-framework:1.5.1.0-SNAPSHOT</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>odata-ones-zup3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>org.json:json:20180813</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
