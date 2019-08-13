@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="F:/conn-srvn/connector-rest-axapta-2.0.1.2.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/axapta/HUYOBA.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="false" manifestLocation="/axapta/src/main/resources/META-INF/MANIFEST.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <folder path="/axapta/src/main"/>
+        <javaElement handleIdentifier="=axapta/src\/main\/java"/>
+        <javaElement handleIdentifier="=axapta/src\/main\/resources"/>
+        <folder path="/axapta/lib"/>
+    </selectedElements>
+</jardesc>

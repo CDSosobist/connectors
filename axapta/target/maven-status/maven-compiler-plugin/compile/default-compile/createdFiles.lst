@@ -1,0 +1,6 @@
+cdsosobist\connectors\rest\axaptaConfiguration.class
+cdsosobist\connectors\rest\axaptaConnector.class
+cdsosobist\connectors\rest\attributesHandler.class
+cdsosobist\connectors\rest\tokenHandler.class
+cdsosobist\connectors\rest\axaptaFilter.class
+cdsosobist\connectors\rest\axaptaFilterTranslator.class
