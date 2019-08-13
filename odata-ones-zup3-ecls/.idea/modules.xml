@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/odata-ones-zup3.iml" filepath="$PROJECT_DIR$/odata-ones-zup3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/odata-ones-zup3-ecls.iml" filepath="$PROJECT_DIR$/odata-ones-zup3-ecls.iml" />
     </modules>
   </component>
 </project>
