@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1217e98a-490f-4d6e-acf4-fecf38a4d67b" name="Default Changelist" comment="Обновлены зависимости, окружение изменено на JRE">
+      <change afterPath="$PROJECT_DIR$/odata-ones-zup3-ecls.eml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/odata-ones-zup3-ecls.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/testClient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/test.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/compiler.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/encodings.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_beust_jcommander_1_27.xml" afterDir="false" />
@@ -103,13 +107,22 @@
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/connector-ones.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/apiguardian-api-1.0.0.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/bsf-2.4.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-codec-1.11-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-codec-1.11-sources.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-codec-1.11.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-lang-2.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-logging-1.2-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-logging-1.2-sources.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-logging-1.2.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/connector-rest-1.4.2.14-SNAPSHOT.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/groovy-2.5.2.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/groovy-bsf-2.5.2.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpclient-4.5.7.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpclient-4.5.9-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpclient-4.5.9-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpclient-4.5.9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpcore-4.4.11-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpcore-4.4.11-sources.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpcore-4.4.11.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/icu4j-4.8.1.1.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/icu4j-63.1.jar" afterDir="false" />
@@ -192,11 +205,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
+            <state relative-caret-position="-20712">
+              <caret line="54" column="59" lean-forward="true" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -325,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565709297103</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Обновлены зависимости, окружение изменено на JRE, окончания строк переформатированы на CRLF(\r\n)">
+      <created>1565712076249</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1565712076249</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -354,6 +383,15 @@
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
@@ -363,18 +401,18 @@
       <window_info id="Learn" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.32286024" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" sideWeight="0.49946696" weight="0.32936078" />
       <window_info anchor="bottom" id="Sequence" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" x="1920" y="23" width="1920" height="1017" id="Run" order="2" sideWeight="0.49946696" type="WINDOWED" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" x="2411" y="368" width="937" height="304" id="Run" maximized="true" order="2" sideWeight="0.49946696" type="WINDOWED" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="right" id="Palette" />
       <window_info anchor="right" id="PlantUML" />
       <window_info anchor="right" id="Maven" />
@@ -387,10 +425,37 @@
   <component name="UpdateCopyrightCheckinHandler">
     <option name="UPDATE_COPYRIGHT" value="true" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Обновлены зависимости, окружение" />
     <MESSAGE value="Обновлены зависимости, окружение изменено на JRE" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обновлены зависимости, окружение изменено на JRE" />
+    <MESSAGE value="Обновлены зависимости, окружение изменено на JRE, окончания строк переформатированы на CRLF(\r\n)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обновлены зависимости, окружение изменено на JRE, окончания строк переформатированы на CRLF(\r\n)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -475,8 +540,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
+        <state relative-caret-position="-20712">
+          <caret line="54" column="59" lean-forward="true" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
         </state>
       </provider>
     </entry>

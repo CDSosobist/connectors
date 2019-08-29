@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: CDSOsobist
-ConnectorBundle-FrameworkVersion: 1.4.2.14
-ConnectorBundle-Version: 1.0.1.1
-ConnectorBundle-Name: cdsosobist.connectors.rest
+Built-By: KoshelevRA
+Build-Jdk: 1.8.0_211
+Created-By: Maven Integration for Eclipse
+

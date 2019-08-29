@@ -191,6 +191,12 @@ public class rxptConnector extends AbstractRestConnector<rxptConfiguration> impl
         this.buildSecondContractObjectClass(schemaBuilder);
         this.buildThirdContractObjectClass(schemaBuilder);
         this.buildFourthContractObjectClass(schemaBuilder);
+        this.buildFifthContractObjectClass(schemaBuilder);
+        this.buildSixthContractObjectClass(schemaBuilder);
+        this.buildSeventhContractObjectClass(schemaBuilder);
+        this.buildEighthContractObjectClass(schemaBuilder);
+        this.buildNinthContractObjectClass(schemaBuilder);
+        this.buildTenthContractObjectClass(schemaBuilder);
         return schemaBuilder.build();
     }
 
@@ -547,6 +553,264 @@ public class rxptConnector extends AbstractRestConnector<rxptConfiguration> impl
     }
 
 
+    private void buildFifthContractObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("FifthContract");
+        
+
+        AttributeInfoBuilder attrContrAxUidBuilder = new AttributeInfoBuilder(CONTR_AX_UID);
+        ociBuilder.addAttributeInfo(attrContrAxUidBuilder.build());
+
+        AttributeInfoBuilder attrContrOrgUidBuilder = new AttributeInfoBuilder(CONTR_ORG_UID);
+        ociBuilder.addAttributeInfo(attrContrOrgUidBuilder.build());
+
+        AttributeInfoBuilder attrContrAxEmpUidBuilder = new AttributeInfoBuilder(CONTR_AX_EMP_UID);
+        ociBuilder.addAttributeInfo(attrContrAxEmpUidBuilder.build());
+
+        AttributeInfoBuilder attrContrProvUidBuilder = new AttributeInfoBuilder(CONTR_PROV_UID);
+        ociBuilder.addAttributeInfo(attrContrProvUidBuilder.build());
+
+        AttributeInfoBuilder attrContrFromBuilder = new AttributeInfoBuilder(CONTR_FROM);
+        ociBuilder.addAttributeInfo(attrContrFromBuilder.build());
+
+        AttributeInfoBuilder attrContrToBuilder = new AttributeInfoBuilder(CONTR_TO);
+        ociBuilder.addAttributeInfo(attrContrToBuilder.build());
+
+        AttributeInfoBuilder attrContrUidBuilder = new AttributeInfoBuilder(CONTR_UID);
+        ociBuilder.addAttributeInfo(attrContrUidBuilder.build());
+
+        AttributeInfoBuilder attrContrNumBuilder = new AttributeInfoBuilder(CONTR_NUM);
+        ociBuilder.addAttributeInfo(attrContrNumBuilder.build());
+
+        AttributeInfoBuilder attrContrDateBuilder = new AttributeInfoBuilder(CONTR_DATE);
+        ociBuilder.addAttributeInfo(attrContrDateBuilder.build());
+
+        AttributeInfoBuilder attrContr1cUidBuilder = new AttributeInfoBuilder(CONTR_1C_UID);
+        ociBuilder.addAttributeInfo(attrContr1cUidBuilder.build());
+
+        AttributeInfoBuilder attrContr1cDataBuilder = new AttributeInfoBuilder(CONTR_1CDATA);
+        attrContr1cDataBuilder.setMultiValued(true);
+        ociBuilder.addAttributeInfo(attrContr1cDataBuilder.build());
+
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+
+    private void buildSixthContractObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("SixthContract");
+        
+
+        AttributeInfoBuilder attrContrAxUidBuilder = new AttributeInfoBuilder(CONTR_AX_UID);
+        ociBuilder.addAttributeInfo(attrContrAxUidBuilder.build());
+
+        AttributeInfoBuilder attrContrOrgUidBuilder = new AttributeInfoBuilder(CONTR_ORG_UID);
+        ociBuilder.addAttributeInfo(attrContrOrgUidBuilder.build());
+
+        AttributeInfoBuilder attrContrAxEmpUidBuilder = new AttributeInfoBuilder(CONTR_AX_EMP_UID);
+        ociBuilder.addAttributeInfo(attrContrAxEmpUidBuilder.build());
+
+        AttributeInfoBuilder attrContrProvUidBuilder = new AttributeInfoBuilder(CONTR_PROV_UID);
+        ociBuilder.addAttributeInfo(attrContrProvUidBuilder.build());
+
+        AttributeInfoBuilder attrContrFromBuilder = new AttributeInfoBuilder(CONTR_FROM);
+        ociBuilder.addAttributeInfo(attrContrFromBuilder.build());
+
+        AttributeInfoBuilder attrContrToBuilder = new AttributeInfoBuilder(CONTR_TO);
+        ociBuilder.addAttributeInfo(attrContrToBuilder.build());
+
+        AttributeInfoBuilder attrContrUidBuilder = new AttributeInfoBuilder(CONTR_UID);
+        ociBuilder.addAttributeInfo(attrContrUidBuilder.build());
+
+        AttributeInfoBuilder attrContrNumBuilder = new AttributeInfoBuilder(CONTR_NUM);
+        ociBuilder.addAttributeInfo(attrContrNumBuilder.build());
+
+        AttributeInfoBuilder attrContrDateBuilder = new AttributeInfoBuilder(CONTR_DATE);
+        ociBuilder.addAttributeInfo(attrContrDateBuilder.build());
+
+        AttributeInfoBuilder attrContr1cUidBuilder = new AttributeInfoBuilder(CONTR_1C_UID);
+        ociBuilder.addAttributeInfo(attrContr1cUidBuilder.build());
+
+        AttributeInfoBuilder attrContr1cDataBuilder = new AttributeInfoBuilder(CONTR_1CDATA);
+        attrContr1cDataBuilder.setMultiValued(true);
+        ociBuilder.addAttributeInfo(attrContr1cDataBuilder.build());
+
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+
+    private void buildSeventhContractObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("SeventhContract");
+        
+
+        AttributeInfoBuilder attrContrAxUidBuilder = new AttributeInfoBuilder(CONTR_AX_UID);
+        ociBuilder.addAttributeInfo(attrContrAxUidBuilder.build());
+
+        AttributeInfoBuilder attrContrOrgUidBuilder = new AttributeInfoBuilder(CONTR_ORG_UID);
+        ociBuilder.addAttributeInfo(attrContrOrgUidBuilder.build());
+
+        AttributeInfoBuilder attrContrAxEmpUidBuilder = new AttributeInfoBuilder(CONTR_AX_EMP_UID);
+        ociBuilder.addAttributeInfo(attrContrAxEmpUidBuilder.build());
+
+        AttributeInfoBuilder attrContrProvUidBuilder = new AttributeInfoBuilder(CONTR_PROV_UID);
+        ociBuilder.addAttributeInfo(attrContrProvUidBuilder.build());
+
+        AttributeInfoBuilder attrContrFromBuilder = new AttributeInfoBuilder(CONTR_FROM);
+        ociBuilder.addAttributeInfo(attrContrFromBuilder.build());
+
+        AttributeInfoBuilder attrContrToBuilder = new AttributeInfoBuilder(CONTR_TO);
+        ociBuilder.addAttributeInfo(attrContrToBuilder.build());
+
+        AttributeInfoBuilder attrContrUidBuilder = new AttributeInfoBuilder(CONTR_UID);
+        ociBuilder.addAttributeInfo(attrContrUidBuilder.build());
+
+        AttributeInfoBuilder attrContrNumBuilder = new AttributeInfoBuilder(CONTR_NUM);
+        ociBuilder.addAttributeInfo(attrContrNumBuilder.build());
+
+        AttributeInfoBuilder attrContrDateBuilder = new AttributeInfoBuilder(CONTR_DATE);
+        ociBuilder.addAttributeInfo(attrContrDateBuilder.build());
+
+        AttributeInfoBuilder attrContr1cUidBuilder = new AttributeInfoBuilder(CONTR_1C_UID);
+        ociBuilder.addAttributeInfo(attrContr1cUidBuilder.build());
+
+        AttributeInfoBuilder attrContr1cDataBuilder = new AttributeInfoBuilder(CONTR_1CDATA);
+        attrContr1cDataBuilder.setMultiValued(true);
+        ociBuilder.addAttributeInfo(attrContr1cDataBuilder.build());
+
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+
+    private void buildEighthContractObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("EighthContract");
+        
+
+        AttributeInfoBuilder attrContrAxUidBuilder = new AttributeInfoBuilder(CONTR_AX_UID);
+        ociBuilder.addAttributeInfo(attrContrAxUidBuilder.build());
+
+        AttributeInfoBuilder attrContrOrgUidBuilder = new AttributeInfoBuilder(CONTR_ORG_UID);
+        ociBuilder.addAttributeInfo(attrContrOrgUidBuilder.build());
+
+        AttributeInfoBuilder attrContrAxEmpUidBuilder = new AttributeInfoBuilder(CONTR_AX_EMP_UID);
+        ociBuilder.addAttributeInfo(attrContrAxEmpUidBuilder.build());
+
+        AttributeInfoBuilder attrContrProvUidBuilder = new AttributeInfoBuilder(CONTR_PROV_UID);
+        ociBuilder.addAttributeInfo(attrContrProvUidBuilder.build());
+
+        AttributeInfoBuilder attrContrFromBuilder = new AttributeInfoBuilder(CONTR_FROM);
+        ociBuilder.addAttributeInfo(attrContrFromBuilder.build());
+
+        AttributeInfoBuilder attrContrToBuilder = new AttributeInfoBuilder(CONTR_TO);
+        ociBuilder.addAttributeInfo(attrContrToBuilder.build());
+
+        AttributeInfoBuilder attrContrUidBuilder = new AttributeInfoBuilder(CONTR_UID);
+        ociBuilder.addAttributeInfo(attrContrUidBuilder.build());
+
+        AttributeInfoBuilder attrContrNumBuilder = new AttributeInfoBuilder(CONTR_NUM);
+        ociBuilder.addAttributeInfo(attrContrNumBuilder.build());
+
+        AttributeInfoBuilder attrContrDateBuilder = new AttributeInfoBuilder(CONTR_DATE);
+        ociBuilder.addAttributeInfo(attrContrDateBuilder.build());
+
+        AttributeInfoBuilder attrContr1cUidBuilder = new AttributeInfoBuilder(CONTR_1C_UID);
+        ociBuilder.addAttributeInfo(attrContr1cUidBuilder.build());
+
+        AttributeInfoBuilder attrContr1cDataBuilder = new AttributeInfoBuilder(CONTR_1CDATA);
+        attrContr1cDataBuilder.setMultiValued(true);
+        ociBuilder.addAttributeInfo(attrContr1cDataBuilder.build());
+
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+
+    private void buildNinthContractObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("NinthContract");
+        
+
+        AttributeInfoBuilder attrContrAxUidBuilder = new AttributeInfoBuilder(CONTR_AX_UID);
+        ociBuilder.addAttributeInfo(attrContrAxUidBuilder.build());
+
+        AttributeInfoBuilder attrContrOrgUidBuilder = new AttributeInfoBuilder(CONTR_ORG_UID);
+        ociBuilder.addAttributeInfo(attrContrOrgUidBuilder.build());
+
+        AttributeInfoBuilder attrContrAxEmpUidBuilder = new AttributeInfoBuilder(CONTR_AX_EMP_UID);
+        ociBuilder.addAttributeInfo(attrContrAxEmpUidBuilder.build());
+
+        AttributeInfoBuilder attrContrProvUidBuilder = new AttributeInfoBuilder(CONTR_PROV_UID);
+        ociBuilder.addAttributeInfo(attrContrProvUidBuilder.build());
+
+        AttributeInfoBuilder attrContrFromBuilder = new AttributeInfoBuilder(CONTR_FROM);
+        ociBuilder.addAttributeInfo(attrContrFromBuilder.build());
+
+        AttributeInfoBuilder attrContrToBuilder = new AttributeInfoBuilder(CONTR_TO);
+        ociBuilder.addAttributeInfo(attrContrToBuilder.build());
+
+        AttributeInfoBuilder attrContrUidBuilder = new AttributeInfoBuilder(CONTR_UID);
+        ociBuilder.addAttributeInfo(attrContrUidBuilder.build());
+
+        AttributeInfoBuilder attrContrNumBuilder = new AttributeInfoBuilder(CONTR_NUM);
+        ociBuilder.addAttributeInfo(attrContrNumBuilder.build());
+
+        AttributeInfoBuilder attrContrDateBuilder = new AttributeInfoBuilder(CONTR_DATE);
+        ociBuilder.addAttributeInfo(attrContrDateBuilder.build());
+
+        AttributeInfoBuilder attrContr1cUidBuilder = new AttributeInfoBuilder(CONTR_1C_UID);
+        ociBuilder.addAttributeInfo(attrContr1cUidBuilder.build());
+
+        AttributeInfoBuilder attrContr1cDataBuilder = new AttributeInfoBuilder(CONTR_1CDATA);
+        attrContr1cDataBuilder.setMultiValued(true);
+        ociBuilder.addAttributeInfo(attrContr1cDataBuilder.build());
+
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+
+    private void buildTenthContractObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("TenthContract");
+        
+
+        AttributeInfoBuilder attrContrAxUidBuilder = new AttributeInfoBuilder(CONTR_AX_UID);
+        ociBuilder.addAttributeInfo(attrContrAxUidBuilder.build());
+
+        AttributeInfoBuilder attrContrOrgUidBuilder = new AttributeInfoBuilder(CONTR_ORG_UID);
+        ociBuilder.addAttributeInfo(attrContrOrgUidBuilder.build());
+
+        AttributeInfoBuilder attrContrAxEmpUidBuilder = new AttributeInfoBuilder(CONTR_AX_EMP_UID);
+        ociBuilder.addAttributeInfo(attrContrAxEmpUidBuilder.build());
+
+        AttributeInfoBuilder attrContrProvUidBuilder = new AttributeInfoBuilder(CONTR_PROV_UID);
+        ociBuilder.addAttributeInfo(attrContrProvUidBuilder.build());
+
+        AttributeInfoBuilder attrContrFromBuilder = new AttributeInfoBuilder(CONTR_FROM);
+        ociBuilder.addAttributeInfo(attrContrFromBuilder.build());
+
+        AttributeInfoBuilder attrContrToBuilder = new AttributeInfoBuilder(CONTR_TO);
+        ociBuilder.addAttributeInfo(attrContrToBuilder.build());
+
+        AttributeInfoBuilder attrContrUidBuilder = new AttributeInfoBuilder(CONTR_UID);
+        ociBuilder.addAttributeInfo(attrContrUidBuilder.build());
+
+        AttributeInfoBuilder attrContrNumBuilder = new AttributeInfoBuilder(CONTR_NUM);
+        ociBuilder.addAttributeInfo(attrContrNumBuilder.build());
+
+        AttributeInfoBuilder attrContrDateBuilder = new AttributeInfoBuilder(CONTR_DATE);
+        ociBuilder.addAttributeInfo(attrContrDateBuilder.build());
+
+        AttributeInfoBuilder attrContr1cUidBuilder = new AttributeInfoBuilder(CONTR_1C_UID);
+        ociBuilder.addAttributeInfo(attrContr1cUidBuilder.build());
+
+        AttributeInfoBuilder attrContr1cDataBuilder = new AttributeInfoBuilder(CONTR_1CDATA);
+        attrContr1cDataBuilder.setMultiValued(true);
+        ociBuilder.addAttributeInfo(attrContr1cDataBuilder.build());
+
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+
     /**
      * Создает транслятор фильтра, который преобразует указанный {@link rxptFilter} в один или несколько собственных запросов.
      * Каждый из этих собственных запросов будет впоследствии передан в <code>executeQuery()</code>.
@@ -605,7 +869,7 @@ public class rxptConnector extends AbstractRestConnector<rxptConfiguration> impl
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (objectClass.is("Contract") || objectClass.is("SecondContract") || objectClass.is("ThirdContract") || objectClass.is("FourthContract")) {
+        } else if (objectClass.is("Contract") || objectClass.is("SecondContract") || objectClass.is("ThirdContract") || objectClass.is("FourthContract") || objectClass.is("FifthContract") || objectClass.is("SixthContract") || objectClass.is("SeventhContract") || objectClass.is("EighthContract") || objectClass.is("NinthContract") || objectClass.is("TenthContract")) {
             try {
                 this.handleContracts(handler);
             } catch (Exception e) {

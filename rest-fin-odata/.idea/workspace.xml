@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a475156-a797-48d7-9bff-e1f96bbeff0a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../odata-ones-zup3-ecls/odata-ones-zup3-ecls.eml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../odata-ones-zup3-ecls/odata-ones-zup3-ecls.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../odata-ones-zup3-ecls/target/classes/cdsosobist/connectors/rest/testClient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../odata-ones-zup3-ecls/target/classes/test.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_beust_jcommander_1_27.xml" afterDir="false" />
@@ -103,13 +107,22 @@
       <change afterPath="$PROJECT_DIR$/connector-ones.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/apiguardian-api-1.0.0.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/bsf-2.4.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-codec-1.11-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-codec-1.11-sources.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/commons-codec-1.11.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/commons-lang-2.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-logging-1.2-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-logging-1.2-sources.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/commons-logging-1.2.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/connector-rest-1.4.2.14-SNAPSHOT.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/groovy-2.5.2.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/groovy-bsf-2.5.2.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/httpclient-4.5.7.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/httpclient-4.5.9-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/httpclient-4.5.9-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/httpclient-4.5.9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/httpcore-4.4.11-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/httpcore-4.4.11-sources.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/httpcore-4.4.11.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/icu4j-4.8.1.1.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/icu4j-63.1.jar" afterDir="false" />
@@ -324,7 +337,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -534,7 +547,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21108742" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
