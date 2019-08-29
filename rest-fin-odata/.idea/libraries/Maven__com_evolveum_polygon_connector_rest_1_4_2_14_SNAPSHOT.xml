@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.evolveum.polygon:connector-rest:1.4.2.14-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/evolveum/polygon/connector-rest/1.4.2.14-SNAPSHOT/connector-rest-1.4.2.14-20161104.090929-7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/evolveum/polygon/connector-rest/1.4.2.14-SNAPSHOT/connector-rest-1.4.2.14-20161104.090929-7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/evolveum/polygon/connector-rest/1.4.2.14-SNAPSHOT/connector-rest-1.4.2.14-20161104.090929-7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

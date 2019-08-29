@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.sling:org.apache.sling.extensions.gwt.servlet:1.4.60-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/sling/org.apache.sling.extensions.gwt.servlet/1.4.60-SNAPSHOT/org.apache.sling.extensions.gwt.servlet-1.4.60-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/sling/org.apache.sling.extensions.gwt.servlet/1.4.60-SNAPSHOT/org.apache.sling.extensions.gwt.servlet-1.4.60-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/sling/org.apache.sling.extensions.gwt.servlet/1.4.60-SNAPSHOT/org.apache.sling.extensions.gwt.servlet-1.4.60-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
