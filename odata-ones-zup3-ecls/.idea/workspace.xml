@@ -2,167 +2,81 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1217e98a-490f-4d6e-acf4-fecf38a4d67b" name="Default Changelist" comment="Обновлены зависимости, окружение изменено на JRE">
-      <change afterPath="$PROJECT_DIR$/odata-ones-zup3-ecls.eml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/odata-ones-zup3-ecls.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/testClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/test.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_beust_jcommander_1_27.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_evolveum_polygon_connector_common_1_4_2_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_evolveum_polygon_connector_rest_1_4_2_14_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_fasterxml_aalto_xml_0_9_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_7_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_7_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_7_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_xml_2_7_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_7_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__com_ibm_icu_icu4j_4_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_beanutils_commons_beanutils_core_1_8_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_cli_commons_cli_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_codec_commons_codec_1_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_dbcp_commons_dbcp_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_logging_commons_logging_api_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_net_commons_net_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__commons_pool_commons_pool_1_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__hsqldb_hsqldb_1_8_0_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__io_netty_netty_all_4_1_16_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__javassist_javassist_3_12_0_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__junit_junit_3_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__log4j_log4j_1_2_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__net_sf_scannotation_scannotation_1_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__net_sourceforge_serp_serp_1_13_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__net_tirasa_connid_connector_framework_1_4_2_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__net_tirasa_connid_connector_framework_internal_1_4_2_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_activemq_activeio_core_3_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_activemq_activemq_core_5_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_activemq_activemq_ra_5_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_activemq_kahadb_5_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_activemq_protobuf_activemq_protobuf_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_aries_application_application_modeller_standalone_1_0_1_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_aries_application_org_apache_aries_application_api_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_aries_application_org_apache_aries_application_modeller_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_aries_application_org_apache_aries_application_utils_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_aries_blueprint_blueprint_parser_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_aries_blueprint_org_apache_aries_blueprint_api_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_aries_ejb_org_apache_aries_ejb_modeller_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_aries_org_apache_aries_util_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_bval_bval_core_0_3_incubating.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_geronimo_components_geronimo_connector_3_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_geronimo_components_geronimo_transaction_3_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_geronimo_javamail_geronimo_javamail_1_4_mail_1_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_j2ee_connector_1_6_spec_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_j2ee_management_1_1_spec_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_jms_1_1_spec_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_olingo_odata_client_api_4_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_olingo_odata_client_core_4_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_olingo_odata_commons_api_4_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_olingo_odata_commons_core_4_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_olingo_odata_server_api_4_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_olingo_odata_server_core_4_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openejb_mbean_annotation_api_4_0_0_beta_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openejb_openejb_api_4_0_0_beta_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openejb_openejb_core_4_0_0_beta_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openejb_openejb_javaagent_4_0_0_beta_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openejb_openejb_jee_4_0_0_beta_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openejb_openejb_loader_4_0_0_beta_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openejb_patch_openejb_bval_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openjpa_openjpa_2_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openwebbeans_openwebbeans_ee_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openwebbeans_openwebbeans_ee_common_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openwebbeans_openwebbeans_ejb_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openwebbeans_openwebbeans_impl_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openwebbeans_openwebbeans_spi_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_openwebbeans_openwebbeans_web_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_sling_org_apache_sling_extensions_gwt_servlet_1_4_60_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_xbean_xbean_asm_shaded_3_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_xbean_xbean_bundleutils_3_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_xbean_xbean_finder_shaded_3_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_xbean_xbean_naming_3_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_apache_xbean_xbean_reflect_3_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_beanshell_bsh_2_0b4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_codehaus_swizzle_swizzle_stream_1_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_3_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_jetbrains_annotations_16_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_json_json_20180813.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_objectweb_howl_howl_1_0_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_quartz_scheduler_quartz_1_8_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__org_testng_testng_6_8_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/Maven__wsdl4j_wsdl4j_1_6_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/net_tirasa_connid_connector_framework_1_5_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/libraries/org_apache_httpcomponents_httpclient_4_5_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/.project" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/connector-ones.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/apiguardian-api-1.0.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/bsf-2.4.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-codec-1.11-javadoc.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-codec-1.11-sources.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-codec-1.11.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-lang-2.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-logging-1.2-javadoc.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-logging-1.2-sources.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/commons-logging-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/connector-rest-1.4.2.14-SNAPSHOT.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/groovy-2.5.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/groovy-bsf-2.5.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpclient-4.5.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpclient-4.5.9-javadoc.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpclient-4.5.9-sources.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpclient-4.5.9.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpcore-4.4.11-javadoc.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpcore-4.4.11-sources.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/httpcore-4.4.11.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/icu4j-4.8.1.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/icu4j-63.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/lib/json-20180813.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/rest-fin-odata.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/assembly/connector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/EmployysHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/Messages.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/OrganisationsHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/PersonasHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/PositionsHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/ResourceHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/Translit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/onesConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/onesConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/onesFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/onesFilterTranslator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/main/resources/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/test/java/CDSOsobist/connectors/rest/ones/ZUP2/TestClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/src/test/resources/test.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/CDSOsobist/connectors/rest/ones/ZUP2/EmployysHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/CDSOsobist/connectors/rest/ones/ZUP2/OrganisationsHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/CDSOsobist/connectors/rest/ones/ZUP2/PersonasHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/CDSOsobist/connectors/rest/ones/ZUP2/PositionsHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/CDSOsobist/connectors/rest/ones/ZUP2/ResourceHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/CDSOsobist/connectors/rest/ones/ZUP2/Translit.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/CDSOsobist/connectors/rest/ones/ZUP2/onesConfiguration.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/CDSOsobist/connectors/rest/ones/ZUP2/onesConnector.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/CDSOsobist/connectors/rest/ones/ZUP2/onesFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/CDSOsobist/connectors/rest/ones/ZUP2/onesFilterTranslator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/test-classes/CDSOsobist/connectors/rest/ones/ZUP2/TestClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-fin-odata/target/test-classes/test.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__bsf_bsf_2_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_beust_jcommander_1_27.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_evolveum_polygon_connector_common_1_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_evolveum_polygon_connector_rest_1_4_2_35.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_tirasa_connid_connector_framework_1_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_tirasa_connid_connector_framework_contract_1_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_tirasa_connid_connector_framework_internal_1_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_tirasa_connid_connector_test_common_1_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_beanshell_bsh_2_0b4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_2_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_bsf_2_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_datetime_2_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_dateutil_2_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_jsr223_2_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_sql_2_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_templates_2_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_xml_2_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20180813.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_testng_testng_6_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../axapta-git/HUYOBA.jardesc" beforeDir="false" afterPath="$PROJECT_DIR$/../axapta-git/HUYOBA.jardesc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../axapta-git/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/../axapta-git/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../axapta-git/target/classes/META-INF/maven/cdsosobist.connectors.rest/connector-axapta/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../axapta-git/target/classes/META-INF/maven/cdsosobist.connectors.rest/connector-axapta/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YOBA.jardesc" beforeDir="false" afterPath="$PROJECT_DIR$/YOBA.jardesc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odata-ones-zup3-ecls.eml" beforeDir="false" afterPath="$PROJECT_DIR$/odata-ones-zup3-ecls.eml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odata-ones-zup3-ecls.iml" beforeDir="false" afterPath="$PROJECT_DIR$/odata-ones-zup3-ecls.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/cdsosobist.connectors.rest/odata-ones-zup3/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/cdsosobist.connectors.rest/odata-ones-zup3/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/CurrentEmpDataCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/CurrentEmpDataCache.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/Messages.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/companyStructureHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/companyStructureHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/contactInfoHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/contactInfoHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/currentEmpDataHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/currentEmpDataHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/empRolesHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/empRolesHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/employeesHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/employeesHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/individualsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/individualsHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/mainEmpOfIndividualsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/mainEmpOfIndividualsHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/orgUnitsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/orgUnitsHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/organizationsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/organizationsHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/positionsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/positionsHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/resourceHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/resourceHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/staffListHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/staffListHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/subordinationOfOrgHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/subordinationOfOrgHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/usersHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/usersHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Configuration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Configuration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Connection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Connector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Connector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Filter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Filter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3FilterTranslator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3FilterTranslator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/cdsosobist/connectors/rest/testClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cdsosobist/connectors/rest/testClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-fin-odata/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../rest-fin-odata/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-fin-odata/target/classes/META-INF/maven/com.evolveum.polygon/connector-ones/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../rest-fin-odata/target/classes/META-INF/maven/com.evolveum.polygon/connector-ones/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpip-biosmart/target/classes/META-INF/maven/cdsosobist-connectors-tcpip/tcpip-biosmart/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpip-biosmart/target/classes/META-INF/maven/cdsosobist-connectors-tcpip/tcpip-biosmart/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpip-biosmart/target/test-classes/test.properties" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/classes/" />
+    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,11 +84,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/companyStructureHandler.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -184,14 +97,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
+            <state relative-caret-position="192">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/test.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -208,13 +130,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-20712">
-              <caret line="54" column="59" lean-forward="true" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
+            <state relative-caret-position="680">
+              <caret line="54" column="59" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connection.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
@@ -226,7 +148,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
+            <state relative-caret-position="459">
               <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -275,9 +197,44 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="odata-ones-zup3-ecls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3-ecls" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="odata-ones-zup3-ecls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3-ecls" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="odata-ones-zup3-ecls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3-ecls" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="odata-ones-zup3-ecls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3-ecls" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="odata-ones-zup3-ecls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="odata-ones-zup3-ecls" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -358,9 +315,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="testClient_testFindAll - 2019.08.13 at 13h 09m 29s.xml">
-      <configuration name="testClient.testFindAll" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="testClient_testFindAll - 2019.08.13 at 13h 17m 25s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
@@ -382,6 +336,15 @@
     <history-entry file="testClient_testFindAll - 2019.08.13 at 13h 51m 17s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.09.03 at 15h 46m 30s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.09.03 at 15h 47m 30s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.09.03 at 17h 09m 22s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -395,31 +358,31 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Learn" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.32286024" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Messages" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info anchor="bottom" id="Sequence" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Learn" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" x="2411" y="368" width="937" height="304" id="Run" maximized="true" order="2" sideWeight="0.49946696" type="WINDOWED" weight="0.32936078" />
+      <window_info anchor="bottom" x="1920" y="23" width="1920" height="1017" id="Run" maximized="true" order="2" sideWeight="0.49946696" type="WINDOWED" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="PlantUML" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.32286024" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49946696" weight="0.32936078" />
+      <window_info anchor="bottom" id="Sequence" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="PlantUML" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
     </layout>
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -450,6 +413,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Обновлены зависимости, окружение" />
@@ -459,13 +436,6 @@
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/CurrentEmpDataCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/net/tirasa/connid/connector-framework/1.5.0.0/connector-framework-1.5.0.0-sources.jar!/org/identityconnectors/common/security/EncryptorFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -484,42 +454,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="82" column="39" selection-start-line="82" selection-start-column="39" selection-end-line="82" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/companyStructureHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/YOBA.jardesc">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../rest-fin-odata/src/main/java/CDSOsobist/connectors/rest/ones/ZUP2/Translit.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -538,10 +474,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/companyStructureHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/test.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/CurrentEmpDataCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20712">
-          <caret line="54" column="59" lean-forward="true" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
+        <state relative-caret-position="680">
+          <caret line="54" column="59" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -549,6 +506,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1394">
+          <caret line="82" column="39" selection-start-line="82" selection-start-column="39" selection-end-line="82" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

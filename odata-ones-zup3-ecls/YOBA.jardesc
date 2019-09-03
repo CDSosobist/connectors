@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="F:/conn-srvn/ZUP3.jar"/>
+    <jar path="F:/conn-srvn/cdsosobist.connectors.zup3-1.0.1.1.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/odata-ones-zup3-ecls/YOBA.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
@@ -12,7 +12,14 @@
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
         <javaElement handleIdentifier="=odata-ones-zup3-ecls/src\/main\/java"/>
+        <file path="/odata-ones-zup3-ecls/lib/commons-logging-1.2.jar"/>
+        <file path="/odata-ones-zup3-ecls/lib/bsf-2.4.0.jar"/>
         <javaElement handleIdentifier="=odata-ones-zup3-ecls/src\/main\/resources"/>
         <folder path="/odata-ones-zup3-ecls/src/main"/>
+        <file path="/odata-ones-zup3-ecls/lib/json-20180813.jar"/>
+        <file path="/odata-ones-zup3-ecls/lib/commons-codec-1.11.jar"/>
+        <file path="/odata-ones-zup3-ecls/lib/commons-lang-2.6.jar"/>
+        <file path="/odata-ones-zup3-ecls/lib/apiguardian-api-1.0.0.jar"/>
+        <file path="/odata-ones-zup3-ecls/lib/icu4j-4.8.1.1.jar"/>
     </selectedElements>
 </jardesc>
