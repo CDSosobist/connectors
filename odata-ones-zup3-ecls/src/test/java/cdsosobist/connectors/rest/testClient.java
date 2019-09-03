@@ -70,10 +70,10 @@ public class testClient {
         };
 
         zup3Filter filter = new zup3Filter();
-//        conn.executeQuery(accountObjectClass, filter, rh, null);
+        conn.executeQuery(accountObjectClass, filter, rh, null);
 //        conn.executeQuery(positionObjectClass, filter, rh, null);
 //        conn.executeQuery(orgObjectClass, filter, rh, null);
-        conn.executeQuery(orgUnitObjectClass, filter, rh, null);
+//        conn.executeQuery(orgUnitObjectClass, filter, rh, null);
 //        conn.executeQuery(companyStructureObjectClass, filter, rh, null);
 //        conn.executeQuery(contactInfoObjectClass, filter, rh, null);
 //        conn.executeQuery(currEmpDataObjectClass, filter, rh, null);

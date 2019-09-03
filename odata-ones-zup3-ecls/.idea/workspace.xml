@@ -315,9 +315,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="testClient_testFindAll - 2019.08.13 at 13h 17m 25s.xml">
-      <configuration name="testClient.testFindAll" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="testClient_testFindAll - 2019.08.13 at 13h 24m 45s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
@@ -343,6 +340,9 @@
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
     <history-entry file="testClient_testFindAll - 2019.09.03 at 17h 09m 22s.xml">
+      <configuration name="testClient.testFindAll" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="testClient_testFindAll - 2019.09.03 at 17h 14m 16s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
   </component>
