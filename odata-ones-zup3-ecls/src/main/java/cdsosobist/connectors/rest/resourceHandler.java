@@ -14,6 +14,7 @@ public class resourceHandler {
     static final String POSITIONS = "/Catalog_Должности";
     static final String REQ_FORMAT = "?$format=json";
     static final String STAFFLIST = "/Catalog_ШтатноеРасписание";
+    static final String STAFF_IN_CS = "/InformationRegister_МестоПозицииШтатногоРасписанияВСтруктуреПредприятия";
     static final String SUBORDINATION_OF_ORGANIZATIONS = "/InformationRegister_ПодчиненностьПодразделенийОрганизаций";
     static final String USERS = "/Catalog_Пользователи";
     static final String CONTACT_INFO = "/Catalog_ФизическиеЛица_КонтактнаяИнформация";

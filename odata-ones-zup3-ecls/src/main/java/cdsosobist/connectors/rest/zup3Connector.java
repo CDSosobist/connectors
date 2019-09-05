@@ -45,10 +45,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import static cdsosobist.connectors.rest.StaffInCompStructureHandler.StuffInCSOU;
+import static cdsosobist.connectors.rest.StaffInCompStructureHandler.StuffInCSPosition;
 import static cdsosobist.connectors.rest.companyStructureHandler.*;
 import static cdsosobist.connectors.rest.contactInfoHandler.*;
 import static cdsosobist.connectors.rest.currentEmpDataHandler.*;
-import static cdsosobist.connectors.rest.empRolesHandler.*;
+import static cdsosobist.connectors.rest.empRolesHandler.ER_EMP_KEY;
+import static cdsosobist.connectors.rest.empRolesHandler.ER_EMP_ROLE;
 import static cdsosobist.connectors.rest.employeesHandler.*;
 import static cdsosobist.connectors.rest.individualsHandler.*;
 import static cdsosobist.connectors.rest.mainEmpOfIndividualsHandler.*;
@@ -115,6 +118,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.buildOrgUnitObjectClass(schemaBuilder);
         this.buildPositionObjectClass(schemaBuilder);
         this.buildStaffListObjectClass(schemaBuilder);
+        this.buildStaffInCSObjectClass(schemaBuilder);
         this.buildSubOfOrgObjectClass(schemaBuilder);
         this.buildUserObjectClass(schemaBuilder);
         return schemaBuilder.build();
@@ -201,6 +205,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         ociBuilder.addAttributeInfo(attrCsSourceBuilder.build());
 
         AttributeInfoBuilder attrCsCorrUlStructureBuilder = new AttributeInfoBuilder(CS_CORR_UL_STRUCTURE);
+        attrCsCorrUlStructureBuilder.setType(boolean.class);
         ociBuilder.addAttributeInfo(attrCsCorrUlStructureBuilder.build());
 
         AttributeInfoBuilder attrCsPredefBuilder = new AttributeInfoBuilder(CS_PREDEF);
@@ -446,6 +451,19 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         AttributeInfoBuilder attrSlPositionKeyBuilder = new AttributeInfoBuilder(SL_POSITION_KEY);
         ociBuilder.addAttributeInfo(attrSlPositionKeyBuilder.build());
+
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+    private void buildStaffInCSObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("StaffInCS");
+
+        AttributeInfoBuilder attrSlUidBuilder = new AttributeInfoBuilder(StuffInCSPosition);
+        ociBuilder.addAttributeInfo(attrSlUidBuilder.build());
+
+        AttributeInfoBuilder attrSlOwnerKeyBuilder = new AttributeInfoBuilder(StuffInCSOU);
+        ociBuilder.addAttributeInfo(attrSlOwnerKeyBuilder.build());
 
         schemaBuilder.defineObjectClass(ociBuilder.build());
     }
@@ -697,6 +715,16 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
             }
 
 
+        } else if (objectClass.is("StaffInCS")) {
+
+            HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + STAFF_IN_CS + REQ_FORMAT);
+            try {
+                this.handleStaffInCS(request, handler, options);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         } else if (objectClass.is("SubOfOrg")) {
 
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + SUBORDINATION_OF_ORGANIZATIONS + REQ_FORMAT);
@@ -908,6 +936,23 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
             staff = this.callORequest(requestStaffDetail);
 
             ConnectorObject connectorObject = this.convertStaffToConnectorObject(staff);
+            boolean finish = !handler.handle(connectorObject);
+            if (finish) {
+                return;
+            }
+        }
+    }
+
+    private void handleStaffInCS(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
+        JSONArray staffInCS = this.callRequest(request);
+
+        for (int i = 0; i < staffInCS.length(); i++) {
+            JSONObject staff1 = staffInCS.getJSONObject(i);
+            getConfiguration();
+            HttpGet requestStaffDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + STAFF_IN_CS + EMP_DETAILS_1 + staff1.getString(StuffInCSPosition) + EMP_DETAILS_2 + REQ_FORMAT);
+            staff1 = this.callORequest(requestStaffDetail);
+
+            ConnectorObject connectorObject = this.convertStaffInCsToConnectorObject(staff1);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
                 return;
@@ -1159,6 +1204,18 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.getIfExists(staff,SL_DESCRIPTION, builder);
         this.getIfExists(staff,SL_OU_KEY, builder);
         this.getIfExists(staff,SL_POSITION_KEY, builder);
+
+        new HashMap<>();
+        LOG.ok("Builder.build: {0}", builder.build());
+        return builder.build();
+    }
+
+    private ConnectorObject convertStaffInCsToConnectorObject(JSONObject staff1) {
+        ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
+        builder.setUid(new Uid(staff1.getString(StuffInCSPosition)));
+        builder.setName(staff1.getString(StuffInCSPosition));
+
+        this.getIfExists(staff1,StuffInCSOU, builder);
 
         new HashMap<>();
         LOG.ok("Builder.build: {0}", builder.build());

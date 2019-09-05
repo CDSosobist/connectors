@@ -17,18 +17,33 @@ public class testClient {
     private static zup3Configuration conf;
     private static zup3Connector conn;
 
-    private final ObjectClass accountObjectClass = new ObjectClass(ObjectClass.ACCOUNT_NAME);
-    private final ObjectClass positionObjectClass = new ObjectClass("Position");
+    @SuppressWarnings("unused")
+	private final ObjectClass accountObjectClass = new ObjectClass(ObjectClass.ACCOUNT_NAME);
+    @SuppressWarnings("unused")
+	private final ObjectClass positionObjectClass = new ObjectClass("Position");
+    @SuppressWarnings("unused")
     private final ObjectClass orgObjectClass = new ObjectClass("Org");
+    @SuppressWarnings("unused")
     private final ObjectClass orgUnitObjectClass = new ObjectClass("OrgUnit");
+    @SuppressWarnings("unused")
     private final ObjectClass companyStructureObjectClass = new ObjectClass("CompanyStructure");
+    @SuppressWarnings("unused")
     private final ObjectClass contactInfoObjectClass = new ObjectClass("ContactInfo");
+    @SuppressWarnings("unused")
     private final ObjectClass currEmpDataObjectClass = new ObjectClass("CurrEmpData");
+    @SuppressWarnings("unused")
     private final ObjectClass empRoleObjectClass = new ObjectClass("EmpRole");
+    @SuppressWarnings("unused")
     private final ObjectClass individualObjectClass = new ObjectClass("Individual");
+    @SuppressWarnings("unused")
     private final ObjectClass mainEmpOfIndividualsObjectClass = new ObjectClass("MainEmpOfIndividuals");
+    @SuppressWarnings("unused")
     private final ObjectClass staffListObjectClass = new ObjectClass("StaffList");
+    @SuppressWarnings("unused")
+    private final ObjectClass StaffInCSObjectClass = new ObjectClass("StaffInCS");
+    @SuppressWarnings("unused")
     private final ObjectClass subOfOrgObjectClass = new ObjectClass("SubOfOrg");
+    @SuppressWarnings("unused")
     private final ObjectClass userObjectClass = new ObjectClass("User");
 
 
@@ -70,7 +85,7 @@ public class testClient {
         };
 
         zup3Filter filter = new zup3Filter();
-        conn.executeQuery(accountObjectClass, filter, rh, null);
+//        conn.executeQuery(accountObjectClass, filter, rh, null);
 //        conn.executeQuery(positionObjectClass, filter, rh, null);
 //        conn.executeQuery(orgObjectClass, filter, rh, null);
 //        conn.executeQuery(orgUnitObjectClass, filter, rh, null);
@@ -81,6 +96,7 @@ public class testClient {
 //        conn.executeQuery(individualObjectClass, filter, rh, null);
 //        conn.executeQuery(mainEmpOfIndividualsObjectClass, filter, rh, null);
 //        conn.executeQuery(staffListObjectClass, filter, rh, null);
+        conn.executeQuery(StaffInCSObjectClass, filter, rh, null);
 //        conn.executeQuery(subOfOrgObjectClass, filter, rh, null);
 //        conn.executeQuery(userObjectClass, filter, rh, null);
     }

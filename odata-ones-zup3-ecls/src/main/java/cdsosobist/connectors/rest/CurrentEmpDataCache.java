@@ -10,10 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static cdsosobist.connectors.rest.currentEmpDataHandler.CED_EMP_KEY;
-import static cdsosobist.connectors.rest.resourceHandler.*;
+import static cdsosobist.connectors.rest.resourceHandler.CURRENT_EMP_DATA;
+import static cdsosobist.connectors.rest.resourceHandler.REQ_FORMAT;
 
 public class CurrentEmpDataCache {
 
+    @SuppressWarnings("unused")
     private static final Log LOG = Log.getLog(CurrentEmpDataCache.class);
 
     Map<String, Object> cacheByEmpKey = new HashMap<>();

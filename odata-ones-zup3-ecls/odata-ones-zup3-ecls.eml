@@ -6,9 +6,6 @@
 		<testFolder url="file://$MODULE_DIR$/src/test/resources"/>
 		<excludeFolder url="file://$MODULE_DIR$/target"/>
 	</contentEntry>
-	<lib name="connector-rest-1.4.2.14-SNAPSHOT.jar" scope="COMPILE">
-		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/connector-rest-1.4.2.14-SNAPSHOT.jar!/"/>
-	</lib>
 	<lib name="Maven: net.tirasa.connid:connector-test-common:1.5.0.0" scope="TEST"/>
 	<lib name="Maven: net.tirasa.connid:connector-framework-contract:1.5.0.0" scope="TEST"/>
 	<lib name="Maven: net.tirasa.connid:connector-framework-internal:1.5.0.0" scope="TEST"/>
@@ -35,11 +32,6 @@
 	<lib name="Maven: com.beust:jcommander:1.27" scope="TEST"/>
 	<lib name="Maven: org.yaml:snakeyaml:1.6" scope="TEST"/>
 	<levels>
-		<level name="org.testng:testng:6.14.3" value="project"/>
-		<level name="org.eclipse.ecf:org.apache.httpcomponents.httpclient:4.5.2.v20170210-0925" value="project"/>
-		<level name="org.json:json:20190722" value="project"/>
-		<level name="org.eclipse.ecf:org.apache.httpcomponents.httpcore:4.4.6.v20170210-0925" value="project"/>
-		<level name="com.ibm.icu:icu4j:64.2" value="project"/>
 		<level name="Maven: com.evolveum.polygon:connector-rest:1.4.2.35" value="project"/>
 		<level name="Maven: org.apache.httpcomponents:httpclient:4.5.2" value="project"/>
 		<level name="Maven: org.apache.httpcomponents:httpcore:4.4.4" value="project"/>
