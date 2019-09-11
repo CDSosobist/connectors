@@ -45,6 +45,8 @@ public class testClient {
     private final ObjectClass subOfOrgObjectClass = new ObjectClass("SubOfOrg");
     @SuppressWarnings("unused")
     private final ObjectClass userObjectClass = new ObjectClass("User");
+    @SuppressWarnings("unused")
+    private final ObjectClass empHistorySliceObjectClass = new ObjectClass("EmpHistorySlice");
 
 
 
@@ -96,9 +98,10 @@ public class testClient {
 //        conn.executeQuery(individualObjectClass, filter, rh, null);
 //        conn.executeQuery(mainEmpOfIndividualsObjectClass, filter, rh, null);
 //        conn.executeQuery(staffListObjectClass, filter, rh, null);
-        conn.executeQuery(StaffInCSObjectClass, filter, rh, null);
+//        conn.executeQuery(StaffInCSObjectClass, filter, rh, null);
+//        conn.executeQuery(empHistorySliceObjectClass, filter, rh, null);
 //        conn.executeQuery(subOfOrgObjectClass, filter, rh, null);
-//        conn.executeQuery(userObjectClass, filter, rh, null);
+        conn.executeQuery(userObjectClass, filter, rh, null);
     }
 
 }

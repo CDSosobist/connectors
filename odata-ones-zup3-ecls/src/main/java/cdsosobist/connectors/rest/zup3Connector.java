@@ -109,6 +109,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
     public Schema schema() {
         SchemaBuilder schemaBuilder = new SchemaBuilder(zup3Connector.class);
         this.buildAccountObjectClass(schemaBuilder);
+        this.buildEmpHistorySliceObjectClass(schemaBuilder);
         this.buildCompanyStructureObjectClass(schemaBuilder);
         this.buildContactInfoObjectClass(schemaBuilder);
         this.buildEmpRoleObjectClass(schemaBuilder);
@@ -157,6 +158,22 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         attrEmpPredefBuilder.setType(boolean.class);
         ociBuilder.addAttributeInfo(attrEmpPredefBuilder.build());
 
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+    private void buildEmpHistorySliceObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("EmpHistorySlice");
+
+        AttributeInfoBuilder attrCedPersKeyBuilder = new AttributeInfoBuilder(CED_PERS_KEY);
+        ociBuilder.addAttributeInfo(attrCedPersKeyBuilder.build());
+
+        AttributeInfoBuilder attrCedEmpKeyBuilder = new AttributeInfoBuilder(CED_EMP_KEY);
+        ociBuilder.addAttributeInfo(attrCedEmpKeyBuilder.build());
+
+        AttributeInfoBuilder attrCedHeadOrgKeyBuilder = new AttributeInfoBuilder(CED_HEAD_ORG_KEY);
+        ociBuilder.addAttributeInfo(attrCedHeadOrgKeyBuilder.build());
+
         AttributeInfoBuilder attrCedCurOrgKeyBuilder = new AttributeInfoBuilder(CED_CUR_ORG_KEY);
         ociBuilder.addAttributeInfo(attrCedCurOrgKeyBuilder.build());
 
@@ -166,18 +183,21 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         AttributeInfoBuilder attrCedCurPosKeyBuilder = new AttributeInfoBuilder(CED_CUR_POS_KEY);
         ociBuilder.addAttributeInfo(attrCedCurPosKeyBuilder.build());
 
-        AttributeInfoBuilder attrCedDismDateBuilder = new AttributeInfoBuilder(CED_DISM_DATE);
-        ociBuilder.addAttributeInfo(attrCedDismDateBuilder.build());
+        AttributeInfoBuilder attrCedCurPosInStaffKeyBuilder = new AttributeInfoBuilder(CED_CUR_POS_IN_STAFF_KEY);
+        ociBuilder.addAttributeInfo(attrCedCurPosInStaffKeyBuilder.build());
 
-        AttributeInfoBuilder attrCedMainOrgJobBuilder = new AttributeInfoBuilder(CED_MAIN_ORG_JOB);
-        ociBuilder.addAttributeInfo(attrCedMainOrgJobBuilder.build());
+        AttributeInfoBuilder attrCedIsHeadEmpBuilder = new AttributeInfoBuilder(CED_IS_HEAD_EMP);
+        attrCedIsHeadEmpBuilder.setType(boolean.class);
+        ociBuilder.addAttributeInfo(attrCedIsHeadEmpBuilder.build());
 
-        AttributeInfoBuilder attrCedStartDateBuilder = new AttributeInfoBuilder(CED_START_DATE);
-        ociBuilder.addAttributeInfo(attrCedStartDateBuilder.build());
+        AttributeInfoBuilder attrCedHeadEmpBuilder = new AttributeInfoBuilder(CED_HEAD_EMP);
+        ociBuilder.addAttributeInfo(attrCedHeadEmpBuilder.build());
 
-        AttributeInfoBuilder attrCedIsEmpContractBuilder = new AttributeInfoBuilder(CED_IS_EMP_CONTRACT);
-        attrCedIsEmpContractBuilder.setType(boolean.class);
-        ociBuilder.addAttributeInfo(attrCedIsEmpContractBuilder.build());
+        AttributeInfoBuilder attrCedEventTypeBuilder = new AttributeInfoBuilder(CED_EVENT_TYPE);
+        ociBuilder.addAttributeInfo(attrCedEventTypeBuilder.build());
+
+        AttributeInfoBuilder attrCedEventDateBuilder = new AttributeInfoBuilder(CED_EVENT_DATE);
+        ociBuilder.addAttributeInfo(attrCedEventDateBuilder.build());
 
         schemaBuilder.defineObjectClass(ociBuilder.build());
     }
@@ -626,6 +646,15 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
                 e.printStackTrace();
             }
 
+        } else if (objectClass.is("EmpHistorySlice")) {
+            HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + CURRENT_EMP_DATA + REQ_FORMAT);
+            try {
+                this.handleEmpHistorySlice(request, handler, options);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         } else if (objectClass.is("Position")) {
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + POSITIONS + REQ_FORMAT);
             try {
@@ -786,11 +815,20 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         for (int i = 0; i < positions.length(); ++i) {
             JSONObject position = positions.getJSONObject(i);
-            getConfiguration();
-            HttpGet requestPositionDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + POSITIONS + EMP_DETAILS_1 + position.getString(POS_UID) + EMP_DETAILS_2 + REQ_FORMAT);
-            position = this.callORequest(requestPositionDetail);
-
             ConnectorObject connectorObject = this.convertPositionToConnectorObject(position);
+            boolean finish = !handler.handle(connectorObject);
+            if (finish) {
+                return;
+            }
+        }
+    }
+
+    private void handleEmpHistorySlice(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
+        JSONArray events = this.callRequest(request);
+
+        for (int i = 0; i < events.length(); ++i) {
+            JSONObject event = events.getJSONObject(i);
+            ConnectorObject connectorObject = this.convertEventToConnectorObject(event);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
                 return;
@@ -803,10 +841,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         for (int i = 0; i < organizations.length(); i++) {
             JSONObject organization = organizations.getJSONObject(i);
-            getConfiguration();
-            HttpGet requestOrganizationDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + ORGANIZATIONS + EMP_DETAILS_1 + organization.getString(ORG_UID) + EMP_DETAILS_2 + REQ_FORMAT);
-            organization = this.callORequest(requestOrganizationDetail);
-
             ConnectorObject connectorObject = this.convertOrganizationToConnectorObject(organization);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
@@ -821,10 +855,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         for (int i = 0; i < orgUnits.length(); i++) {
             JSONObject orgUnit = orgUnits.getJSONObject(i);
-            getConfiguration();
-            HttpGet requestOrgUnitDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + ORGUNITS + EMP_DETAILS_1 + orgUnit.getString(OU_UID) + EMP_DETAILS_2 + REQ_FORMAT);
-            orgUnit = this.callORequest(requestOrgUnitDetail);
-
             ConnectorObject connectorObject = this.convertOrgUnitToConnectorObject(orgUnit);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
@@ -839,10 +869,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         for (int i = 0; i < companies.length(); i++) {
             JSONObject company = companies.getJSONObject(i);
-            getConfiguration();
-            HttpGet requestOrgUnitDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + COMPANYSTRUCTURE + EMP_DETAILS_1 + company.getString(CS_COMPANY_UID) + EMP_DETAILS_2 + REQ_FORMAT);
-            company = this.callORequest(requestOrgUnitDetail);
-
             ConnectorObject connectorObject = this.convertCompanyToConnectorObject(company);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
@@ -895,10 +921,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         for (int i = 0; i < individuals.length(); i++) {
             JSONObject individual = individuals.getJSONObject(i);
-            getConfiguration();
-            HttpGet requestIndividualDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + INDIVIDUALS + EMP_DETAILS_1 + individual.getString(IND_UID) + EMP_DETAILS_2 + REQ_FORMAT);
-            individual = this.callORequest(requestIndividualDetail);
-
             ConnectorObject connectorObject = this.convertIndividualToConnectorObject(individual);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
@@ -913,8 +935,8 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         for (int i = 0; i < mainEmps.length(); i++) {
             JSONObject mainEmp = mainEmps.getJSONObject(i);
             getConfiguration();
-            HttpGet requestEmpRolesDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + MAIN_EMP_OF_INDIVIDUALS + REQ_FORMAT + INFOREG_REQ_1 + MEI_PERS_KEY + INFOREG_REQ_2 + mainEmp.getString(MEI_PERS_KEY) + INFOREG_REQ_3);
-            JSONArray emps = this.callRequest(requestEmpRolesDetail);
+            HttpGet requestEmpDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + MAIN_EMP_OF_INDIVIDUALS + REQ_FORMAT + INFOREG_REQ_1 + MEI_PERS_KEY + INFOREG_REQ_2 + mainEmp.getString(MEI_PERS_KEY) + INFOREG_REQ_3);
+            JSONArray emps = this.callRequest(requestEmpDetail);
             for (int j = 0; j < emps.length(); j++) {
                 JSONObject emp = emps.getJSONObject(j);
                 ConnectorObject connectorObject = this.convertMainEmpOfIndividualToConnectorObject(emp);
@@ -931,10 +953,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         for (int i = 0; i < staffList.length(); i++) {
             JSONObject staff = staffList.getJSONObject(i);
-            getConfiguration();
-            HttpGet requestStaffDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + STAFFLIST + EMP_DETAILS_1 + staff.getString(SL_UID) + EMP_DETAILS_2 + REQ_FORMAT);
-            staff = this.callORequest(requestStaffDetail);
-
             ConnectorObject connectorObject = this.convertStaffToConnectorObject(staff);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
@@ -948,10 +966,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         for (int i = 0; i < staffInCS.length(); i++) {
             JSONObject staff1 = staffInCS.getJSONObject(i);
-            getConfiguration();
-            HttpGet requestStaffDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + STAFF_IN_CS + EMP_DETAILS_1 + staff1.getString(StuffInCSPosition) + EMP_DETAILS_2 + REQ_FORMAT);
-            staff1 = this.callORequest(requestStaffDetail);
-
             ConnectorObject connectorObject = this.convertStaffInCsToConnectorObject(staff1);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
@@ -965,10 +979,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         for (int i = 0; i < subordinations.length(); i++) {
             JSONObject subordination = subordinations.getJSONObject(i);
-            getConfiguration();
-            HttpGet requestSubordinationDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + SUBORDINATION_OF_ORGANIZATIONS + REQ_FORMAT + INFOREG_REQ_1 + SUBO_ORG_KEY + INFOREG_REQ_2 + subordination.getString(SUBO_ORG_KEY) + INFOREG_REQ_3);
-            subordination = this.callORequest(requestSubordinationDetail);
-
             ConnectorObject connectorObject = this.convertSubordinationToConnectorObject(subordination);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
@@ -982,10 +992,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         for (int i = 0; i < users.length(); i++) {
             JSONObject user = users.getJSONObject(i);
-            getConfiguration();
-            HttpGet requestUserDetail = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + USERS + EMP_DETAILS_1 + user.getString(USER_UID) + EMP_DETAILS_2 + REQ_FORMAT);
-            user = this.callORequest(requestUserDetail);
-
             ConnectorObject connectorObject = this.convertUserToConnectorObject(user);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
@@ -1008,13 +1014,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.getIfExists(employee, EMP_IN_ARCHIVE, builder);
         this.getIfExists(employee, EMP_HEAD_EMP_KEY, builder);
         this.getIfExists(employee, EMP_PREDEF, builder);
-        this.getIfExists(currentEmpData, CED_CUR_ORG_KEY, builder);
-        this.getIfExists(currentEmpData, CED_CUR_OU_KEY, builder);
-        this.getIfExists(currentEmpData, CED_CUR_POS_KEY, builder);
-        this.getIfExists(currentEmpData, CED_DISM_DATE, builder);
-        this.getIfExists(currentEmpData, CED_MAIN_ORG_JOB, builder);
-        this.getIfExists(currentEmpData, CED_START_DATE, builder);
-        this.getIfExists(currentEmpData, CED_IS_EMP_CONTRACT, builder);
 
         boolean enable = !employee.getBoolean(EMP_IN_ARCHIVE);
         this.addAttr(builder, OperationalAttributes.ENABLE_NAME, enable);
@@ -1057,6 +1056,28 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.getIfExists(position, POS_DESCRIPTION, builder);
         this.getIfExists(position, POS_PREDEF, builder);
 
+        new HashMap<>();
+        LOG.ok("Builder.build: {0}", builder.build());
+        return builder.build();
+    }
+
+    private ConnectorObject convertEventToConnectorObject(JSONObject event) {
+        ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
+        builder.setUid(new Uid(event.getString(CED_EMP_KEY)));
+        builder.setName(event.getString(CED_EMP_KEY));
+
+        this.getIfExists(event, CED_PERS_KEY, builder);
+        this.getIfExists(event, CED_EMP_KEY, builder);
+        this.getIfExists(event, CED_HEAD_ORG_KEY, builder);
+        this.getIfExists(event, CED_CUR_ORG_KEY, builder);
+        this.getIfExists(event, CED_CUR_OU_KEY, builder);
+        this.getIfExists(event, CED_CUR_POS_KEY, builder);
+        this.getIfExists(event, CED_CUR_POS_IN_STAFF_KEY, builder);
+        this.getIfExists(event, CED_IS_HEAD_EMP, builder);
+        this.getIfExists(event, CED_HEAD_EMP, builder);
+        this.getIfExists(event, CED_EVENT_TYPE, builder);
+        this.getIfExists(event, CED_EVENT_DATE, builder);
+        
         new HashMap<>();
         LOG.ok("Builder.build: {0}", builder.build());
         return builder.build();

@@ -2,52 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1217e98a-490f-4d6e-acf4-fecf38a4d67b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YOBA.jardesc" beforeDir="false" afterPath="$PROJECT_DIR$/YOBA.jardesc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/apiguardian-api-1.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bsf-2.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/commons-codec-1.11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/commons-lang-2.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/commons-logging-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/connector-rest-1.4.2.14-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-2.5.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/groovy-bsf-2.5.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/httpclient-4.5.7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/httpcore-4.4.11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/icu4j-4.8.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/icu4j-63.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/json-20180813-javadoc.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/json-20180813-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/odata-ones-zup3-ecls.eml" beforeDir="false" afterPath="$PROJECT_DIR$/odata-ones-zup3-ecls.eml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/CurrentEmpDataCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/CurrentEmpDataCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/companyStructureHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/companyStructureHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/currentEmpDataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/currentEmpDataHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/resourceHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/resourceHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/staffListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/staffListHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/cdsosobist.connectors.rest/odata-ones-zup3/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/cdsosobist.connectors.rest/odata-ones-zup3/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/CurrentEmpDataCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/CurrentEmpDataCache.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/companyStructureHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/companyStructureHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/contactInfoHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/contactInfoHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/currentEmpDataHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/currentEmpDataHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/empRolesHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/empRolesHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/employeesHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/employeesHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/individualsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/individualsHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/mainEmpOfIndividualsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/mainEmpOfIndividualsHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/orgUnitsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/orgUnitsHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/organizationsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/organizationsHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/positionsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/positionsHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/resourceHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/resourceHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/staffListHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/staffListHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/subordinationOfOrgHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/subordinationOfOrgHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/usersHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/usersHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Configuration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Configuration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Connection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Connector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Connector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Filter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3Filter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3FilterTranslator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cdsosobist/connectors/rest/zup3FilterTranslator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/cdsosobist/connectors/rest/testClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cdsosobist/connectors/rest/testClient.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -75,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="93" selection-start-line="93" selection-end-line="93" />
+            <state relative-caret-position="350">
+              <caret line="100" column="26" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#632#659#0" expanded="true" />
@@ -93,6 +57,7 @@
                 <element signature="e#1926#1953#0" expanded="true" />
                 <element signature="e#2041#2068#0" expanded="true" />
                 <element signature="e#2154#2181#0" expanded="true" />
+                <element signature="e#2259#2286#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/CurrentEmpDataCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+            <state relative-caret-position="180">
+              <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,8 +87,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="54" column="59" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
+            <state relative-caret-position="-4114">
+              <caret line="54" column="6" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="6" />
+              <folding>
+                <element signature="e#4754#4755#0" expanded="true" />
+                <element signature="e#4795#4796#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -171,6 +140,7 @@
         <option value="cdsosobist &lt;koshelevra@cds.spb.ru&gt;" />
       </list>
     </option>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
@@ -344,38 +314,45 @@
       <option name="project" value="LOCAL" />
       <updated>1567520413281</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Дорботано штатное расписание под управленческую структуру">
+      <created>1567678330848</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1567678330849</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="testClient_testFindAll - 2019.08.13 at 13h 51m 17s.xml">
+    <history-entry file="testClient_testFindAll - 2019.09.11 at 19h 19m 26s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="testClient_testFindAll - 2019.09.03 at 15h 46m 30s.xml">
+    <history-entry file="testClient_testFindAll - 2019.09.11 at 19h 21m 01s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="testClient_testFindAll - 2019.09.03 at 15h 47m 30s.xml">
+    <history-entry file="testClient_testFindAll - 2019.09.11 at 19h 28m 37s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="testClient_testFindAll - 2019.09.03 at 17h 09m 22s.xml">
+    <history-entry file="testClient_testFindAll - 2019.09.11 at 19h 32m 52s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="testClient_testFindAll - 2019.09.03 at 17h 14m 16s.xml">
+    <history-entry file="testClient_testFindAll - 2019.09.11 at 19h 33m 07s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="testClient_testFindAll - 2019.09.03 at 17h 16m 44s.xml">
+    <history-entry file="testClient_testFindAll - 2019.09.11 at 19h 34m 45s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="testClient_testFindAll - 2019.09.03 at 18h 34m 46s.xml">
+    <history-entry file="testClient_testFindAll - 2019.09.11 at 19h 34m 58s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="testClient_testFindAll - 2019.09.03 at 18h 44m 53s.xml">
+    <history-entry file="testClient_testFindAll - 2019.09.11 at 19h 35m 38s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="testClient_testFindAll - 2019.09.04 at 18h 44m 21s.xml">
+    <history-entry file="testClient_testFindAll - 2019.09.11 at 19h 36m 17s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="testClient_testFindAll - 2019.09.05 at 10h 54m 19s.xml">
+    <history-entry file="testClient_testFindAll - 2019.09.11 at 19h 37m 18s.xml">
       <configuration name="testClient.testFindAll" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -390,8 +367,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -400,7 +378,7 @@
       <window_info anchor="bottom" id="Dependency Viewer" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" x="1920" y="23" width="1920" height="1017" id="Run" maximized="true" order="2" sideWeight="0.49946696" type="WINDOWED" visible="true" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" x="1920" y="23" width="1920" height="1017" id="Run" maximized="true" order="2" sideWeight="0.49946696" type="WINDOWED" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -408,7 +386,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32286024" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49946696" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49946696" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Sequence" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -467,7 +445,8 @@
     <MESSAGE value="Обновлены зависимости, окружение изменено на JRE, окончания строк переформатированы на CRLF(\r\n)" />
     <MESSAGE value="Обновлены зависимости, окружение изменено на JRE" />
     <MESSAGE value="Тестовое окружение изменено" />
-    <option name="LAST_COMMIT_MESSAGE" value="Тестовое окружение изменено" />
+    <MESSAGE value="Дорботано штатное расписание под управленческую структуру" />
+    <option name="LAST_COMMIT_MESSAGE" value="Дорботано штатное расписание под управленческую структуру" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -540,23 +519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="54" column="59" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/CurrentEmpDataCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/companyStructureHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -564,10 +526,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/CurrentEmpDataCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cdsosobist/connectors/rest/zup3Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4114">
+          <caret line="54" column="6" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="6" />
+          <folding>
+            <element signature="e#4754#4755#0" expanded="true" />
+            <element signature="e#4795#4796#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cdsosobist/connectors/rest/testClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        <state relative-caret-position="350">
+          <caret line="100" column="26" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#632#659#0" expanded="true" />
@@ -584,6 +567,7 @@
             <element signature="e#1926#1953#0" expanded="true" />
             <element signature="e#2041#2068#0" expanded="true" />
             <element signature="e#2154#2181#0" expanded="true" />
+            <element signature="e#2259#2286#0" expanded="true" />
           </folding>
         </state>
       </provider>
