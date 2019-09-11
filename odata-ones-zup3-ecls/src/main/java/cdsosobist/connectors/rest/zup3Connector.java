@@ -45,6 +45,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import static cdsosobist.connectors.rest.ManagerHandler.MAN_OU_KEY;
+import static cdsosobist.connectors.rest.ManagerHandler.MAN_STAF_POS_KEY;
 import static cdsosobist.connectors.rest.StaffInCompStructureHandler.StuffInCSOU;
 import static cdsosobist.connectors.rest.StaffInCompStructureHandler.StuffInCSPosition;
 import static cdsosobist.connectors.rest.companyStructureHandler.*;
@@ -62,6 +64,7 @@ import static cdsosobist.connectors.rest.resourceHandler.*;
 import static cdsosobist.connectors.rest.staffListHandler.*;
 import static cdsosobist.connectors.rest.subordinationOfOrgHandler.*;
 import static cdsosobist.connectors.rest.usersHandler.*;
+
 
 @ConnectorClass(displayNameKey = "zup3.connector.display", configurationClass = zup3Configuration.class)
 public class zup3Connector extends AbstractRestConnector<zup3Configuration> implements PoolableConnector, TestOp, SchemaOp, SearchOp<zup3Filter> {
@@ -122,6 +125,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.buildStaffInCSObjectClass(schemaBuilder);
         this.buildSubOfOrgObjectClass(schemaBuilder);
         this.buildUserObjectClass(schemaBuilder);
+        this.buildManagerObjectClass(schemaBuilder);
         return schemaBuilder.build();
     }
 
@@ -198,6 +202,19 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         AttributeInfoBuilder attrCedEventDateBuilder = new AttributeInfoBuilder(CED_EVENT_DATE);
         ociBuilder.addAttributeInfo(attrCedEventDateBuilder.build());
+
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+    private void buildManagerObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("Manager");
+
+        AttributeInfoBuilder attrManOuKeyBuilder = new AttributeInfoBuilder(MAN_OU_KEY);
+        ociBuilder.addAttributeInfo(attrManOuKeyBuilder.build());
+
+        AttributeInfoBuilder attrManStafPosKeyBuilder = new AttributeInfoBuilder(MAN_STAF_POS_KEY);
+        ociBuilder.addAttributeInfo(attrManStafPosKeyBuilder.build());
 
         schemaBuilder.defineObjectClass(ociBuilder.build());
     }
@@ -664,6 +681,15 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
             }
 
 
+        } else if (objectClass.is("Manager")) {
+            HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + MANAGERS + REQ_FORMAT);
+            try {
+                this.handleManagers(request, handler, options);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         } else if (objectClass.is("Org")) {
 
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + ORGANIZATIONS + REQ_FORMAT);
@@ -816,6 +842,19 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         for (int i = 0; i < positions.length(); ++i) {
             JSONObject position = positions.getJSONObject(i);
             ConnectorObject connectorObject = this.convertPositionToConnectorObject(position);
+            boolean finish = !handler.handle(connectorObject);
+            if (finish) {
+                return;
+            }
+        }
+    }
+
+    private void handleManagers(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
+        JSONArray managers = this.callRequest(request);
+
+        for (int i = 0; i < managers.length(); ++i) {
+            JSONObject manager = managers.getJSONObject(i);
+            ConnectorObject connectorObject = this.convertManagerToConnectorObject(manager);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
                 return;
@@ -1061,6 +1100,17 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         return builder.build();
     }
 
+    private ConnectorObject convertManagerToConnectorObject(JSONObject manager) {
+        ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
+        builder.setUid(new Uid(manager.getString(MAN_OU_KEY)));
+        builder.setName(manager.getString(MAN_OU_KEY));
+
+        this.getIfExists(manager, MAN_STAF_POS_KEY, builder);
+
+        new HashMap<>();
+        LOG.ok("Builder.build: {0}", builder.build());
+        return builder.build();
+    }
     private ConnectorObject convertEventToConnectorObject(JSONObject event) {
         ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
         builder.setUid(new Uid(event.getString(CED_EMP_KEY)));

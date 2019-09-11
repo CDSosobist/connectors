@@ -5,7 +5,7 @@ public class resourceHandler {
     static final String COMPANYSTRUCTURE = "/Catalog_СтруктураПредприятия";
     static final String CURRENT_EMP_DATA = "/InformationRegister_КадроваяИсторияСотрудников_RecordType/SliceLast()";
     static final String EMPLOYEES = "/Catalog_Сотрудники";
-    static final String MANAGERS = "InformationRegister_ПозицииРуководителейПодразделений";
+    static final String MANAGERS = "/InformationRegister_ПозицииРуководителейПодразделений";
     static final String EMPLOYERS = "/Catalog_Работодатели";
     static final String EMP_ROLES = "/InformationRegister_РолиСотрудников";
     static final String INDIVIDUALS = "/Catalog_ФизическиеЛица";
