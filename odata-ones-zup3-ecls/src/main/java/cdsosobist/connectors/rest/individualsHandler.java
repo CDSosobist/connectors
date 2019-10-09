@@ -16,4 +16,7 @@ public class individualsHandler {
     static final String IND_SURNAME = "Фамилия";
     static final String IND_NAME_INITIALS = "ИнициалыИмени";
     static final String IND_NAME = "Имя";
+    static final String IND_BIRTHDATE = "ДатаРождения";
+    static final String IND_INN = "ИНН";
+    static final String IND_SNILS = "СтраховойНомерПФР";    
 }

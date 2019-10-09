@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Built-By: CDSOsobist
 ConnectorBundle-FrameworkVersion: 1.4.2.14
-ConnectorBundle-Version: 2.0.1.3
+ConnectorBundle-Version: 2.1.0.0
 ConnectorBundle-Name: cdsosobist.connectors.rest.AxaptaConnector

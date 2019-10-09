@@ -19,8 +19,14 @@ public class resourceHandler {
     static final String SUBORDINATION_OF_ORGANIZATIONS = "/InformationRegister_ПодчиненностьПодразделенийОрганизаций";
     static final String USERS = "/Catalog_Пользователи";
     static final String CONTACT_INFO = "/Catalog_ФизическиеЛица_КонтактнаяИнформация";
+    static final String PHOTOS = "/InformationRegister_ФотографииФизическихЛиц";
+    static final String MAIN_JOB = "/InformationRegister_ВидыЗанятостиСотрудников_RecordType/SliceLast()";
 
     static final String INFOREG_REQ_1 = "&$filter=";
     static final String INFOREG_REQ_2 = "%20eq%20guid'";
     static final String INFOREG_REQ_3 = "'";
+    static final String LASTEVENT_REQ_1 = "&Condition=ФизическоеЛицо_Key";
+    static final String FIND_LAST_EVENT = "%27&$top=1&$orderby=Period%20desc";
+    static final String GUID_PART_1 = "(guid'";
+    static final String GUID_PART_2 = "')";
 }

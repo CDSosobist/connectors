@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Built-By: CDSOsobist
 ConnectorBundle-FrameworkVersion: 1.4.2.14
-ConnectorBundle-Version: 2.0.0.2
+ConnectorBundle-Version: 2.0.1.4
 ConnectorBundle-Name: cdsosobist.connectors.tcpip.biosmart

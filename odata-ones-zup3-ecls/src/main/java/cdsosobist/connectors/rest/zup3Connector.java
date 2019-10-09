@@ -45,8 +45,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
+
+import static cdsosobist.connectors.rest.MainJobHandler.*;
 import static cdsosobist.connectors.rest.ManagerHandler.MAN_OU_KEY;
 import static cdsosobist.connectors.rest.ManagerHandler.MAN_STAF_POS_KEY;
+import static cdsosobist.connectors.rest.PhotoHandler.PHOTO_DATA;
+import static cdsosobist.connectors.rest.PhotoHandler.PHOTO_IND_KEY;
 import static cdsosobist.connectors.rest.StaffInCompStructureHandler.StuffInCSOU;
 import static cdsosobist.connectors.rest.StaffInCompStructureHandler.StuffInCSPosition;
 import static cdsosobist.connectors.rest.companyStructureHandler.*;
@@ -79,7 +88,8 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
 //    public CurrentEmpDataCache currentEmpDataCache;
 
-
+    ZoneId timeZone = ZoneId.systemDefault();
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
 
 
@@ -126,6 +136,8 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.buildSubOfOrgObjectClass(schemaBuilder);
         this.buildUserObjectClass(schemaBuilder);
         this.buildManagerObjectClass(schemaBuilder);
+        this.buildPhotoObjectClass(schemaBuilder);
+        this.buildMainJobObjectClass(schemaBuilder);
         return schemaBuilder.build();
     }
 
@@ -201,6 +213,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         ociBuilder.addAttributeInfo(attrCedEventTypeBuilder.build());
 
         AttributeInfoBuilder attrCedEventDateBuilder = new AttributeInfoBuilder(CED_EVENT_DATE);
+        attrCedEventDateBuilder.setType(ZonedDateTime.class);
         ociBuilder.addAttributeInfo(attrCedEventDateBuilder.build());
 
         schemaBuilder.defineObjectClass(ociBuilder.build());
@@ -331,6 +344,16 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         AttributeInfoBuilder attrIndNameBuilder = new AttributeInfoBuilder(IND_NAME);
         ociBuilder.addAttributeInfo(attrIndNameBuilder.build());
 
+        AttributeInfoBuilder attrIndBirthdateBuilder = new AttributeInfoBuilder(IND_BIRTHDATE);
+        attrIndBirthdateBuilder.setType(ZonedDateTime.class);
+        ociBuilder.addAttributeInfo(attrIndBirthdateBuilder.build());
+
+        AttributeInfoBuilder attrIndINNBuilder = new AttributeInfoBuilder(IND_INN);
+        ociBuilder.addAttributeInfo(attrIndINNBuilder.build());
+
+        AttributeInfoBuilder attrIndSNILSBuilder = new AttributeInfoBuilder(IND_SNILS);
+        ociBuilder.addAttributeInfo(attrIndSNILSBuilder.build());
+
         schemaBuilder.defineObjectClass(ociBuilder.build());
     }
 
@@ -345,9 +368,11 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         ociBuilder.addAttributeInfo(attrMeiPersKeyBuilder.build());
 
         AttributeInfoBuilder attrMeiStartDateBuilder = new AttributeInfoBuilder(MEI_START_DATE);
+        attrMeiStartDateBuilder.setType(ZonedDateTime.class);
         ociBuilder.addAttributeInfo(attrMeiStartDateBuilder.build());
 
         AttributeInfoBuilder attrMeiEndDateBuilder = new AttributeInfoBuilder(MEI_END_DATE);
+        attrMeiEndDateBuilder.setType(ZonedDateTime.class);
         ociBuilder.addAttributeInfo(attrMeiEndDateBuilder.build());
 
         AttributeInfoBuilder attrMeiEmpKeyBuilder = new AttributeInfoBuilder(MEI_EMP_KEY);
@@ -564,6 +589,51 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
 
 
+    private void buildPhotoObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("Photo");
+
+        AttributeInfoBuilder attrPhotoIndKeyBuilder = new AttributeInfoBuilder(PHOTO_IND_KEY);
+        ociBuilder.addAttributeInfo(attrPhotoIndKeyBuilder.build());
+
+        AttributeInfoBuilder attrPhotoDataBuilder = new AttributeInfoBuilder(PHOTO_DATA);
+        attrPhotoDataBuilder.setType(byte.class);
+        ociBuilder.addAttributeInfo(attrPhotoDataBuilder.build());
+
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+
+
+    private void buildMainJobObjectClass(SchemaBuilder schemaBuilder) {
+        ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+        ociBuilder.setType("MainJob");
+
+        AttributeInfoBuilder attrMainJobEmpBuilder = new AttributeInfoBuilder(MAIN_JOB_EMP);
+        ociBuilder.addAttributeInfo(attrMainJobEmpBuilder.build());
+        
+        
+        AttributeInfoBuilder attrMainJobEmpTypeBuilder = new AttributeInfoBuilder(MAIN_JOB_EMP_TYPE);
+        ociBuilder.addAttributeInfo(attrMainJobEmpTypeBuilder.build());
+        
+        
+        AttributeInfoBuilder attrMainJobHeadOrgBuilder = new AttributeInfoBuilder(MAIN_JOB_HEAD_ORG);
+        ociBuilder.addAttributeInfo(attrMainJobHeadOrgBuilder.build());
+        
+        
+        AttributeInfoBuilder attrMainJobIndividualBuilder = new AttributeInfoBuilder(MAIN_JOB_INDIVIDUAL);
+        ociBuilder.addAttributeInfo(attrMainJobIndividualBuilder.build());
+        
+        
+        AttributeInfoBuilder attrMainJobStartDateBuilder = new AttributeInfoBuilder("Period");
+        attrMainJobStartDateBuilder.setType(ZonedDateTime.class);
+        ociBuilder.addAttributeInfo(attrMainJobStartDateBuilder.build());
+        
+        schemaBuilder.defineObjectClass(ociBuilder.build());
+    }
+
+
+
     private JSONObject callORequest(HttpRequestBase request) throws IOException {
         request.setHeader("Content-Type", "application/json");
         this.authHeader(request);
@@ -658,7 +728,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         if (objectClass.is("__ACCOUNT__")) {
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + EMPLOYEES + REQ_FORMAT);
             try {
-                this.handleEmployees(request, handler, options);
+                this.handleEmployees(request, query, handler, options);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -675,7 +745,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         } else if (objectClass.is("Position")) {
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + POSITIONS + REQ_FORMAT);
             try {
-                this.handlePositions(request, handler, options);
+                this.handlePositions(request, query, handler, options);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -684,7 +754,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         } else if (objectClass.is("Manager")) {
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + MANAGERS + REQ_FORMAT);
             try {
-                this.handleManagers(request, handler, options);
+                this.handleManagers(request, query, handler, options);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -694,7 +764,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + ORGANIZATIONS + REQ_FORMAT);
             try {
-                this.handleOrganisations(request, handler, options);
+                this.handleOrganisations(request, query, handler, options);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -704,7 +774,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + ORGUNITS + REQ_FORMAT);
             try {
-                this.handleOrgunits(request, handler, options);
+                this.handleOrgunits(request, query, handler, options);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -714,7 +784,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + COMPANYSTRUCTURE + REQ_FORMAT);
             try {
-                this.handleCompanyStructure(request, handler, options);
+                this.handleCompanyStructure(request, query, handler, options);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -744,7 +814,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + INDIVIDUALS + REQ_FORMAT);
             try {
-                this.handleIndividuals(request, handler, options);
+                this.handleIndividuals(request, query, handler, options);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -764,7 +834,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + STAFFLIST + REQ_FORMAT);
             try {
-                this.handleStaffList(request, handler, options);
+                this.handleStaffList(request, query, handler, options);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -774,7 +844,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + STAFF_IN_CS + REQ_FORMAT);
             try {
-                this.handleStaffInCS(request, handler, options);
+                this.handleStaffInCS(request, query, handler, options);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -794,22 +864,41 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
             HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + USERS + REQ_FORMAT);
             try {
-                this.handleUsers(request, handler, options);
+                this.handleUsers(request, query, handler, options);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else if (objectClass.is("Photo")) {
+
+            HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + PHOTOS + REQ_FORMAT);
+            try {
+                this.handlePhotos(request, handler, options);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (objectClass.is("MainJob")) {
+
+            HttpGet request = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + MAIN_JOB + REQ_FORMAT);
+            try {
+                this.handleMainJobs(request, handler, options);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
     }
 
 
-    private void handleEmployees(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
+    private void handleEmployees(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options) throws IOException {
 
         CurrentEmpDataCache currentEmpDataCache = new CurrentEmpDataCache(zup3Connector.this);
 
-        JSONArray employees = this.callRequest(request);
 
-        for(int i = 0; i < employees.length(); ++i) {
-            JSONObject employee = employees.getJSONObject(i);
+        if (filter != null && filter.byUid != null) {
+        	HttpGet filterRequest = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + EMPLOYEES + GUID_PART_1 + filter.byUid + GUID_PART_2 + REQ_FORMAT);
+        	JSONObject employee = this.callORequest(filterRequest);
+			
             String currEmpUid = employee.getString(EMP_UID);
             JSONObject currentEmpData = (JSONObject) currentEmpDataCache.cacheByEmpKey.get(currEmpUid);
 
@@ -818,55 +907,113 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
             if (notInArchive) {
                 if (currentEmpDataNotNull) {
-                    ConnectorObject connectorObject = this.convertEmployeeToConnectorObject(i, employee, currentEmpData);
+                    ConnectorObject connectorObject = this.convertEmployeeToConnectorObject(employee, currentEmpData);
                     boolean finish = !handler.handle(connectorObject);
                     if (finish) {
                         return;
                     }
                 } else {
-                    ConnectorObject connectorObject = this.convertEmployeeToConnectorObject(i, employee);
+                    ConnectorObject connectorObject = this.convertEmployeeToConnectorObject(employee);
                     boolean finish = !handler.handle(connectorObject);
                     if (finish) {
                         return;
                     }
                 }
             }
+		} else {
+        
+        
+			JSONArray employees = this.callRequest(request);
+			
+			for(int i = 0; i < employees.length(); ++i) {
+				JSONObject employee = employees.getJSONObject(i);
+				String currEmpUid = employee.getString(EMP_UID);
+				JSONObject currentEmpData = (JSONObject) currentEmpDataCache.cacheByEmpKey.get(currEmpUid);
+				
+				boolean notInArchive = employee.get(EMP_IN_ARCHIVE).toString().matches("false");
+				boolean currentEmpDataNotNull = currentEmpData != null;
+				
+				if (notInArchive) {
+					if (currentEmpDataNotNull) {
+						ConnectorObject connectorObject = this.convertEmployeeToConnectorObject(employee, currentEmpData);
+						boolean finish = !handler.handle(connectorObject);
+						if (finish) {
+							return;
+							}
+						} else {
+							ConnectorObject connectorObject = this.convertEmployeeToConnectorObject(employee);
+							boolean finish = !handler.handle(connectorObject);
+							if (finish) {
+								return;
+								}
+							}
+					}
+				}
+			getConfiguration();
+			employees.length();
+			}
         }
-        getConfiguration();
-        employees.length();
-    }
 
-    private void handlePositions(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
-        JSONArray positions = this.callRequest(request);
+    private void handlePositions(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options) throws IOException {
 
-        for (int i = 0; i < positions.length(); ++i) {
-            JSONObject position = positions.getJSONObject(i);
-            ConnectorObject connectorObject = this.convertPositionToConnectorObject(position);
-            boolean finish = !handler.handle(connectorObject);
-            if (finish) {
-                return;
-            }
-        }
-    }
+    	if (filter != null && filter.byUid != null) {
+			
+    		HttpGet filteredRequest = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + POSITIONS + GUID_PART_1 + filter.byUid + GUID_PART_2 + REQ_FORMAT);
+    		JSONObject position = this.callORequest(filteredRequest);
+			ConnectorObject connectorObject = this.convertPositionToConnectorObject(position);
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+				}
+    	} else {
+    	
+			JSONArray positions = this.callRequest(request);
+			
+			for (int i = 0; i < positions.length(); ++i) {
+				JSONObject position = positions.getJSONObject(i);
+				ConnectorObject connectorObject = this.convertPositionToConnectorObject(position);
+				boolean finish = !handler.handle(connectorObject);
+				if (finish) {
+					return;
+					}
+				}
+			}
+    	}
 
-    private void handleManagers(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
-        JSONArray managers = this.callRequest(request);
+    private void handleManagers(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options) throws IOException {
+        
+    	if (filter != null && filter.byUid != null) {
+    		
+    		HttpGet filteredRequest = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + MANAGERS + GUID_PART_1 + filter.byUid + GUID_PART_2 + REQ_FORMAT);
+    		JSONObject manager = this.callORequest(filteredRequest);
+			ConnectorObject connectorObject = this.convertManagerToConnectorObject(manager);
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+				}
 
-        for (int i = 0; i < managers.length(); ++i) {
-            JSONObject manager = managers.getJSONObject(i);
-            ConnectorObject connectorObject = this.convertManagerToConnectorObject(manager);
-            boolean finish = !handler.handle(connectorObject);
-            if (finish) {
-                return;
-            }
-        }
-    }
+    	} else {
+    	
+			JSONArray managers = this.callRequest(request);
+			
+			for (int i = 0; i < managers.length(); ++i) {
+				JSONObject manager = managers.getJSONObject(i);
+				ConnectorObject connectorObject = this.convertManagerToConnectorObject(manager);
+				boolean finish = !handler.handle(connectorObject);
+				if (finish) {
+					return;
+					}
+				}
+			}
+    	}
 
     private void handleEmpHistorySlice(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
         JSONArray events = this.callRequest(request);
 
         for (int i = 0; i < events.length(); ++i) {
-            JSONObject event = events.getJSONObject(i);
+            String mainJobIndKey = events.getJSONObject(i).getString(MAIN_JOB_INDIVIDUAL);
+            HttpGet lastEventRequest = new HttpGet((((zup3Configuration)this.getConfiguration()).getServiceAddress() + CURRENT_EMP_DATA + REQ_FORMAT + LASTEVENT_REQ_1 + INFOREG_REQ_2 + mainJobIndKey + FIND_LAST_EVENT));
+            JSONObject event = this.callRequest(lastEventRequest).getJSONObject(0);
             ConnectorObject connectorObject = this.convertEventToConnectorObject(event);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
@@ -875,46 +1022,87 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         }
     }
 
-    private void handleOrganisations(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
-        JSONArray organizations = this.callRequest(request);
+    private void handleOrganisations(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options) throws IOException {
+        
+    	if (filter != null && filter.byUid != null) {
+    		
+    		HttpGet filteredRequest = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + ORGANIZATIONS + GUID_PART_1 + filter.byUid + GUID_PART_2 + REQ_FORMAT);
+    		JSONObject organization = this.callORequest(filteredRequest);
+			ConnectorObject connectorObject = this.convertOrganizationToConnectorObject(organization);
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+				}
 
-        for (int i = 0; i < organizations.length(); i++) {
-            JSONObject organization = organizations.getJSONObject(i);
-            ConnectorObject connectorObject = this.convertOrganizationToConnectorObject(organization);
-            boolean finish = !handler.handle(connectorObject);
-            if (finish) {
-                return;
-            }
-        }
+    	} else {
+    	
+    	
+			JSONArray organizations = this.callRequest(request);
+			
+			for (int i = 0; i < organizations.length(); i++) {
+				JSONObject organization = organizations.getJSONObject(i);
+				ConnectorObject connectorObject = this.convertOrganizationToConnectorObject(organization);
+				boolean finish = !handler.handle(connectorObject);
+				if (finish) {
+					return;
+					}
+				}
+			}
+    	}
 
-    }
+    private void handleOrgunits(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options) throws IOException {
+        
+    	if (filter != null && filter.byUid != null) {
+    		
+    		HttpGet filteredRequest = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + ORGUNITS + GUID_PART_1 + filter.byUid + GUID_PART_2 + REQ_FORMAT);
+    		JSONObject orgUnit = this.callORequest(filteredRequest);
+			ConnectorObject connectorObject = this.convertOrgUnitToConnectorObject(orgUnit);
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+				}
+    					
+		} else {
+    	
+			JSONArray orgUnits = this.callRequest(request);
+			
+			for (int i = 0; i < orgUnits.length(); i++) {
+				JSONObject orgUnit = orgUnits.getJSONObject(i);
+				ConnectorObject connectorObject = this.convertOrgUnitToConnectorObject(orgUnit);
+				boolean finish = !handler.handle(connectorObject);
+				if (finish) {
+					return;
+					}
+				}
+			}
+    	}
 
-    private void handleOrgunits(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
-        JSONArray orgUnits = this.callRequest(request);
+    private void handleCompanyStructure(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options) throws IOException {
 
-        for (int i = 0; i < orgUnits.length(); i++) {
-            JSONObject orgUnit = orgUnits.getJSONObject(i);
-            ConnectorObject connectorObject = this.convertOrgUnitToConnectorObject(orgUnit);
-            boolean finish = !handler.handle(connectorObject);
-            if (finish) {
-                return;
-            }
-        }
-
-    }
-
-    private void handleCompanyStructure(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
-        JSONArray companies = this.callRequest(request);
-
-        for (int i = 0; i < companies.length(); i++) {
-            JSONObject company = companies.getJSONObject(i);
-            ConnectorObject connectorObject = this.convertCompanyToConnectorObject(company);
-            boolean finish = !handler.handle(connectorObject);
-            if (finish) {
-                return;
-            }
-        }
-    }
+    	if (filter != null && filter.byUid != null) {
+    		
+    		HttpGet filteredRequest = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + COMPANYSTRUCTURE + GUID_PART_1 + filter.byUid + GUID_PART_2 + REQ_FORMAT);
+    		JSONObject company = this.callORequest(filteredRequest);
+			ConnectorObject connectorObject = this.convertCompanyToConnectorObject(company);
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+				}
+			
+		} else {
+    	
+			JSONArray companies = this.callRequest(request);
+			
+			for (int i = 0; i < companies.length(); i++) {
+				JSONObject company = companies.getJSONObject(i);
+				ConnectorObject connectorObject = this.convertCompanyToConnectorObject(company);
+				boolean finish = !handler.handle(connectorObject);
+				if (finish) {
+					return;
+					}
+				}
+			}
+    	}
 
     private void handleContactInfo(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
         JSONArray contacts = this.callRequest(request);
@@ -955,17 +1143,36 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         }
     }
 
-    private void handleIndividuals(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
-        JSONArray individuals = this.callRequest(request);
+    private void handleIndividuals(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options) throws IOException {
+    	
+    	if (filter != null && filter.byUid != null) {
+    		
+    		HttpGet filteredRequest = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + INDIVIDUALS + GUID_PART_1 + filter.byUid + GUID_PART_2 + REQ_FORMAT);
+    		JSONObject individual = this.callORequest(filteredRequest);
 
-        for (int i = 0; i < individuals.length(); i++) {
-            JSONObject individual = individuals.getJSONObject(i);
-            ConnectorObject connectorObject = this.convertIndividualToConnectorObject(individual);
-            boolean finish = !handler.handle(connectorObject);
-            if (finish) {
-                return;
-            }
-        }
+    		if (individual.get(IND_IS_FOLDER).toString().matches("false")) {
+			ConnectorObject connectorObject = this.convertIndividualToConnectorObject(individual);
+			
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+				}
+    		}
+		} else {
+    	
+			JSONArray individuals = this.callRequest(request);
+			
+			for (int i = 0; i < individuals.length(); i++) {
+				JSONObject individual = individuals.getJSONObject(i);
+	    		if (individual.get(IND_IS_FOLDER).toString().matches("false")) {
+				ConnectorObject connectorObject = this.convertIndividualToConnectorObject(individual);
+				boolean finish = !handler.handle(connectorObject);
+				if (finish) {
+					return;
+					}
+				}
+			}
+		}
     }
 
     private void handleMainEmpOfIndividuals(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
@@ -987,31 +1194,59 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         }
     }
 
-    private void handleStaffList(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
-        JSONArray staffList = this.callRequest(request);
+    private void handleStaffList(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options) throws IOException {
+    	
+    	if (filter != null && filter.byUid != null) {
+    		
+    		HttpGet filteredRequest = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + STAFFLIST + GUID_PART_1 + filter.byUid + GUID_PART_2 + REQ_FORMAT);
+    		JSONObject staff = this.callORequest(filteredRequest);
+			ConnectorObject connectorObject = this.convertStaffToConnectorObject(staff);
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+				}
+			
+		} else {    	
+    	
+			JSONArray staffList = this.callRequest(request);
+			
+			for (int i = 0; i < staffList.length(); i++) {
+				JSONObject staff = staffList.getJSONObject(i);
+				ConnectorObject connectorObject = this.convertStaffToConnectorObject(staff);
+				boolean finish = !handler.handle(connectorObject);
+				if (finish) {
+					return;
+					}
+				}
+			}
+    	}
 
-        for (int i = 0; i < staffList.length(); i++) {
-            JSONObject staff = staffList.getJSONObject(i);
-            ConnectorObject connectorObject = this.convertStaffToConnectorObject(staff);
-            boolean finish = !handler.handle(connectorObject);
-            if (finish) {
-                return;
-            }
-        }
-    }
-
-    private void handleStaffInCS(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
-        JSONArray staffInCS = this.callRequest(request);
-
-        for (int i = 0; i < staffInCS.length(); i++) {
-            JSONObject staff1 = staffInCS.getJSONObject(i);
-            ConnectorObject connectorObject = this.convertStaffInCsToConnectorObject(staff1);
-            boolean finish = !handler.handle(connectorObject);
-            if (finish) {
-                return;
-            }
-        }
-    }
+    private void handleStaffInCS(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options) throws IOException {
+    	
+    	if (filter != null && filter.byUid != null) {
+    		
+    		HttpGet filteredRequest = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + STAFF_IN_CS + GUID_PART_1 + filter.byUid + GUID_PART_2 + REQ_FORMAT);
+    		JSONObject staff1 = this.callORequest(filteredRequest);
+			ConnectorObject connectorObject = this.convertStaffInCsToConnectorObject(staff1);
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+				}
+    		
+		} else {    	
+    	
+			JSONArray staffInCS = this.callRequest(request);
+			
+			for (int i = 0; i < staffInCS.length(); i++) {
+				JSONObject staff1 = staffInCS.getJSONObject(i);
+				ConnectorObject connectorObject = this.convertStaffInCsToConnectorObject(staff1);
+				boolean finish = !handler.handle(connectorObject);
+				if (finish) {
+					return;
+					}
+				}
+			}
+    	}
 
     private void handleSubOfOrgs(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
         JSONArray subordinations = this.callRequest(request);
@@ -1026,12 +1261,39 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         }
     }
 
-    private void handleUsers(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
-        JSONArray users = this.callRequest(request);
+    private void handleUsers(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options) throws IOException {
+    	
+    	if (filter != null && filter.byUid != null) {
+    		
+    		HttpGet filteredRequest = new HttpGet(((zup3Configuration)this.getConfiguration()).getServiceAddress() + USERS + GUID_PART_1 + filter.byUid + GUID_PART_2 + REQ_FORMAT);
+    		JSONObject user = this.callORequest(filteredRequest);
+			ConnectorObject connectorObject = this.convertUserToConnectorObject(user);
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+				}
+			
+		} else {
+    	
+			JSONArray users = this.callRequest(request);
+			
+			for (int i = 0; i < users.length(); i++) {
+				JSONObject user = users.getJSONObject(i);
+				ConnectorObject connectorObject = this.convertUserToConnectorObject(user);
+				boolean finish = !handler.handle(connectorObject);
+				if (finish) {
+					return;
+					}
+				}
+			}
+    	}
 
-        for (int i = 0; i < users.length(); i++) {
-            JSONObject user = users.getJSONObject(i);
-            ConnectorObject connectorObject = this.convertUserToConnectorObject(user);
+    private void handlePhotos(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
+        JSONArray photos = this.callRequest(request);
+
+        for (int i = 0; i < photos.length(); i++) {
+            JSONObject photo = photos.getJSONObject(i);
+            ConnectorObject connectorObject = this.convertPhotoToConnectorObject(photo);
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
                 return;
@@ -1039,7 +1301,20 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         }
     }
 
-    private ConnectorObject convertEmployeeToConnectorObject(int i, JSONObject employee, JSONObject currentEmpData) {
+    private void handleMainJobs(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
+        JSONArray mainJobs = this.callRequest(request);
+
+        for (int i = 0; i < mainJobs.length(); i++) {
+            JSONObject mainJob = mainJobs.getJSONObject(i);
+            ConnectorObject connectorObject = this.convertMainJobToConnectorObject(mainJob);
+            boolean finish = !handler.handle(connectorObject);
+            if (finish) {
+                return;
+            }
+        }
+    }
+
+    private ConnectorObject convertEmployeeToConnectorObject(JSONObject employee, JSONObject currentEmpData) {
         ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
         builder.setUid(new Uid(employee.getString(EMP_UID)));
         builder.setName(employee.getString(EMP_UID));
@@ -1058,11 +1333,10 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.addAttr(builder, OperationalAttributes.ENABLE_NAME, enable);
 
         new HashMap<>();
-        LOG.ok("Номер сотрудника - {0},         Builder.build: {1}", i, builder.build());
         return builder.build();
     }
 
-    private ConnectorObject convertEmployeeToConnectorObject(int i, JSONObject employee) {
+    private ConnectorObject convertEmployeeToConnectorObject(JSONObject employee) {
         ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
         builder.setUid(new Uid(employee.getString(EMP_UID)));
         builder.setName(employee.getString(EMP_UID));
@@ -1081,7 +1355,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.addAttr(builder, OperationalAttributes.ENABLE_NAME, enable);
 
         new HashMap<>();
-        LOG.error("Номер сотрудника - {0},         Builder.build: {1}", i, builder.build());
         return builder.build();
     }
 
@@ -1126,7 +1399,10 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.getIfExists(event, CED_IS_HEAD_EMP, builder);
         this.getIfExists(event, CED_HEAD_EMP, builder);
         this.getIfExists(event, CED_EVENT_TYPE, builder);
-        this.getIfExists(event, CED_EVENT_DATE, builder);
+//        this.getIfExists(event, CED_EVENT_DATE, builder);
+		ZonedDateTime dateValue = LocalDateTime.parse(event.getString(CED_EVENT_DATE), formatter).atZone(timeZone);
+		this.addAttr(builder, CED_EVENT_DATE, dateValue);
+        
         
         new HashMap<>();
         LOG.ok("Builder.build: {0}", builder.build());
@@ -1241,6 +1517,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.getIfExists(individual, IND_SURNAME, builder);
         this.getIfExists(individual, IND_NAME_INITIALS, builder);
         this.getIfExists(individual, IND_NAME, builder);
+//        this.getIfExists(individual, IND_BIRTHDATE, builder);
+		ZonedDateTime dateValue = LocalDateTime.parse(individual.getString(IND_BIRTHDATE), formatter).atZone(timeZone);
+		this.addAttr(builder, IND_BIRTHDATE, dateValue);
+        
+        this.getIfExists(individual, IND_INN, builder);
+        this.getIfExists(individual, IND_SNILS, builder);
 
         new HashMap<>();
         LOG.ok("Builder.build: {0}", builder.build());
@@ -1254,9 +1536,15 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
 
         this.getIfExists(mainEmp, MEI_HEAD_ORG_KEY, builder);
         this.getIfExists(mainEmp, MEI_PERS_KEY, builder);
-        this.getIfExists(mainEmp, MEI_START_DATE, builder);
-        this.getIfExists(mainEmp, MEI_END_DATE, builder);
-        this.getIfExists(mainEmp, MEI_EMP_KEY, builder);
+//        this.getIfExists(mainEmp, MEI_START_DATE, builder);
+		ZonedDateTime dateValue = LocalDateTime.parse(mainEmp.getString(MEI_START_DATE), formatter).atZone(timeZone);
+		this.addAttr(builder, MEI_START_DATE, dateValue);
+        
+//        this.getIfExists(mainEmp, MEI_END_DATE, builder);
+		ZonedDateTime dateValue1 = LocalDateTime.parse(mainEmp.getString(MEI_END_DATE), formatter).atZone(timeZone);
+		this.addAttr(builder, MEI_END_DATE, dateValue1);
+
+		this.getIfExists(mainEmp, MEI_EMP_KEY, builder);
 
         new HashMap<>();
         LOG.ok("Builder.build: {0}", builder.build());
@@ -1322,6 +1610,38 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration> impl
         this.getIfExists(user,USER_PREPARED, builder);
         this.getIfExists(user,USER_BD_ID, builder);
         this.getIfExists(user,USER_PREDEF, builder);
+
+        new HashMap<>();
+        LOG.ok("Builder.build: {0}", builder.build());
+        return builder.build();
+    }
+
+    private ConnectorObject convertPhotoToConnectorObject(JSONObject photo) {
+        ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
+        builder.setUid(new Uid(photo.getString(PHOTO_IND_KEY)));
+        builder.setName(photo.getString(PHOTO_IND_KEY));
+
+        this.getIfExists(photo,PHOTO_IND_KEY, builder);
+        this.getIfExists(photo,PHOTO_DATA, builder);
+
+        new HashMap<>();
+        LOG.ok("Builder.build: {0}", builder.build());
+        return builder.build();
+    }
+
+    private ConnectorObject convertMainJobToConnectorObject(JSONObject mainJob) {
+        ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
+        builder.setUid(new Uid(mainJob.getString(MAIN_JOB_EMP)));
+        builder.setName(mainJob.getString(MAIN_JOB_EMP));
+
+        this.getIfExists(mainJob, MAIN_JOB_EMP, builder);
+//        this.getIfExists(mainJob, "Period", builder);
+		ZonedDateTime dateValue = LocalDateTime.parse(mainJob.getString("Period"), formatter).atZone(timeZone);
+		this.addAttr(builder, "Period", dateValue);
+        
+        this.getIfExists(mainJob, MAIN_JOB_HEAD_ORG, builder);
+        this.getIfExists(mainJob, MAIN_JOB_INDIVIDUAL, builder);
+        this.getIfExists(mainJob, MAIN_JOB_EMP_TYPE, builder);
 
         new HashMap<>();
         LOG.ok("Builder.build: {0}", builder.build());

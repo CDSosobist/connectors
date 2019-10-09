@@ -49,6 +49,10 @@ public class testClient {
     private final ObjectClass empHistorySliceObjectClass = new ObjectClass("EmpHistorySlice");
     @SuppressWarnings("unused")
     private final ObjectClass ManagerObjectClass = new ObjectClass("Manager");
+    @SuppressWarnings("unused")
+    private final ObjectClass photoObjectClass = new ObjectClass("Photo");
+    @SuppressWarnings("unused")
+    private final ObjectClass mainJobObjectClass = new ObjectClass("MainJob");
 
 
 
@@ -97,14 +101,16 @@ public class testClient {
 //        conn.executeQuery(contactInfoObjectClass, filter, rh, null);
 //        conn.executeQuery(currEmpDataObjectClass, filter, rh, null);
 //        conn.executeQuery(empRoleObjectClass, filter, rh, null);
-//        conn.executeQuery(individualObjectClass, filter, rh, null);
+        conn.executeQuery(individualObjectClass, filter, rh, null);
 //        conn.executeQuery(mainEmpOfIndividualsObjectClass, filter, rh, null);
 //        conn.executeQuery(staffListObjectClass, filter, rh, null);
 //        conn.executeQuery(StaffInCSObjectClass, filter, rh, null);
 //        conn.executeQuery(empHistorySliceObjectClass, filter, rh, null);
 //        conn.executeQuery(subOfOrgObjectClass, filter, rh, null);
-        conn.executeQuery(ManagerObjectClass, filter, rh, null);
+//        conn.executeQuery(ManagerObjectClass, filter, rh, null);
 //        conn.executeQuery(userObjectClass, filter, rh, null);
+//        conn.executeQuery(photoObjectClass, filter, rh, null);
+//        conn.executeQuery(mainJobObjectClass, filter, rh, null);
     }
 
 }

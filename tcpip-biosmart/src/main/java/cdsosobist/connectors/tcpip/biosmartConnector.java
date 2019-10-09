@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2014 Evolveum
+ * Copyright (c) 2019 CDSOsobist
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -153,6 +153,9 @@ public class biosmartConnector implements PoolableConnector, TestOp, CreateOp, U
 
         AttributeInfoBuilder attrAccExtIdBuilder = new AttributeInfoBuilder(EXT_ID);
         ociBuilder.addAttributeInfo(attrAccExtIdBuilder.build());
+        
+        AttributeInfoBuilder attrAccPolicyBuilder = new AttributeInfoBuilder(POLICY);
+        ociBuilder.addAttributeInfo(attrAccPolicyBuilder.build());
 
         ociBuilder.addAttributeInfo(OperationalAttributeInfos.ENABLE);
 
@@ -268,12 +271,20 @@ public class biosmartConnector implements PoolableConnector, TestOp, CreateOp, U
                 request.getRecords().add(positionRecords);
 
 
-            } else if (requestType == 8) {
-
-            } else if (requestType == 9) {
+            } else if (requestType == 12) {
+            	
+            	Records accPolicyRecords = new Records();
+            	if (filter != null) {
+					accPolicyRecords.setId(filter);
+				}
+            	accPolicyRecords.setOperation(recordOperation);
+            	
+            	request.setType(requestType);
+            	request.setRecords(new ArrayList<>(recordOperation));
+            	request.getRecords().add(accPolicyRecords);
 
             }
-
+            
         Krecept krecept = new Krecept();
         krecept.setRequest(request);
 
@@ -378,22 +389,17 @@ public class biosmartConnector implements PoolableConnector, TestOp, CreateOp, U
         Unmarshaller unmarshaller = context.createUnmarshaller();
         StringReader readerFromTmpBuffer = new StringReader(tmpBuffer.toString());
         Krecept krcFromInput = (Krecept) unmarshaller.unmarshal(readerFromTmpBuffer);
-//        LOG.ok("krcFromInput.toString(): {0}", krcFromInput.getAnswer().toString());
         List<Records> records = krcFromInput.getAnswer().getRecords();
 
 
         for (Records record : records) {
 
-//            System.out.println("322, record: " + record);
             Iterator<RecordFields> accFieldsIterator = record.getRecordFields().listIterator();
 
-            ConnectorObject connectorObject = this.convertAccountToConnectorObject(record, accFieldsIterator);
-//            System.out.println("326, connectorObject: " + connectorObject);
-//            handler.handle(connectorObject);
+            ConnectorObject connectorObject = this.convertAccountToConnectorObject(record, accFieldsIterator, context);
 
             boolean finish = !handler.handle(connectorObject);
             if (finish) {
-                System.out.println("\n\n\nFINISH\n\n\n");
                 return;
             }
 
@@ -482,10 +488,13 @@ public class biosmartConnector implements PoolableConnector, TestOp, CreateOp, U
         getConfiguration();
     }
 
-    private ConnectorObject convertAccountToConnectorObject(Records record, Iterator<RecordFields> accFieldsIterator) {
+    private ConnectorObject convertAccountToConnectorObject(Records record, Iterator<RecordFields> accFieldsIterator, JAXBContext context) throws JAXBException {
         ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
         builder.setUid(record.getId());
         builder.setName(record.getId());
+        
+        String accId = record.getId();
+        String policy = accPolicyGet(context, accId);
 
 
         while (accFieldsIterator.hasNext()) {
@@ -517,7 +526,9 @@ public class biosmartConnector implements PoolableConnector, TestOp, CreateOp, U
                 builder.addAttribute(ACC_PHOTO, currField.getXmlFieldValue());
             } 
             
-        }
+        }	builder.addAttribute(POLICY, policy);
+        
+        
 
         new HashMap<>();
 //        LOG.ok("Builder.build: {0}", builder.build());
@@ -569,6 +580,83 @@ public class biosmartConnector implements PoolableConnector, TestOp, CreateOp, U
         return builder.build();
     }
 
+
+    private String accPolicyGet(JAXBContext context, String accId) throws JAXBException {
+    	String reqString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><KRECEPT><REQUEST type=\"12\"><RECORD id=\"" + accId + "\" operation=\"0\"></RECORD></REQUEST></KRECEPT>";
+    	
+    	try {
+			Socket socket = new Socket(configuration.getHostname(), configuration.getPort());
+			OutputStream output = socket.getOutputStream();
+			PrintWriter writer = new PrintWriter(output, true);
+			writer.println(reqString + "\0");
+			DataInputStream input = new DataInputStream(socket.getInputStream());
+			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+			
+			String line;
+			
+			((Buffer)tmpBuffer).clear();
+            while ((line = reader.readLine()) != null) {
+
+                if (line.contains("</KRECEPT>")) {
+                    tmpBuffer.put(line);
+                    socket.close();
+                    break;
+                }
+                tmpBuffer.put(line);
+            } ((Buffer)tmpBuffer).flip();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        StringReader readerFromTmpBuffer = new StringReader(tmpBuffer.toString());
+        Krecept krcFromInput = (Krecept) unmarshaller.unmarshal(readerFromTmpBuffer);
+        Records record = krcFromInput.getAnswer().getRecords().get(0);
+        String policyValue = record.getRecordFields().get(0).getXmlFieldValue();
+        
+        ((Buffer)tmpBuffer).clear();
+        
+        return policyValue;
+
+
+}
+    
+    
+    private void accPolicyPut(String accId, String newPolicyValue) throws JAXBException {
+    	String reqString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><KRECEPT><REQUEST type=\"12\"><RECORD id=\"" + accId + "\" operation=\"2\"><FIELD name=\"policy\">" + newPolicyValue + "</FIELD></RECORD></REQUEST></KRECEPT>";
+
+    	System.out.println(reqString);
+
+    	try {
+			Socket socket = new Socket(configuration.getHostname(), configuration.getPort());
+			OutputStream output = socket.getOutputStream();
+			PrintWriter writer = new PrintWriter(output, true);
+			writer.println(reqString + "\0");
+			DataInputStream input = new DataInputStream(socket.getInputStream());
+			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+			
+			String line;
+			
+			((Buffer)tmpBuffer).clear();
+            while ((line = reader.readLine()) != null) {
+            	
+            	System.out.println(line);
+
+                if (line.contains("</KRECEPT>")) {
+                    tmpBuffer.put(line);
+                    socket.close();
+                    break;
+                }
+            }
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+}
+    
+    
     private void bsGet(JAXBContext context, String filter,  int requestType, int recordOperation) {
 
         Krecept krecept = handleKrecept(filter, requestType, recordOperation, null);
@@ -662,6 +750,7 @@ public class biosmartConnector implements PoolableConnector, TestOp, CreateOp, U
 
     private Uid createOrUpdateUser(Uid uid, Set<Attribute> attributes, int operation) throws JAXBException, NullPointerException {
         String strExtId = null;
+        String attrPolicyValue = null;
         
         LOG.ok("createOrUpdateUser, Uid: {0}, attributes: {1}", uid, attributes);
         
@@ -677,6 +766,9 @@ public class biosmartConnector implements PoolableConnector, TestOp, CreateOp, U
         
         try { strExtId = AttributeUtil.find(EXT_ID, attributes).getValue().toString().replaceAll("^\\[|\\]$", ""); }
         catch (Exception e) { strExtId = null; }
+        
+        try { attrPolicyValue = AttributeUtil.find(POLICY, attributes).getValue().toString().replaceAll("^\\[|\\]$", "");}
+        catch (Exception e) {}
         
 
         if (strExtId != null) {
@@ -699,6 +791,13 @@ public class biosmartConnector implements PoolableConnector, TestOp, CreateOp, U
         this.putFieldIfExist(attributes, record, ACC_JOB_ID);
         this.putFieldIfExist(attributes, record, ACC_ORG_ID);
         this.putFieldIfExist(attributes, record, ACC_PHOTO);
+        
+        System.out.println(attrPolicyValue);
+        System.out.println(attrPolicyValue == null);
+        
+
+        if (!create && (attrPolicyValue != null) && !(attrPolicyValue.contains("empty"))) {accPolicyPut(uid.getUidValue(), attrPolicyValue);}
+        if (attrPolicyValue.contains("empty")) {accPolicyPut(uid.getUidValue(), null);}
 
         Request request = new Request();
         request.setType(5);

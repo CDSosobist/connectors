@@ -33,4 +33,5 @@ public class AttributeHandler {
 
     //Generic
     public static final String EXT_ID = "ext_id"; //Внешний идентификатор
+    public static final String POLICY = "policy"; //Группа доступа сотрудника
 }
