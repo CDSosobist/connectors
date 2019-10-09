@@ -1,0 +1,32 @@
+<component name="libraryTable">
+  <library name="org.glassfish.jaxb:jaxb-runtime:2.3.2" type="repository">
+    <properties maven-id="org.glassfish.jaxb:jaxb-runtime:2.3.2" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
