@@ -1,5 +1,5 @@
-Manifest-Version: 1.0
-Built-By: KoshelevRA
-Build-Jdk: 1.8.0_211
-Created-By: Maven Integration for Eclipse
-
+Manifest-Version: 1.3
+Built-By: CDSOsobist
+ConnectorBundle-FrameworkVersion: 1.4.2.14
+ConnectorBundle-Version: 1.0.1.13
+ConnectorBundle-Name: com.evolveum.polygon.connector.ones
