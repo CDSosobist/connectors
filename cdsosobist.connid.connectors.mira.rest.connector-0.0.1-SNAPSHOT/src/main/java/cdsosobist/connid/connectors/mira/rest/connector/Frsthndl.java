@@ -13,7 +13,7 @@ public class Frsthndl {
 	 */
 	public static void main(String[] args) {
 		
-		String minPath = "https://portaldev.cds.spb.ru/mira/service/v2/persons/54?appid=system";
+		String minPath = "https://portaldev.cds.spb.ru/mira/service/v2/caGroups?appid=system";
 		
 		String sKey = "&secretkey=d^1uC8M!";
 		

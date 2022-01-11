@@ -7,8 +7,10 @@ import org.identityconnectors.framework.common.exceptions.ConfigurationException
 import org.identityconnectors.framework.spi.AbstractConfiguration;
 import org.identityconnectors.framework.spi.ConfigurationProperty;
 
+import com.evolveum.polygon.rest.AbstractRestConfiguration;
+
 @SuppressWarnings("unused")
-public class MiraConfiguration extends AbstractConfiguration {
+public class MiraConfiguration extends AbstractRestConfiguration {
 	
 	private String serviceAddress;
 	private GuardedString appId;
