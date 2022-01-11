@@ -1,6 +1,9 @@
 package cdsosobist.connid.connectors.mira.rest.connector;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Set;
 
 import org.identityconnectors.common.logging.Log;
@@ -32,7 +35,7 @@ import org.identityconnectors.framework.common.objects.*;
 
 import com.evolveum.polygon.rest.AbstractRestConnector;
 
-import cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.*;
+import cdsosobist.connid.connectors.mira.rest.connector.*;
 
 @ConnectorClass(displayNameKey = "mira.connector.display", configurationClass = MiraConfiguration.class)
 public class MiraConnector extends AbstractRestConnector<MiraConfiguration> implements Connector, CreateOp, UpdateOp, UpdateAttributeValuesOp, DeleteOp, AuthenticateOp,
@@ -210,6 +213,25 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		ociBuilder.addAttributeInfo(attrOrgGroupKindBuilder.build());
 
 		schemaBuilder.defineObjectClass(ociBuilder.build());		
+	}
+	
+	private String md5Request(String requestPath) {
+		String preRequest = configuration.getServiceAddress()
+	}
+
+	private static String pathToHash(String preRequest) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] messageDigest = md.digest(preRequest.getBytes());
+			BigInteger no = new BigInteger(1, messageDigest);
+			String hashText = no.toString(16);
+			while (hashText.length() < 32) {
+                hashText = "0" + hashText;
+            }
+            return hashText.toUpperCase();
+		} catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
 	}
 
 	@Override
