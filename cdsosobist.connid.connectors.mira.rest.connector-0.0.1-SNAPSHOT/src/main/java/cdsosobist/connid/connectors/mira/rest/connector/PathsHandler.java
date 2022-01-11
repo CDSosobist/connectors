@@ -4,6 +4,7 @@ public class PathsHandler {
 	
 	static final String MAINPATH = "/mira/service/v2";
 	static final String APPIDPATH = "?appid=";
+	static final String SKEYPATH = "&secretkey=";
 	static final String SIGNPATH = "&sign=";
 	
 	//Module Persons (Физические лица)

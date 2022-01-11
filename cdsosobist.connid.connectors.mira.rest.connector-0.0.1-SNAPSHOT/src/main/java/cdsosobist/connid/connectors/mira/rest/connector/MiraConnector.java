@@ -6,6 +6,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Set;
 
+import org.apache.http.client.methods.*;
+
 import org.identityconnectors.common.logging.Log;
 import org.identityconnectors.common.security.GuardedString;
 import org.identityconnectors.framework.common.objects.Attribute;
@@ -35,7 +37,6 @@ import org.identityconnectors.framework.common.objects.*;
 
 import com.evolveum.polygon.rest.AbstractRestConnector;
 
-import cdsosobist.connid.connectors.mira.rest.connector.*;
 
 @ConnectorClass(displayNameKey = "mira.connector.display", configurationClass = MiraConfiguration.class)
 public class MiraConnector extends AbstractRestConnector<MiraConfiguration> implements Connector, CreateOp, UpdateOp, UpdateAttributeValuesOp, DeleteOp, AuthenticateOp,
@@ -73,49 +74,49 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 	private void buildAccountObjectClass(SchemaBuilder schemaBuilder) {
 		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
 		
-		AttributeInfoBuilder attrPersMiraIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSMIRAID);
+		AttributeInfoBuilder attrPersMiraIdBuilder = new AttributeInfoBuilder(PathsHandler.PERSMIRAID);
 		ociBuilder.addAttributeInfo(attrPersMiraIdBuilder.build());
 
-		AttributeInfoBuilder attrPersLastnameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSLASTNAME);
+		AttributeInfoBuilder attrPersLastnameBuilder = new AttributeInfoBuilder(PathsHandler.PERSLASTNAME);
 		ociBuilder.addAttributeInfo(attrPersLastnameBuilder.build());
 
-		AttributeInfoBuilder attrPersFirstnameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSFIRSTNAME);
+		AttributeInfoBuilder attrPersFirstnameBuilder = new AttributeInfoBuilder(PathsHandler.PERSFIRSTNAME);
 		ociBuilder.addAttributeInfo(attrPersFirstnameBuilder.build());
 
-		AttributeInfoBuilder attrPersSurnameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSSURNAME);
+		AttributeInfoBuilder attrPersSurnameBuilder = new AttributeInfoBuilder(PathsHandler.PERSSURNAME);
 		ociBuilder.addAttributeInfo(attrPersSurnameBuilder.build());
 
-		AttributeInfoBuilder attrPersIsUserBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSISUSER);
+		AttributeInfoBuilder attrPersIsUserBuilder = new AttributeInfoBuilder(PathsHandler.PERSISUSER);
 		ociBuilder.addAttributeInfo(attrPersIsUserBuilder.build());
 
-		AttributeInfoBuilder attrPersMiraLoginBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSMIRALOGIN);
+		AttributeInfoBuilder attrPersMiraLoginBuilder = new AttributeInfoBuilder(PathsHandler.PERSMIRALOGIN);
 		ociBuilder.addAttributeInfo(attrPersMiraLoginBuilder.build());
 
-		AttributeInfoBuilder attrPersMiraPwdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSMIRAPWD);
+		AttributeInfoBuilder attrPersMiraPwdBuilder = new AttributeInfoBuilder(PathsHandler.PERSMIRAPWD);
 		ociBuilder.addAttributeInfo(attrPersMiraPwdBuilder.build());
 
-		AttributeInfoBuilder attrPersOuIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSOUID);
+		AttributeInfoBuilder attrPersOuIdBuilder = new AttributeInfoBuilder(PathsHandler.PERSOUID);
 		ociBuilder.addAttributeInfo(attrPersOuIdBuilder.build());
 
-		AttributeInfoBuilder attrPersOuNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSOUNAME);
+		AttributeInfoBuilder attrPersOuNameBuilder = new AttributeInfoBuilder(PathsHandler.PERSOUNAME);
 		ociBuilder.addAttributeInfo(attrPersOuNameBuilder.build());
 
-		AttributeInfoBuilder attrPersTitleIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSTITLEID);
+		AttributeInfoBuilder attrPersTitleIdBuilder = new AttributeInfoBuilder(PathsHandler.PERSTITLEID);
 		ociBuilder.addAttributeInfo(attrPersTitleIdBuilder.build());
 
-		AttributeInfoBuilder attrPersTitleNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSTITLENAME);
+		AttributeInfoBuilder attrPersTitleNameBuilder = new AttributeInfoBuilder(PathsHandler.PERSTITLENAME);
 		ociBuilder.addAttributeInfo(attrPersTitleNameBuilder.build());
 
-		AttributeInfoBuilder attrPersSexBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSSEX);
+		AttributeInfoBuilder attrPersSexBuilder = new AttributeInfoBuilder(PathsHandler.PERSSEX);
 		ociBuilder.addAttributeInfo(attrPersSexBuilder.build());
 
-		AttributeInfoBuilder attrPersMailBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSMAIL);
+		AttributeInfoBuilder attrPersMailBuilder = new AttributeInfoBuilder(PathsHandler.PERSMAIL);
 		ociBuilder.addAttributeInfo(attrPersMailBuilder.build());
 
-		AttributeInfoBuilder attrPersStatusBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSSTATUS);
+		AttributeInfoBuilder attrPersStatusBuilder = new AttributeInfoBuilder(PathsHandler.PERSSTATUS);
 		ociBuilder.addAttributeInfo(attrPersStatusBuilder.build());
 
-		AttributeInfoBuilder attrPersExtIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSEXTID);
+		AttributeInfoBuilder attrPersExtIdBuilder = new AttributeInfoBuilder(PathsHandler.PERSEXTID);
 		ociBuilder.addAttributeInfo(attrPersExtIdBuilder.build());
 		
 		schemaBuilder.defineObjectClass(ociBuilder.build());
@@ -125,22 +126,22 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
 		ociBuilder.setType("PersonsGroup");
 		
-		AttributeInfoBuilder attrPersGroupMiraIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPMIRAID);
+		AttributeInfoBuilder attrPersGroupMiraIdBuilder = new AttributeInfoBuilder(PathsHandler.PERSGROUPMIRAID);
 		ociBuilder.addAttributeInfo(attrPersGroupMiraIdBuilder.build());
 
-		AttributeInfoBuilder attrPersGroupNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPNAME);
+		AttributeInfoBuilder attrPersGroupNameBuilder = new AttributeInfoBuilder(PathsHandler.PERSGROUPNAME);
 		ociBuilder.addAttributeInfo(attrPersGroupNameBuilder.build());
 
-		AttributeInfoBuilder attrPersGroupDescrBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPDESCR);
+		AttributeInfoBuilder attrPersGroupDescrBuilder = new AttributeInfoBuilder(PathsHandler.PERSGROUPDESCR);
 		ociBuilder.addAttributeInfo(attrPersGroupDescrBuilder.build());
 
-		AttributeInfoBuilder attrPersGroupParentIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPPARENTID);
+		AttributeInfoBuilder attrPersGroupParentIdBuilder = new AttributeInfoBuilder(PathsHandler.PERSGROUPPARENTID);
 		ociBuilder.addAttributeInfo(attrPersGroupParentIdBuilder.build());
 
-		AttributeInfoBuilder attrPersGroupParentNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPPARENTNAME);
+		AttributeInfoBuilder attrPersGroupParentNameBuilder = new AttributeInfoBuilder(PathsHandler.PERSGROUPPARENTNAME);
 		ociBuilder.addAttributeInfo(attrPersGroupParentNameBuilder.build());
 
-		AttributeInfoBuilder attrPersGroupKindBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPKIND);
+		AttributeInfoBuilder attrPersGroupKindBuilder = new AttributeInfoBuilder(PathsHandler.PERSGROUPKIND);
 		ociBuilder.addAttributeInfo(attrPersGroupKindBuilder.build());
 
 		schemaBuilder.defineObjectClass(ociBuilder.build());
@@ -150,19 +151,19 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
 		ociBuilder.setType("Role");
 		
-		AttributeInfoBuilder attrRoleMiraIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ROLEMIRAID);
+		AttributeInfoBuilder attrRoleMiraIdBuilder = new AttributeInfoBuilder(PathsHandler.ROLEMIRAID);
 		ociBuilder.addAttributeInfo(attrRoleMiraIdBuilder.build());
 
-		AttributeInfoBuilder attrRoleProfileIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ROLEPROFILEID);
+		AttributeInfoBuilder attrRoleProfileIdBuilder = new AttributeInfoBuilder(PathsHandler.ROLEPROFILEID);
 		ociBuilder.addAttributeInfo(attrRoleProfileIdBuilder.build());
 
-		AttributeInfoBuilder attrRoleNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ROLENAME);
+		AttributeInfoBuilder attrRoleNameBuilder = new AttributeInfoBuilder(PathsHandler.ROLENAME);
 		ociBuilder.addAttributeInfo(attrRoleNameBuilder.build());
 
-		AttributeInfoBuilder attrSysRoleNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.SYSROLENAME);
+		AttributeInfoBuilder attrSysRoleNameBuilder = new AttributeInfoBuilder(PathsHandler.SYSROLENAME);
 		ociBuilder.addAttributeInfo(attrSysRoleNameBuilder.build());
 
-		AttributeInfoBuilder attrRoleIsDefaultBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ROLEISDEFAULT);
+		AttributeInfoBuilder attrRoleIsDefaultBuilder = new AttributeInfoBuilder(PathsHandler.ROLEISDEFAULT);
 		ociBuilder.addAttributeInfo(attrRoleIsDefaultBuilder.build());
 		
 		schemaBuilder.defineObjectClass(ociBuilder.build());
@@ -172,19 +173,19 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
 		ociBuilder.setType("Organization");
 		
-		AttributeInfoBuilder attrOrgMiraIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGMIRAID);
+		AttributeInfoBuilder attrOrgMiraIdBuilder = new AttributeInfoBuilder(PathsHandler.ORGMIRAID);
 		ociBuilder.addAttributeInfo(attrOrgMiraIdBuilder.build());
 
-		AttributeInfoBuilder attrOrgNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGNAME);
+		AttributeInfoBuilder attrOrgNameBuilder = new AttributeInfoBuilder(PathsHandler.ORGNAME);
 		ociBuilder.addAttributeInfo(attrOrgNameBuilder.build());
 
-		AttributeInfoBuilder attrOrgParentIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGPARENTID);
+		AttributeInfoBuilder attrOrgParentIdBuilder = new AttributeInfoBuilder(PathsHandler.ORGPARENTID);
 		ociBuilder.addAttributeInfo(attrOrgParentIdBuilder.build());
 
-		AttributeInfoBuilder attrOrgShortNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGSHORTNAME);
+		AttributeInfoBuilder attrOrgShortNameBuilder = new AttributeInfoBuilder(PathsHandler.ORGSHORTNAME);
 		ociBuilder.addAttributeInfo(attrOrgShortNameBuilder.build());
 
-		AttributeInfoBuilder attrOrgExtIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGEXTID);
+		AttributeInfoBuilder attrOrgExtIdBuilder = new AttributeInfoBuilder(PathsHandler.ORGEXTID);
 		ociBuilder.addAttributeInfo(attrOrgExtIdBuilder.build());
 
 		schemaBuilder.defineObjectClass(ociBuilder.build());
@@ -194,29 +195,39 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
 		ociBuilder.setType("Organization");
 		
-		AttributeInfoBuilder attrOrgGroupMiraIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGGROUPMIRAID);
+		AttributeInfoBuilder attrOrgGroupMiraIdBuilder = new AttributeInfoBuilder(PathsHandler.ORGGROUPMIRAID);
 		ociBuilder.addAttributeInfo(attrOrgGroupMiraIdBuilder.build());
 
-		AttributeInfoBuilder attrOrgGroupNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGGROUPNAME);
+		AttributeInfoBuilder attrOrgGroupNameBuilder = new AttributeInfoBuilder(PathsHandler.ORGGROUPNAME);
 		ociBuilder.addAttributeInfo(attrOrgGroupNameBuilder.build());
 
-		AttributeInfoBuilder attrOrgGroupDescrBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGGROUPDESCR);
+		AttributeInfoBuilder attrOrgGroupDescrBuilder = new AttributeInfoBuilder(PathsHandler.ORGGROUPDESCR);
 		ociBuilder.addAttributeInfo(attrOrgGroupDescrBuilder.build());
 
-		AttributeInfoBuilder attrOrgGroupParentIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGGROUPPARENTID);
+		AttributeInfoBuilder attrOrgGroupParentIdBuilder = new AttributeInfoBuilder(PathsHandler.ORGGROUPPARENTID);
 		ociBuilder.addAttributeInfo(attrOrgGroupParentIdBuilder.build());
 
-		AttributeInfoBuilder attrOrgGroupParentNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGGROUPPARENTNAME);
+		AttributeInfoBuilder attrOrgGroupParentNameBuilder = new AttributeInfoBuilder(PathsHandler.ORGGROUPPARENTNAME);
 		ociBuilder.addAttributeInfo(attrOrgGroupParentNameBuilder.build());
 
-		AttributeInfoBuilder attrOrgGroupKindBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGGROUPKIND);
+		AttributeInfoBuilder attrOrgGroupKindBuilder = new AttributeInfoBuilder(PathsHandler.ORGGROUPKIND);
 		ociBuilder.addAttributeInfo(attrOrgGroupKindBuilder.build());
 
 		schemaBuilder.defineObjectClass(ociBuilder.build());		
 	}
 	
-	private String md5Request(String requestPath) {
-		String preRequest = configuration.getServiceAddress()
+	public void md5Request(String requestPath) {
+		//TODO Изменить public на private
+		final StringBuilder sb = new StringBuilder();
+		final StringBuilder sb1 = new StringBuilder();
+		configuration.getAppId().access(chars -> sb.append(new String(chars)));
+		configuration.getsKey().access(chars -> sb1.append(new String(chars)));
+		String preRequest = configuration.getServiceAddress() + PathsHandler.MAINPATH + requestPath + PathsHandler.APPIDPATH + sb.toString();
+		String preHash = PathsHandler.SKEYPATH + sb1.toString();
+		LOG.error(preRequest + preHash);
+		LOG.error(preRequest + PathsHandler.SIGNPATH + pathToHash(preRequest + preHash));
+//		System.out.println(preRequest);
+//		return preRequest;
 	}
 
 	private static String pathToHash(String preRequest) {

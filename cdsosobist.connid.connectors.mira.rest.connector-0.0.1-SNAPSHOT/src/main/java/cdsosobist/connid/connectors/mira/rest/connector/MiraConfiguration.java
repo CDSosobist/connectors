@@ -12,10 +12,10 @@ import com.evolveum.polygon.rest.AbstractRestConfiguration;
 @SuppressWarnings("unused")
 public class MiraConfiguration extends AbstractRestConfiguration {
 	
-	private String serviceAddress;
-	private GuardedString appId;
-	private GuardedString sKey;
-
+	private String serviceAddress = "https://portaldev.cds.spb.ru";
+	private GuardedString appId = new GuardedString("system".toCharArray());
+	private GuardedString sKey = new GuardedString("d^1uC8M!".toCharArray());
+	//TODO Убрать тестовые значения
 	
 	public String getServiceAddress() {return serviceAddress;}
 	public void setServiceAddress(String serviceAddress) {this.serviceAddress = serviceAddress;}
