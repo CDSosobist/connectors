@@ -140,7 +140,51 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		AttributeInfoBuilder attrPersGroupKindBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPKIND);
 		ociBuilder.addAttributeInfo(attrPersGroupKindBuilder.build());
 
+		schemaBuilder.defineObjectClass(ociBuilder.build());
+	}
 
+	private void buildRoleObjectClass(SchemaBuilder schemaBuilder) {
+		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+		ociBuilder.setType("Role");
+		
+		AttributeInfoBuilder attrRoleMiraIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ROLEMIRAID);
+		ociBuilder.addAttributeInfo(attrRoleMiraIdBuilder.build());
+
+		AttributeInfoBuilder attrRoleProfileIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ROLEPROFILEID);
+		ociBuilder.addAttributeInfo(attrRoleProfileIdBuilder.build());
+
+		AttributeInfoBuilder attrRoleNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ROLENAME);
+		ociBuilder.addAttributeInfo(attrRoleNameBuilder.build());
+
+		AttributeInfoBuilder attrSysRoleNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.SYSROLENAME);
+		ociBuilder.addAttributeInfo(attrSysRoleNameBuilder.build());
+
+		AttributeInfoBuilder attrRoleIsDefaultBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ROLEISDEFAULT);
+		ociBuilder.addAttributeInfo(attrRoleIsDefaultBuilder.build());
+		
+		schemaBuilder.defineObjectClass(ociBuilder.build());
+	}
+
+	private void buildOrganizationObjectClass(SchemaBuilder schemaBuilder) {
+		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+		ociBuilder.setType("Organization");
+		
+		AttributeInfoBuilder attrOrgMiraIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGMIRAID);
+		ociBuilder.addAttributeInfo(attrOrgMiraIdBuilder.build());
+
+		AttributeInfoBuilder attrOrgNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGNAME);
+		ociBuilder.addAttributeInfo(attrOrgNameBuilder.build());
+
+		AttributeInfoBuilder attrOrgParentIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGPARENTID);
+		ociBuilder.addAttributeInfo(attrOrgParentIdBuilder.build());
+
+		AttributeInfoBuilder attrOrgShortNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGSHORTNAME);
+		ociBuilder.addAttributeInfo(attrOrgShortNameBuilder.build());
+
+		AttributeInfoBuilder attrOrgExtIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.ORGEXTID);
+		ociBuilder.addAttributeInfo(attrOrgExtIdBuilder.build());
+
+		schemaBuilder.defineObjectClass(ociBuilder.build());
 	}
 
 	@Override
