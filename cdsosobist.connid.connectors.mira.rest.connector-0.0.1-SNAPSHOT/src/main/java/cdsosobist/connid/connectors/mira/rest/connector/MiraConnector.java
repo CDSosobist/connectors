@@ -118,6 +118,31 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		schemaBuilder.defineObjectClass(ociBuilder.build());
 	}
 
+	private void buildPersonGroupObjectClass(SchemaBuilder schemaBuilder) {
+		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+		ociBuilder.setType("PersonsGroup");
+		
+		AttributeInfoBuilder attrPersGroupMiraIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPMIRAID);
+		ociBuilder.addAttributeInfo(attrPersGroupMiraIdBuilder.build());
+
+		AttributeInfoBuilder attrPersGroupNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPNAME);
+		ociBuilder.addAttributeInfo(attrPersGroupNameBuilder.build());
+
+		AttributeInfoBuilder attrPersGroupDescrBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPDESCR);
+		ociBuilder.addAttributeInfo(attrPersGroupDescrBuilder.build());
+
+		AttributeInfoBuilder attrPersGroupParentIdBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPPARENTID);
+		ociBuilder.addAttributeInfo(attrPersGroupParentIdBuilder.build());
+
+		AttributeInfoBuilder attrPersGroupParentNameBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPPARENTNAME);
+		ociBuilder.addAttributeInfo(attrPersGroupParentNameBuilder.build());
+
+		AttributeInfoBuilder attrPersGroupKindBuilder = new AttributeInfoBuilder(cdsosobist.connid.connectors.mira.rest.connector.PathsHandler.PERSGROUPKIND);
+		ociBuilder.addAttributeInfo(attrPersGroupKindBuilder.build());
+
+
+	}
+
 	@Override
 	public void test() {
 		// TODO Auto-generated method stub
