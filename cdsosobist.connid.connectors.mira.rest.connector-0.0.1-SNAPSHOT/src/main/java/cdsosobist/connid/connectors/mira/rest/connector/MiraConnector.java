@@ -6,8 +6,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Set;
 
+import org.apache.http.ParseException;
 import org.apache.http.client.methods.*;
-
+import org.apache.http.util.EntityUtils;
 import org.identityconnectors.common.logging.Log;
 import org.identityconnectors.common.security.GuardedString;
 import org.identityconnectors.framework.common.objects.Attribute;
@@ -33,6 +34,7 @@ import org.identityconnectors.framework.spi.operations.SyncOp;
 import org.identityconnectors.framework.spi.operations.TestOp;
 import org.identityconnectors.framework.spi.operations.UpdateAttributeValuesOp;
 import org.identityconnectors.framework.spi.operations.UpdateOp;
+import org.json.JSONObject;
 import org.identityconnectors.framework.common.objects.*;
 
 import com.evolveum.polygon.rest.AbstractRestConnector;
@@ -216,7 +218,7 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		schemaBuilder.defineObjectClass(ociBuilder.build());		
 	}
 	
-	public void md5Request(String requestPath) {
+	public String md5Request(String requestPath) {
 		//TODO Изменить public на private
 		final StringBuilder sb = new StringBuilder();
 		final StringBuilder sb1 = new StringBuilder();
@@ -224,10 +226,7 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		configuration.getsKey().access(chars -> sb1.append(new String(chars)));
 		String preRequest = configuration.getServiceAddress() + PathsHandler.MAINPATH + requestPath + PathsHandler.APPIDPATH + sb.toString();
 		String preHash = PathsHandler.SKEYPATH + sb1.toString();
-		LOG.error(preRequest + preHash);
-		LOG.error(preRequest + PathsHandler.SIGNPATH + pathToHash(preRequest + preHash));
-//		System.out.println(preRequest);
-//		return preRequest;
+		return preRequest + PathsHandler.SIGNPATH + pathToHash(preRequest + preHash);
 	}
 
 	private static String pathToHash(String preRequest) {
@@ -243,6 +242,50 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		} catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
+	}
+	
+	
+
+	@Override
+	public void executeQuery(ObjectClass objectClass, MiraFilter query, ResultsHandler handler,
+			OperationOptions options) {
+		LOG.info("\n\n\nObjectClass: {0}\n\n\n", objectClass);
+		if (objectClass.is("__ACCOUNT__")) {
+			try {
+				this.handlePersons(query, handler, options);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+
+	
+	private void handlePersons(MiraFilter filter, ResultsHandler handler, OperationOptions options) throws ParseException, IOException {
+		
+		String reqPath;
+		
+		if (filter != null && filter.byUid != null) {
+			reqPath = PathsHandler.PATHTOPERSONS + "/" + filter.byUid;
+			HttpGet request = new HttpGet(md5Request(reqPath));
+			JSONObject person = this.CallJobjRequest(request);
+			
+		} else {
+			reqPath = PathsHandler.PATHTOPERSONS;
+		}
+		
+		
+		
+		
+	}
+
+	private JSONObject CallJobjRequest(HttpGet request) throws ParseException, IOException {
+		//TODO Написать обработчик ошибок this.processYResponseErrors(response)
+		CloseableHttpResponse response = this.execute(request);
+		String result = EntityUtils.toString(response.getEntity());
+		this.closeResponse(response);
+        return new JSONObject(result);
 	}
 
 	@Override
@@ -317,13 +360,6 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 	public FilterTranslator<MiraFilter> createFilterTranslator(ObjectClass objectClass, OperationOptions options) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void executeQuery(ObjectClass objectClass, MiraFilter query, ResultsHandler handler,
-			OperationOptions options) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

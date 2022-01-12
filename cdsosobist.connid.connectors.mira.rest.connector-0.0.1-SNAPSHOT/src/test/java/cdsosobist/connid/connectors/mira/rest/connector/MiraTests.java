@@ -32,7 +32,7 @@ public class MiraTests {
 	
 	@Test
 	public void testPathBuilder() {
-		conn.md5Request("/caGroups");
+		LOG.ok(conn.md5Request("/caGroups/4"));
 	}
 
     
