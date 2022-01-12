@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.http.Header;
 import org.apache.http.ParseException;
 import org.apache.http.client.methods.*;
 import org.apache.http.util.EntityUtils;
@@ -337,6 +338,8 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 	private JSONArray CallJarrRequest(HttpGet request) throws ParseException, IOException {
 		//TODO Написать обработчик ошибок this.processYResponseErrors(response)
 		CloseableHttpResponse response = this.execute(request);
+		Header contentRange = response.getFirstHeader("Content-Range");
+		LOG.ok("Content-Range: {0}", contentRange);
 		String result = EntityUtils.toString(response.getEntity(), "UTF8");
 		this.closeResponse(response);
         return new JSONArray(result);
