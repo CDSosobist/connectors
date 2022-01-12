@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.apache.http.ParseException;
@@ -26,6 +27,7 @@ import org.identityconnectors.framework.spi.operations.SyncOp;
 import org.identityconnectors.framework.spi.operations.TestOp;
 import org.identityconnectors.framework.spi.operations.UpdateAttributeValuesOp;
 import org.identityconnectors.framework.spi.operations.UpdateOp;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.identityconnectors.framework.common.objects.*;
 
@@ -264,9 +266,24 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 			JSONObject person = this.CallJobjRequest(request);
 			String currPersUid = person.getString(PathsHandler.PERSMIRAID);
 			ConnectorObject connectorObject = this.convertPersonToConnectorObject(person, currPersUid);
+			boolean finish = !handler.handle(connectorObject);
+            if (finish) {
+                return;
+            }
 			
 		} else {
 			reqPath = PathsHandler.PATHTOPERSONS;
+			HttpGet request = new HttpGet(md5Request(reqPath));
+			JSONArray persons = this.CallJarrRequest(request);
+			for (int i = 0; i < persons.length(); i++) {
+				JSONObject person = persons.getJSONObject(i);
+				String currPersUid = person.getString(PathsHandler.PERSMIRAID);
+				ConnectorObject connectorObject = this.convertPersonToConnectorObject(person, currPersUid);
+				boolean finish = !handler.handle(connectorObject);
+                if (finish) {
+                    return;
+                }
+			}
 		}
 	}
 
@@ -314,7 +331,17 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 		this.closeResponse(response);
         return new JSONObject(result);
 	}
+	
+	
 
+	private JSONArray CallJarrRequest(HttpGet request) throws ParseException, IOException {
+		//TODO Написать обработчик ошибок this.processYResponseErrors(response)
+		CloseableHttpResponse response = this.execute(request);
+		String result = EntityUtils.toString(response.getEntity(), "UTF8");
+		this.closeResponse(response);
+        return new JSONArray(result);
+	}
+	
 	@Override
 	public void test() {
 		// TODO Auto-generated method stub
