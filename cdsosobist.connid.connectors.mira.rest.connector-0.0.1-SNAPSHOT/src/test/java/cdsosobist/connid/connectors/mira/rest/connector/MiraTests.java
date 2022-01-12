@@ -1,13 +1,8 @@
 package cdsosobist.connid.connectors.mira.rest.connector;
 
-import static org.junit.Assert.*;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
 import org.identityconnectors.common.logging.Log;
-import org.identityconnectors.common.security.GuardedString;
+import org.identityconnectors.framework.common.objects.ObjectClass;
+import org.identityconnectors.framework.common.objects.ResultsHandler;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,13 +14,11 @@ public class MiraTests {
 	private static MiraConfiguration conf;
     private static MiraConnector conn;
     
+    private final ObjectClass accountObjectClass = new ObjectClass(ObjectClass.ACCOUNT_NAME);
+    
 	@Before
 	public void setUp() throws Exception {
         conf = new MiraConfiguration();
-        conf.setServiceAddress("https://portaldev.cds.spb.ru");
-        conf.setAppId(new GuardedString("system".toCharArray()));
-        conf.setsKey(new GuardedString("d^1uC8M!".toCharArray()));
-        
         conn = new MiraConnector();
         conn.init(conf);
 	}
@@ -36,7 +29,14 @@ public class MiraTests {
 	}
 
     
-	
+	@Test
+	public void testFindById() {
+        ResultsHandler rh = connectorObject -> {return true;};
+        MiraFilter filter = new MiraFilter();
+        filter.byUid = "85";
+        conn.executeQuery(accountObjectClass, filter, rh, null);
+
+	}
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
