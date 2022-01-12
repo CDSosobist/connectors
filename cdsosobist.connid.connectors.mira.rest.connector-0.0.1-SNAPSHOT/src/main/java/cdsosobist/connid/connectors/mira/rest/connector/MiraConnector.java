@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.Set;
 
 import org.apache.http.ParseException;
@@ -11,15 +12,6 @@ import org.apache.http.client.methods.*;
 import org.apache.http.util.EntityUtils;
 import org.identityconnectors.common.logging.Log;
 import org.identityconnectors.common.security.GuardedString;
-import org.identityconnectors.framework.common.objects.Attribute;
-import org.identityconnectors.framework.common.objects.ObjectClass;
-import org.identityconnectors.framework.common.objects.OperationOptions;
-import org.identityconnectors.framework.common.objects.ResultsHandler;
-import org.identityconnectors.framework.common.objects.Schema;
-import org.identityconnectors.framework.common.objects.SchemaBuilder;
-import org.identityconnectors.framework.common.objects.SyncResultsHandler;
-import org.identityconnectors.framework.common.objects.SyncToken;
-import org.identityconnectors.framework.common.objects.Uid;
 import org.identityconnectors.framework.common.objects.filter.FilterTranslator;
 import org.identityconnectors.framework.spi.Configuration;
 import org.identityconnectors.framework.spi.Connector;
@@ -270,23 +262,51 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 			reqPath = PathsHandler.PATHTOPERSONS + "/" + filter.byUid;
 			HttpGet request = new HttpGet(md5Request(reqPath));
 			JSONObject person = this.CallJobjRequest(request);
-			LOG.ok(person.getString("plastname"));
+			String currPersUid = person.getString(PathsHandler.PERSMIRAID);
+			ConnectorObject connectorObject = this.convertPersonToConnectorObject(person, currPersUid);
 			
 		} else {
 			reqPath = PathsHandler.PATHTOPERSONS;
 		}
+	}
+
+	private ConnectorObject convertPersonToConnectorObject(JSONObject person, String currPersUid) {
+		ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
+		builder.setUid(currPersUid);
+		builder.setName(currPersUid);
 		
+		this.getIfExists(person, PathsHandler.PERSLASTNAME, builder);
+		this.getIfExists(person, PathsHandler.PERSFIRSTNAME, builder);
+		this.getIfExists(person, PathsHandler.PERSSURNAME, builder);
+		this.getIfExists(person, PathsHandler.PERSISUSER, builder);
+		this.getIfExists(person, PathsHandler.PERSMIRALOGIN, builder);
+		this.getIfExists(person, PathsHandler.PERSMIRAPWD, builder);
+		this.getIfExists(person, PathsHandler.PERSOUID, builder);
+		this.getIfExists(person, PathsHandler.PERSOUNAME, builder);
+		this.getIfExists(person, PathsHandler.PERSTITLEID, builder);
+		this.getIfExists(person, PathsHandler.PERSTITLENAME, builder);
+		this.getIfExists(person, PathsHandler.PERSSEX, builder);
+		this.getIfExists(person, PathsHandler.PERSMAIL, builder);
+		this.getIfExists(person, PathsHandler.PERSSTATUS, builder);
+		this.getIfExists(person, PathsHandler.PERSEXTID, builder);
 		
-		
+		new HashMap<>();
+        LOG.ok("Builder.build: {0}", builder.build());
+        return builder.build();
+
+	}
+
+	private void getIfExists(JSONObject object, String attrName, ConnectorObjectBuilder builder) {
+		if (object.has(attrName) && object.get(attrName) != null && !JSONObject.NULL.equals(object.get(attrName))) {
+			this.addAttr(builder, attrName, object.getString(attrName));
+		}
 		
 	}
 
 	private JSONObject CallJobjRequest(HttpGet request) throws ParseException, IOException {
 		//TODO Написать обработчик ошибок this.processYResponseErrors(response)
-		LOG.ok("\n\n" + request.toString() + "\n");
 		CloseableHttpResponse response = this.execute(request);
 		String result = EntityUtils.toString(response.getEntity(), "UTF8");
-		LOG.ok("\n\nResult: {0}\n", result);
 		this.closeResponse(response);
         return new JSONObject(result);
 	}
