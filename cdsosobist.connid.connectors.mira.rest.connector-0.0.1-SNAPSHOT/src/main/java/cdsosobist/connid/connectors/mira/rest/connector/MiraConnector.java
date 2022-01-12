@@ -298,7 +298,11 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 
 	private void getIfExists(JSONObject object, String attrName, ConnectorObjectBuilder builder) {
 		if (object.has(attrName) && object.get(attrName) != null && !JSONObject.NULL.equals(object.get(attrName))) {
-			this.addAttr(builder, attrName, object.getString(attrName));
+			if (object.get(attrName) instanceof String) {
+                this.addAttr(builder, attrName, object.getString(attrName));
+            } else if (object.get(attrName) instanceof Boolean) {
+                this.addAttr(builder, attrName, object.getBoolean(attrName));
+            }
 		}
 		
 	}
