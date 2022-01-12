@@ -270,6 +270,7 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 			reqPath = PathsHandler.PATHTOPERSONS + "/" + filter.byUid;
 			HttpGet request = new HttpGet(md5Request(reqPath));
 			JSONObject person = this.CallJobjRequest(request);
+			LOG.ok(person.getString("plastname"));
 			
 		} else {
 			reqPath = PathsHandler.PATHTOPERSONS;
@@ -282,8 +283,10 @@ public class MiraConnector extends AbstractRestConnector<MiraConfiguration> impl
 
 	private JSONObject CallJobjRequest(HttpGet request) throws ParseException, IOException {
 		//TODO Написать обработчик ошибок this.processYResponseErrors(response)
+		LOG.ok("\n\n" + request.toString() + "\n");
 		CloseableHttpResponse response = this.execute(request);
-		String result = EntityUtils.toString(response.getEntity());
+		String result = EntityUtils.toString(response.getEntity(), "UTF8");
+		LOG.ok("\n\nResult: {0}\n", result);
 		this.closeResponse(response);
         return new JSONObject(result);
 	}
