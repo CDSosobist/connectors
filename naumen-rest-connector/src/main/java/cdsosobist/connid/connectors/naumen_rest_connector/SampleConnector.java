@@ -1,4 +1,4 @@
-package cdsosobist.connid.connectors.mira.rest.connector;
+package cdsosobist.connid.connectors.naumen_rest_connector;
 
 import java.util.Collections;
 import java.util.Set;

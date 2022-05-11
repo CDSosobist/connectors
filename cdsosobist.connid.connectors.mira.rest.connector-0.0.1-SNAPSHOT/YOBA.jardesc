@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/koshelevra/git/connectors2022/jars/mira-rest-connector-1.0.6.5.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/YOBA.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="false" manifestLocation="/cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/src/main/resources/META-INF/MANIFEST.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="false" exportJavaFiles="false" exportOutputFolder="true">
+        <folder path="/cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/src"/>
+        <file path="/cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/.classpath"/>
+        <file path="/cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/YOBA.jardesc"/>
+        <javaElement handleIdentifier="=cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/src\/test\/java=/test=/true=/=/optional=/true=/=/maven.pomderived=/true=/"/>
+        <javaElement handleIdentifier="=cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/src\/test\/resources=/test=/true=/=/maven.pomderived=/true=/"/>
+        <javaElement handleIdentifier="=cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/folForLib"/>
+        <file path="/cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/.gitignore"/>
+        <javaElement handleIdentifier="=cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/"/>
+        <file path="/cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/.codetogether.ignore"/>
+        <file path="/cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/.project"/>
+        <javaElement handleIdentifier="=cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/src\/main\/resources=/maven.pomderived=/true=/"/>
+        <folder path="/cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/target"/>
+        <file path="/cdsosobist.connid.connectors.mira.rest.connector-0.0.1-SNAPSHOT/pom.xml"/>
+    </selectedElements>
+</jardesc>

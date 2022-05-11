@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Built-By: CDSOsobist
+ConnectorBundle-FrameworkVersion: 1.5.0.0
+ConnectorBundle-Version: 1.0.0.1
+ConnectorBundle-Name: cdsosobist.connid.connectors.naumen-res-connector

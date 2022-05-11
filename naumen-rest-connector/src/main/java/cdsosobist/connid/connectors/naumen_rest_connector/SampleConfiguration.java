@@ -1,4 +1,4 @@
-package cdsosobist.connid.connectors.mira.rest.connector;
+package cdsosobist.connid.connectors.naumen_rest_connector;
 
 import org.identityconnectors.common.StringUtil;
 import org.identityconnectors.framework.common.exceptions.ConfigurationException;

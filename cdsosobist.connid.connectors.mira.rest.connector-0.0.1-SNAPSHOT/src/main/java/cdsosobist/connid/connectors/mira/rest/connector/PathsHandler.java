@@ -28,6 +28,8 @@ public class PathsHandler {
 	static final String PERSWORKBEGINDATE = "pwcaworkbegindate";	//Дата начала работы в компании
 	static final String PERSTITLEBEGINDATE = "pwbegindate";			//Дата приема на должность
 	static final String PERSTYPE = "typersid";						//Тип физлица
+	static final String PERSPHONE = "personworktel";				//Внутренний телефон физлица
+	
 	
 	
 	
