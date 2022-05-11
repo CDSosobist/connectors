@@ -3,27 +3,34 @@ package cdsosobist.connid.connectors.mira.rest.connector;
 public class PathsHandler {
 	
 	static final String MAINPATH = "/mira/service/v2";
-	static final String APPIDPATH = "?appid=";
+	static final String APPIDPATH = "appid=";
 	static final String SKEYPATH = "&secretkey=";
 	static final String SIGNPATH = "&sign=";
 	
 	//Module Persons (Физические лица)
 	static final String PATHTOPERSONS = "/persons";
-	static final String PERSMIRAID = "personid";		//Идентификатор физического лица Число
-	static final String PERSLASTNAME = "plastname";		//Фамилия Строка (100)
-	static final String PERSFIRSTNAME = "pfirstname";	//Имя (для физического лица всегда должно быть заполнено) Строка (100)
-	static final String PERSSURNAME = "psurname";		//Отчество Строка (100)
-	static final String PERSISUSER = "isuser";			//Является ли физическое лицо пользователем (false – нет, true -да) Логическое
-	static final String PERSMIRALOGIN = "pilogin";		//Логин Строка (150)
-	static final String PERSMIRAPWD = "pipassword";		//Пароль Строка (150)
-	static final String PERSOUID = "caid";				//Идентификатор организации Число
-	static final String PERSOUNAME = "caidname";		//Название организации Строка (255)
-	static final String PERSTITLEID = "rspostid";		//Идентификатор должности Число
-	static final String PERSTITLENAME = "rspostidname";	//Название должности Строка (255)
-	static final String PERSSEX = "ppsex";				//Пол (0 – Мужской, 1 – Женский). Если не задан, используется мужской. Малое
-	static final String PERSMAIL = "personemail";		//E-mail (основной) Строка (255)
-	static final String PERSSTATUS = "pstatus";			//Статус пользователя (0 – Активен, 1 – Архив, 2 – Гость, 4 - Кандидат) Малое
-	static final String PERSEXTID = "pextcode";			//Код внешней системы Строка (255)
+	static final String PERSMIRAID = "personid";					//Идентификатор физического лица Число
+	static final String PERSLASTNAME = "plastname";					//Фамилия Строка (100)
+	static final String PERSFIRSTNAME = "pfirstname";				//Имя (для физического лица всегда должно быть заполнено) Строка (100)
+	static final String PERSSURNAME = "psurname";					//Отчество Строка (100)
+	static final String PERSISUSER = "isuser";						//Является ли физическое лицо пользователем (false – нет, true -да) Логическое
+	static final String PERSMIRALOGIN = "pilogin";					//Логин Строка (150)
+	static final String PERSMIRAPWD = "pipassword";					//Пароль Строка (150)
+	static final String PERSOUID = "caid";							//Идентификатор организации Число
+	static final String PERSOUNAME = "caidname";					//Название организации Строка (255)
+	static final String PERSTITLEID = "rspostid";					//Идентификатор должности Число
+	static final String PERSTITLENAME = "rspostidname";				//Название должности Строка (255)
+	static final String PERSSEX = "ppsex";							//Пол (0 – Мужской, 1 – Женский). Если не задан, используется мужской. Малое
+	static final String PERSMAIL = "personemail";					//E-mail (основной) Строка (255)
+	static final String PERSSTATUS = "pstatus";						//Статус пользователя (0 – Активен, 1 – Архив, 2 – Гость, 4 - Кандидат) Малое
+	static final String PERSEXTID = "pextcode";						//Код внешней системы Строка (255)
+	static final String PERSBIRTHDATE = "ppbirthdate";				//Дата рождения
+	static final String PERSWORKBEGINDATE = "pwcaworkbegindate";	//Дата начала работы в компании
+	static final String PERSTITLEBEGINDATE = "pwbegindate";			//Дата приема на должность
+	static final String PERSTYPE = "typersid";						//Тип физлица
+	
+	
+	
 
 	
 	//Module PersonGroups (Группы физических лиц)
@@ -47,11 +54,12 @@ public class PathsHandler {
 	
 	//Module cas (Организации)
 	static final String PATHTOORGS = "/cas";
-	static final String ORGMIRAID = "caid";				//Идентификатор организации Число
-	static final String ORGNAME = "caname";				//Название Строка (255)
-	static final String ORGPARENTID = "caparentid";		//Идентификатор родительской организации Число
-	static final String ORGSHORTNAME = "cashortname";	//Короткое название организации Строка (100)
-	static final String ORGEXTID = "castringcode";		//Код организации Строка (255)
+	static final String ORGMIRAID = "caid";							//Идентификатор организации Число
+	static final String ORGNAME = "caname";							//Название Строка (255)
+	static final String ORGPARENTID = "caparentid";					//Идентификатор родительской организации Число
+	static final String ORGSHORTNAME = "cashortname";				//Короткое название организации Строка (100)
+	static final String ORGEXTID = "castringcode";					//Код организации Строка (255)
+	static final String ORGDIRECTORPERSID = "directorpersonid";		//ID руководителя организации
 	
 	
 	//Module caGroups (Группы организаций)

@@ -49,6 +49,16 @@ public class testClient {
     private final ObjectClass empHistorySliceObjectClass = new ObjectClass("EmpHistorySlice");
     @SuppressWarnings("unused")
     private final ObjectClass ManagerObjectClass = new ObjectClass("Manager");
+    @SuppressWarnings("unused")
+    private final ObjectClass photoObjectClass = new ObjectClass("Photo");
+    @SuppressWarnings("unused")
+    private final ObjectClass mainJobObjectClass = new ObjectClass("MainJob");
+
+    @SuppressWarnings("unused")
+	private final ObjectClass fIOChangeObjectClass = new ObjectClass("FIO");
+
+    @SuppressWarnings("unused")
+	private final ObjectClass empStatusObjectClass = new ObjectClass("EmpStatus");
 
 
 
@@ -65,6 +75,7 @@ public class testClient {
 
         conf = new zup3Configuration();
         conf.setUsername(properties.getProperty("username"));
+        LOG.ok("\n\n\nUsername - {0}\n\n\n", conf.getUserName());
         conf.setPassword(new GuardedString(properties.getProperty("password").toCharArray()));
         conf.setServiceAddress(properties.getProperty("serviceAddress"));
         conf.setTrustAllCertificates(Boolean.parseBoolean(properties.getProperty("trustAllCertificates")));
@@ -74,11 +85,29 @@ public class testClient {
         conn.init(conf);
     }
 
+//    @Test
+//    public void testConn() {
+//        LOG.ok("Conf: {0}", conf);
+//        conn.test();
+//    }
+//
     @Test
-    public void testConn() {
-        LOG.ok("Conf: {0}", conf);
-        conn.test();
+    public void testByUid() {
+
+        ResultsHandler rh = connectorObject -> {
+            return true;
+        };
+
+        zup3Filter filter = new zup3Filter();
+//        filter.byUid = "fc3c2544-f0f6-11e5-9252-002590832293";
+//        filter.byUid = "500305a7-7e42-11e6-80bd-005056bf108e";
+        filter.byUid = "db05ea59-bc6b-11eb-badd-005056aa6551";
+//        filter.byUid = "fff64e9b-ef23-11e5-83a1-089e0115534b";
+
+        conn.executeQuery(empHistorySliceObjectClass, filter, rh, null);
+
     }
+
 
     @Test
     public void testFindAll() {
@@ -97,14 +126,18 @@ public class testClient {
 //        conn.executeQuery(contactInfoObjectClass, filter, rh, null);
 //        conn.executeQuery(currEmpDataObjectClass, filter, rh, null);
 //        conn.executeQuery(empRoleObjectClass, filter, rh, null);
-//        conn.executeQuery(individualObjectClass, filter, rh, null);
+        conn.executeQuery(individualObjectClass, filter, rh, null);
+//        conn.executeQuery(fIOChangeObjectClass, filter, rh, null);
 //        conn.executeQuery(mainEmpOfIndividualsObjectClass, filter, rh, null);
 //        conn.executeQuery(staffListObjectClass, filter, rh, null);
 //        conn.executeQuery(StaffInCSObjectClass, filter, rh, null);
 //        conn.executeQuery(empHistorySliceObjectClass, filter, rh, null);
 //        conn.executeQuery(subOfOrgObjectClass, filter, rh, null);
-        conn.executeQuery(ManagerObjectClass, filter, rh, null);
+//        conn.executeQuery(ManagerObjectClass, filter, rh, null);
 //        conn.executeQuery(userObjectClass, filter, rh, null);
+//        conn.executeQuery(photoObjectClass, filter, rh, null);
+//        conn.executeQuery(mainJobObjectClass, filter, rh, null);
+//        conn.executeQuery(empStatusObjectClass, filter, rh, null);
     }
 
 }

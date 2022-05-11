@@ -16,8 +16,9 @@
 
 package cdsosobist.connectors.rest;
 
-import com.evolveum.polygon.rest.AbstractRestConfiguration;
 import org.identityconnectors.common.security.GuardedString;
+
+import com.evolveum.polygon.rest.AbstractRestConfiguration;
 
 public class zup3Configuration extends AbstractRestConfiguration {
 

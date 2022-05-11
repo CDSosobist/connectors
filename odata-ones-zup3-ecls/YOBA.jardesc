@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="F:/conn-srvn/cdsosobist.connectors.zup3-1.0.2.0.jar"/>
+    <jar path="C:/Users/koshelevra/git/connectors2022/jars/cdsosobist.connectors.zup3-2.2.0.1.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/odata-ones-zup3-ecls/YOBA.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
@@ -11,8 +11,8 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <folder path="/odata-ones-zup3-ecls/src/main/resources/META-INF"/>
         <javaElement handleIdentifier="=odata-ones-zup3-ecls/src\/main\/java"/>
-        <javaElement handleIdentifier="=odata-ones-zup3-ecls/src\/main\/resources"/>
         <folder path="/odata-ones-zup3-ecls/lib"/>
         <folder path="/odata-ones-zup3-ecls/src/main"/>
     </selectedElements>

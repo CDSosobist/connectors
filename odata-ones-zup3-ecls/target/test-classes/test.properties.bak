@@ -1,0 +1,6 @@
+username = koshelevra
+password = u5xXY3-WU
+serviceAddress = http://test-odata1c01.cds.spb/SVOD3/odata/standard.odata
+AuthMethod = BASIC
+trustAllCertificates = false
+boardDate = 01.01.2018

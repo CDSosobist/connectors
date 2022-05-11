@@ -26,10 +26,11 @@
   <modelVersion>4.0.0</modelVersion>
   
   <parent>
-    <groupId>net.tirasa.connid</groupId>
-    <artifactId>connid</artifactId>
-    <version>1.5.0.2</version>
-  </parent>
+        <artifactId>connector-parent</artifactId>
+        <groupId>com.evolveum.polygon</groupId>
+        <version>1.5.0.0</version>
+        <relativePath></relativePath>
+    </parent>
     
   <groupId>cdsosobist.connid.connectors</groupId>
   <artifactId>mira.rest.connector</artifactId>
@@ -38,7 +39,7 @@
   <packaging>jar</packaging>
 
   <properties>
-    <connid.version xmlns="">1.5.0.2</connid.version>
+    <connid.version xmlns="">1.5.0.0</connid.version>
         
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -47,34 +48,42 @@
     <dependency>
       <groupId>net.tirasa.connid</groupId>
       <artifactId>connector-framework</artifactId>
-      <version>${connid.version}</version>
     </dependency>
     <dependency>
       <groupId>net.tirasa.connid</groupId>
       <artifactId>connector-framework-internal</artifactId>
-      <version>${connid.version}</version>
     </dependency>
     <dependency>
     	<groupId>junit</groupId>
     	<artifactId>junit</artifactId>
-    	<version>4.9</version>
     </dependency>
     <dependency>
     	<groupId>com.evolveum.polygon</groupId>
         <artifactId>connector-rest</artifactId>
-        <version>1.4.2.35</version>
     </dependency>
     <dependency>
     	<groupId>org.json</groupId>
         <artifactId>json</artifactId>
-        <version>20180813</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.squareup.okhttp3</groupId>
+    	<artifactId>okhttp</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.httpcomponents</groupId>
+    	<artifactId>httpclient</artifactId>
+    	<version>4.5.13</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.httpcomponents</groupId>
+    	<artifactId>httpcore</artifactId>
+    	<version>4.4.15</version>
     </dependency>
         
     <!-- TEST -->        
     <dependency>
       <groupId>net.tirasa.connid</groupId>
       <artifactId>connector-test-common</artifactId>
-      <version>${connid.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -147,6 +156,27 @@
           </execution>
         </executions>
       </plugin>
+      
+      	<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-dependency-plugin</artifactId>
+			<version>3.2.0</version>
+			<executions>
+				<execution>
+					<id>copy-dependencies</id>
+					<phase>process-sources</phase>
+					<goals>
+						<goal>copy-dependencies</goal>
+					</goals>
+					<configuration>
+						<outputDirectory>${project.build.directory}/lib</outputDirectory>
+						<overWriteReleases>false</overWriteReleases>
+						<overWriteSnapshots>false</overWriteSnapshots>
+						<overWriteIfNewer>true</overWriteIfNewer>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
     </plugins>    
   </build>
 
@@ -172,4 +202,43 @@
     </repository>
   </repositories>
 
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>net.tirasa.connid</groupId>
+  			<artifactId>connector-framework</artifactId>
+  			<version>${connid.version}</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>net.tirasa.connid</groupId>
+  			<artifactId>connector-framework-internal</artifactId>
+  			<version>${connid.version}</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>junit</groupId>
+  			<artifactId>junit</artifactId>
+  			<version>4.9</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.evolveum.polygon</groupId>
+  			<artifactId>connector-rest</artifactId>
+  			<version>1.4.2.35</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>org.json</groupId>
+  			<artifactId>json</artifactId>
+  			<version>20180813</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.squareup.okhttp3</groupId>
+  			<artifactId>okhttp</artifactId>
+  			<version>3.0.1</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>net.tirasa.connid</groupId>
+  			<artifactId>connector-test-common</artifactId>
+  			<version>${connid.version}</version>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
 </project>

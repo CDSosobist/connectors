@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [ZUP3Suite]">
+  <test thread-count="5" name="ZUP3Test(failed)">
+    <classes>
+      <class name="cdsosobist.connectors.rest.testClient">
+        <methods>
+          <include name="testFindAll"/>
+          <include name="setUp"/>
+          <include name="testByUid"/>
+          <include name="testConn"/>
+        </methods>
+      </class> <!-- cdsosobist.connectors.rest.testClient -->
+    </classes>
+  </test> <!-- ZUP3Test(failed) -->
+</suite> <!-- Failed suite [ZUP3Suite] -->
