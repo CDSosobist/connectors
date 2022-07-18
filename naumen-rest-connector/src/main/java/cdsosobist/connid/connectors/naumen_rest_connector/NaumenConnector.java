@@ -56,163 +56,167 @@ import org.json.JSONObject;
 import com.evolveum.polygon.rest.AbstractRestConnector;
 
 @ConnectorClass(configurationClass = NaumenConfiguration.class, displayNameKey = "sample.connector.display")
-public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
-		implements Connector, CreateOp, UpdateOp, DeleteOp, SchemaOp, SearchOp<NaumenFilter>, TestOp {
+public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration> implements Connector, CreateOp, UpdateOp, DeleteOp, SchemaOp, SearchOp<NaumenFilter>, TestOp {
 
 	private final NaumenConfiguration configuration = new NaumenConfiguration();
 	public static final Log LOG = Log.getLog(NaumenConnector.class);
 	private static final String LINE = "\r\n";
-
+	
+	
 	@Override
 	public NaumenConfiguration getConfiguration() {
+		//System.out.print("\n\nNaumen connector - запуск getConfiguration()\n\n");
+		//System.out.print("\n\nNaumen connector - ServiceAddress is " + configuration.getServiceAddress() + "\n\n");
 		return configuration;
 	}
-
+	
 	@Override
 	public void init(Configuration configuration) {
+		//System.out.print("\n\nNaumen connector - запуск init(), \n\n");
 		super.init(configuration);
 	}
-
+	
 	@Override
 	public Schema schema() {
-
+		
 		SchemaBuilder schemaBuilder = new SchemaBuilder(NaumenConnector.class);
 		this.buildAccountObjectClass(schemaBuilder);
 		this.buildOUOBjectClass(schemaBuilder);
 		return schemaBuilder.build();
-
+		
 	}
 
 	private void buildAccountObjectClass(SchemaBuilder schemaBuilder) {
-
+		
 		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
-
+		
 		AttributeInfoBuilder attrPersemailBuilder = new AttributeInfoBuilder(PathsHandler.PERSEMAIL);
 		ociBuilder.addAttributeInfo(attrPersemailBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersisEmployeeActiveBuilder = new AttributeInfoBuilder(PathsHandler.PERSISACTIVE);
 		ociBuilder.addAttributeInfo(attrPersisEmployeeActiveBuilder.build());
 		attrPersisEmployeeActiveBuilder.setType(Boolean.class);
-
-		AttributeInfoBuilder attrPersinternalPhoneNumberBuilder = new AttributeInfoBuilder(
-				PathsHandler.PERSINTERNALPHONE);
+			
+		AttributeInfoBuilder attrPersinternalPhoneNumberBuilder = new AttributeInfoBuilder(PathsHandler.PERSINTERNALPHONE);
 		ociBuilder.addAttributeInfo(attrPersinternalPhoneNumberBuilder.build());
-
+			
 		AttributeInfoBuilder attrPerscityPhoneNumberBuilder = new AttributeInfoBuilder(PathsHandler.PERSCITYPHONE);
 		ociBuilder.addAttributeInfo(attrPerscityPhoneNumberBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersremovalDateBuilder = new AttributeInfoBuilder(PathsHandler.PERSREMOVALDATE);
 		ociBuilder.addAttributeInfo(attrPersremovalDateBuilder.build());
-
+			
 		AttributeInfoBuilder attrPerslastModifiedDateBuilder = new AttributeInfoBuilder(PathsHandler.PERSMODIFDATE);
 		ociBuilder.addAttributeInfo(attrPerslastModifiedDateBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersdateOfBirthBuilder = new AttributeInfoBuilder(PathsHandler.PERSBIRTHDATE);
 		ociBuilder.addAttributeInfo(attrPersdateOfBirthBuilder.build());
-
+			
 		AttributeInfoBuilder attrPerscreationDateBuilder = new AttributeInfoBuilder(PathsHandler.PERSCREATIONDATE);
 		ociBuilder.addAttributeInfo(attrPerscreationDateBuilder.build());
-
+			
 		AttributeInfoBuilder attrPerspostBuilder = new AttributeInfoBuilder(PathsHandler.PERSPOSITION);
 		ociBuilder.addAttributeInfo(attrPerspostBuilder.build());
-
+			
 		AttributeInfoBuilder attrPershomePhoneNumberBuilder = new AttributeInfoBuilder(PathsHandler.PERSHOMEPHONE);
 		ociBuilder.addAttributeInfo(attrPershomePhoneNumberBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersisEmployeeLockedBuilder = new AttributeInfoBuilder(PathsHandler.PERSISLOCKED);
 		ociBuilder.addAttributeInfo(attrPersisEmployeeLockedBuilder.build());
 		attrPersisEmployeeLockedBuilder.setType(Boolean.class);
-
+			
 		AttributeInfoBuilder attrPersfirstNameBuilder = new AttributeInfoBuilder(PathsHandler.PERSFIRSTNAME);
 		ociBuilder.addAttributeInfo(attrPersfirstNameBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersperformerBuilder = new AttributeInfoBuilder(PathsHandler.PERSISPERFORMER);
 		ociBuilder.addAttributeInfo(attrPersperformerBuilder.build());
 		attrPersperformerBuilder.setType(Boolean.class);
-
+			
 		AttributeInfoBuilder attrPersprivateCodeBuilder = new AttributeInfoBuilder(PathsHandler.PERSPRIVCODE);
 		ociBuilder.addAttributeInfo(attrPersprivateCodeBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersloginBuilder = new AttributeInfoBuilder(PathsHandler.PERSLOGIN);
 		ociBuilder.addAttributeInfo(attrPersloginBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersmobilePhoneNumberBuilder = new AttributeInfoBuilder(PathsHandler.PERSMOBILEPHONE);
 		ociBuilder.addAttributeInfo(attrPersmobilePhoneNumberBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersnumberBuilder = new AttributeInfoBuilder(PathsHandler.PERSNUMBER);
 		ociBuilder.addAttributeInfo(attrPersnumberBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersparentBuilder = new AttributeInfoBuilder(PathsHandler.PERSPARENT);
 		ociBuilder.addAttributeInfo(attrPersparentBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersmiddleNameBuilder = new AttributeInfoBuilder(PathsHandler.PERSMIDDLENAME);
 		ociBuilder.addAttributeInfo(attrPersmiddleNameBuilder.build());
-
+			
 		AttributeInfoBuilder attrPerspasswordBuilder = new AttributeInfoBuilder(PathsHandler.PERSPASSWORD);
 		ociBuilder.addAttributeInfo(attrPerspasswordBuilder.build());
-
-//		AttributeInfoBuilder attrPersemployeeSecGroupsBuilder = new AttributeInfoBuilder(PathsHandler.PERSSECGROUPS);
-//		ociBuilder.addAttributeInfo(attrPersemployeeSecGroupsBuilder.build());
-//			
+			
 		AttributeInfoBuilder attrPersremovedBuilder = new AttributeInfoBuilder(PathsHandler.PERSISREMOVED);
 		ociBuilder.addAttributeInfo(attrPersremovedBuilder.build());
 		attrPersremovedBuilder.setType(Boolean.class);
-
+			
 		AttributeInfoBuilder attrPerscommentAuthorAliasBuilder = new AttributeInfoBuilder(PathsHandler.PERSALIAS);
 		ociBuilder.addAttributeInfo(attrPerscommentAuthorAliasBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersimmediateSupervisorBuilder = new AttributeInfoBuilder(PathsHandler.PERSMANAGER);
 		ociBuilder.addAttributeInfo(attrPersimmediateSupervisorBuilder.build());
-
-		AttributeInfoBuilder attrPersemployeeForIntegrationBuilder = new AttributeInfoBuilder(
-				PathsHandler.PERSISINTEGRATION);
+			
+		AttributeInfoBuilder attrPersemployeeForIntegrationBuilder = new AttributeInfoBuilder(PathsHandler.PERSISINTEGRATION);
 		ociBuilder.addAttributeInfo(attrPersemployeeForIntegrationBuilder.build());
 		attrPersemployeeForIntegrationBuilder.setType(Boolean.class);
-
+			
 		AttributeInfoBuilder attrPersphonesIndexBuilder = new AttributeInfoBuilder(PathsHandler.PERSPHONESINDEX);
 		ociBuilder.addAttributeInfo(attrPersphonesIndexBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersmetaClassBuilder = new AttributeInfoBuilder(PathsHandler.PERSMETACLASS);
 		ociBuilder.addAttributeInfo(attrPersmetaClassBuilder.build());
-
-//		AttributeInfoBuilder attrPersUUIDBuilder = new AttributeInfoBuilder(PathsHandler.PERSUUID);
-//		ociBuilder.addAttributeInfo(attrPersUUIDBuilder.build());
-//			
+			
 		AttributeInfoBuilder attrPerstitleBuilder = new AttributeInfoBuilder(PathsHandler.PERSFULLNAME);
 		ociBuilder.addAttributeInfo(attrPerstitleBuilder.build());
-
+			
 		AttributeInfoBuilder attrPerslastNameBuilder = new AttributeInfoBuilder(PathsHandler.PERSLASTNAME);
 		ociBuilder.addAttributeInfo(attrPerslastNameBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersimageBuilder = new AttributeInfoBuilder(PathsHandler.PERSIMAGE);
 		ociBuilder.addAttributeInfo(attrPersimageBuilder.build());
-
+			
 		AttributeInfoBuilder attrPerssysUserStorageBuilder = new AttributeInfoBuilder(PathsHandler.PERSSTORAGE);
 		ociBuilder.addAttributeInfo(attrPerssysUserStorageBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersidHolderBuilder = new AttributeInfoBuilder(PathsHandler.PERSIDHOLDER);
 		ociBuilder.addAttributeInfo(attrPersidHolderBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersexternalLinksBuilder = new AttributeInfoBuilder(PathsHandler.PERSEXTLINKS);
 		ociBuilder.addAttributeInfo(attrPersexternalLinksBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersforResetPassBuilder = new AttributeInfoBuilder(PathsHandler.PERSFORRESTPASS);
 		ociBuilder.addAttributeInfo(attrPersforResetPassBuilder.build());
 		attrPersforResetPassBuilder.setType(Boolean.class);
-
+			
 		AttributeInfoBuilder attrPerstelegramIdBuilder = new AttributeInfoBuilder(PathsHandler.PERSTELEGRAMID);
 		ociBuilder.addAttributeInfo(attrPerstelegramIdBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersiconBuilder = new AttributeInfoBuilder(PathsHandler.PERSICON);
 		ociBuilder.addAttributeInfo(attrPersiconBuilder.build());
-
+			
 		AttributeInfoBuilder attrPerstelegramBuilder = new AttributeInfoBuilder(PathsHandler.PERSTELEGRAMLOGIN);
 		ociBuilder.addAttributeInfo(attrPerstelegramBuilder.build());
-
+			
 		AttributeInfoBuilder attrPersisGenPassBuilder = new AttributeInfoBuilder(PathsHandler.PERSNEEDGENPASS);
 		ociBuilder.addAttributeInfo(attrPersisGenPassBuilder.build());
 		attrPersisGenPassBuilder.setType(Boolean.class);
-
+		
+		AttributeInfoBuilder attrPersEmpIDBuilder = new AttributeInfoBuilder(PathsHandler.PERSEMPID);
+		ociBuilder.addAttributeInfo(attrPersEmpIDBuilder.build());
+			
+		AttributeInfoBuilder attrPersFLIDBuilder = new AttributeInfoBuilder(PathsHandler.PERSFLID);
+		ociBuilder.addAttributeInfo(attrPersFLIDBuilder.build());
+			
+		AttributeInfoBuilder attrPersCorpPhoneBuilder = new AttributeInfoBuilder(PathsHandler.PERSCORPPHONE);
+		ociBuilder.addAttributeInfo(attrPersCorpPhoneBuilder.build());
+			
 		schemaBuilder.defineObjectClass(ociBuilder.build());
 	}
 
@@ -220,57 +224,58 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 
 		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
 		ociBuilder.setType("NaumenOU");
-
+		
 		AttributeInfoBuilder attrOuparentBuilder = new AttributeInfoBuilder(PathsHandler.OUPARENT);
 		ociBuilder.addAttributeInfo(attrOuparentBuilder.build());
-
+			
 		AttributeInfoBuilder attrOuremovalDateBuilder = new AttributeInfoBuilder(PathsHandler.OUREMOVDATE);
 		ociBuilder.addAttributeInfo(attrOuremovalDateBuilder.build());
-
+			
 		AttributeInfoBuilder attrOulastModifiedDateBuilder = new AttributeInfoBuilder(PathsHandler.OUMODIFYDATE);
 		ociBuilder.addAttributeInfo(attrOulastModifiedDateBuilder.build());
-
+			
 		AttributeInfoBuilder attrOucreationDateBuilder = new AttributeInfoBuilder(PathsHandler.OUCREATIONDATE);
 		ociBuilder.addAttributeInfo(attrOucreationDateBuilder.build());
-
+			
 		AttributeInfoBuilder attrOutitleBuilder = new AttributeInfoBuilder(PathsHandler.OUNAME);
 		ociBuilder.addAttributeInfo(attrOutitleBuilder.build());
-
+			
 		AttributeInfoBuilder attrOunumberBuilder = new AttributeInfoBuilder(PathsHandler.OUNUMBER);
 		ociBuilder.addAttributeInfo(attrOunumberBuilder.build());
-
+			
 		AttributeInfoBuilder attrOuremovedBuilder = new AttributeInfoBuilder(PathsHandler.OUISREMOVED);
 		ociBuilder.addAttributeInfo(attrOuremovedBuilder.build());
 		attrOuremovedBuilder.setType(Boolean.class);
-
+			
 		AttributeInfoBuilder attrOuheadBuilder = new AttributeInfoBuilder(PathsHandler.OUMANAGER);
 		ociBuilder.addAttributeInfo(attrOuheadBuilder.build());
-
+			
 		AttributeInfoBuilder attrOumetaClassBuilder = new AttributeInfoBuilder(PathsHandler.OUMETACLASS);
 		ociBuilder.addAttributeInfo(attrOumetaClassBuilder.build());
-
-//		AttributeInfoBuilder attrOuUUIDBuilder = new AttributeInfoBuilder(PathsHandler.OUUUID);
-//		ociBuilder.addAttributeInfo(attrOuUUIDBuilder.build());
-//			
+			
 		AttributeInfoBuilder attrOudstngshdBuilder = new AttributeInfoBuilder(PathsHandler.OUDN);
 		ociBuilder.addAttributeInfo(attrOudstngshdBuilder.build());
-
+			
 		AttributeInfoBuilder attrOuidHolderBuilder = new AttributeInfoBuilder(PathsHandler.OUIDHOLDER);
 		ociBuilder.addAttributeInfo(attrOuidHolderBuilder.build());
-
+			
 		AttributeInfoBuilder attrOuadressBuilder = new AttributeInfoBuilder(PathsHandler.OUADDRESS);
 		ociBuilder.addAttributeInfo(attrOuadressBuilder.build());
-
+			
 		AttributeInfoBuilder attrOuiconBuilder = new AttributeInfoBuilder(PathsHandler.OUICON);
 		ociBuilder.addAttributeInfo(attrOuiconBuilder.build());
-
+		
 		schemaBuilder.defineObjectClass(ociBuilder.build());
 	}
+	
+	
 
 	@Override
 	public void executeQuery(ObjectClass objectClass, NaumenFilter query, ResultsHandler handler,
 			OperationOptions options) {
-
+		
+		//System.out.print("\n\nNaumen connector - перешёл в executeQuery:\n	objectClass - " + objectClass +"\n	query - " + query + "\n	handler - " + handler + "\n	options - " + options + "\n\n");
+		
 		if (objectClass.is("__ACCOUNT__")) {
 			try {
 				this.handleAccounts(query, handler, options);
@@ -284,95 +289,92 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 				e.printStackTrace();
 			}
 		}
-
+		
 	}
 
-	private void handleAccounts(NaumenFilter filter, ResultsHandler handler, OperationOptions options)
-			throws IOException {
-
+	private void handleAccounts(NaumenFilter filter, ResultsHandler handler, OperationOptions options) throws IOException {
+		
+		//System.out.print("\n\nNaumen connector - перешёл в handleAccounts\n\n");
+		
 		String reqPath;
 		JSONArray allAccounts = new JSONArray();
 		JSONObject currAccount = new JSONObject();
 		final StringBuilder sb = new StringBuilder();
 		configuration.getAccessKey().access(chars -> sb.append(new String(chars)));
-
-		if (filter != null && filter.byUid != null) {
-			reqPath = configuration.getServiceAddress() + PathsHandler.getByUUID + "employee$" + filter.byUid + '?'
-					+ PathsHandler.accessKeyPath + sb.toString();
+		
+		if (filter != null && filter.byUid != null ) {
+			reqPath = configuration.getServiceAddress() + PathsHandler.getByUUID + filter.byUid + '?' + PathsHandler.accessKeyPath + sb.toString();
 			try {
 				currAccount = JOReq(reqPath);
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			
 			ConnectorObject connectorObject = this.convertAccountToConnObject(currAccount);
 			boolean finish = !handler.handle(connectorObject);
-			if (finish) {
-				return;
-			}
-
+            if (finish) {
+                return;
+            }
+			
 		} else {
-			reqPath = configuration.getServiceAddress() + PathsHandler.getAllAccs + '?' + PathsHandler.accessKeyPath
-					+ sb.toString();
+			reqPath = configuration.getServiceAddress() + PathsHandler.getAllAccs + '?' + PathsHandler.accessKeyPath + sb.toString();
 			allAccounts = JAReq(reqPath);
 			for (int i = 0; i < allAccounts.length(); i++) {
 				currAccount = allAccounts.getJSONObject(i);
 				ConnectorObject connectorObject = this.convertAccountToConnObject(currAccount);
 				boolean finish = !handler.handle(connectorObject);
-				if (finish) {
-					return;
-				}
-			}
-		}
+	            if (finish) {
+	                return;
+	            }
+			}			
+		}		
 	}
 
 	private void handleOUs(NaumenFilter filter, ResultsHandler handler, OperationOptions options) throws IOException {
-
+		
 		String reqPath;
 		JSONArray allOUs = new JSONArray();
 		JSONObject currOU = new JSONObject();
 		final StringBuilder sb = new StringBuilder();
 		configuration.getAccessKey().access(chars -> sb.append(new String(chars)));
-
-		if (filter != null && filter.byUid != null) {
-			reqPath = configuration.getServiceAddress() + PathsHandler.getByUUID + "ou$" + filter.byUid + '?'
-					+ PathsHandler.accessKeyPath + sb.toString();
+		
+		if (filter != null && filter.byUid != null ) {
+			reqPath = configuration.getServiceAddress() + PathsHandler.getByUUID + filter.byUid + '?' + PathsHandler.accessKeyPath + sb.toString();
 			try {
 				currOU = JOReq(reqPath);
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			
 			ConnectorObject connectorObject = this.convertOUToConnObject(currOU);
 			boolean finish = !handler.handle(connectorObject);
-			if (finish) {
-				return;
-			}
-
+            if (finish) {
+                return;
+            }
+			
 		} else {
-			reqPath = configuration.getServiceAddress() + PathsHandler.getAllOUs + '?' + PathsHandler.accessKeyPath
-					+ sb.toString();
+			reqPath = configuration.getServiceAddress() + PathsHandler.getAllOUs + '?' + PathsHandler.accessKeyPath + sb.toString();
 			allOUs = JAReq(reqPath);
 			for (int i = 0; i < allOUs.length(); i++) {
 				currOU = allOUs.getJSONObject(i);
 				ConnectorObject connectorObject = this.convertOUToConnObject(currOU);
 				boolean finish = !handler.handle(connectorObject);
-				if (finish) {
-					return;
-				}
-			}
-		}
+	            if (finish) {
+	                return;
+	            }
+			}			
+		}		
 	}
 
 	private ConnectorObject convertAccountToConnObject(JSONObject currAccount) {
-
+		
 		ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
-
-		builder.setUid(currAccount.getString(PathsHandler.PERSUUID).replaceAll("employee\\$", ""));
-		builder.setName(currAccount.getString(PathsHandler.PERSUUID).replaceAll("employee\\$", ""));
-
+		
+		builder.setUid(currAccount.getString(PathsHandler.PERSUUID));
+		builder.setName(currAccount.getString(PathsHandler.PERSUUID));
+		
 		this.getStringIfExists(currAccount, PathsHandler.PERSEMAIL, builder);
 		this.getStringIfExists(currAccount, PathsHandler.PERSINTERNALPHONE, builder);
 		this.getStringIfExists(currAccount, PathsHandler.PERSCITYPHONE, builder);
@@ -395,13 +397,16 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 		this.getStringIfExists(currAccount, PathsHandler.PERSEXTLINKS, builder);
 		this.getStringIfExists(currAccount, PathsHandler.PERSTELEGRAMID, builder);
 		this.getStringIfExists(currAccount, PathsHandler.PERSTELEGRAMLOGIN, builder);
-
+		this.getStringIfExists(currAccount, PathsHandler.PERSEMPID, builder);
+		this.getStringIfExists(currAccount, PathsHandler.PERSFLID, builder);
+		this.getStringIfExists(currAccount, PathsHandler.PERSCORPPHONE, builder);
+		
 		this.getDateTimeIfExists(currAccount, PathsHandler.PERSREMOVALDATE, builder);
 		this.getDateTimeIfExists(currAccount, PathsHandler.PERSMODIFDATE, builder);
 		this.getDateTimeIfExists(currAccount, PathsHandler.PERSCREATIONDATE, builder);
 
 		this.getDateIfExists(currAccount, PathsHandler.PERSBIRTHDATE, builder);
-
+	
 		this.getBooleanIfExists(currAccount, PathsHandler.PERSISACTIVE, builder);
 		this.getBooleanIfExists(currAccount, PathsHandler.PERSISLOCKED, builder);
 		this.getBooleanIfExists(currAccount, PathsHandler.PERSISPERFORMER, builder);
@@ -409,32 +414,34 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 		this.getBooleanIfExists(currAccount, PathsHandler.PERSISINTEGRATION, builder);
 		this.getBooleanIfExists(currAccount, PathsHandler.PERSFORRESTPASS, builder);
 		this.getBooleanIfExists(currAccount, PathsHandler.PERSNEEDGENPASS, builder);
-
+		
 		this.getLinkIfExists(currAccount, PathsHandler.PERSPARENT, builder);
 		this.getLinkIfExists(currAccount, PathsHandler.PERSMANAGER, builder);
 		this.getLinkIfExists(currAccount, PathsHandler.PERSICON, builder);
-
-		// TODO Разобраться с фотографией и группами пользователя
-
+		
+		
+		//TODO Разобраться с фотографией и группами пользователя
+		
 		new HashMap<>();
-		LOG.ok("Builder.build: {0}", builder.build());
-		return builder.build();
+		
+//		//System.out.print("\n\n" + builder.build() + "\n\n");
+        return builder.build();
 	}
 
 	private ConnectorObject convertOUToConnObject(JSONObject currOU) {
-
+		
 		ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
-
-		builder.setUid(currOU.getString(PathsHandler.OUUUID).replaceAll("ou\\$", ""));
-		builder.setName(currOU.getString(PathsHandler.OUUUID).replaceAll("ou\\$", ""));
-
+		
+		builder.setUid(currOU.getString(PathsHandler.OUUUID));
+		builder.setName(currOU.getString(PathsHandler.OUUUID));
+		
 		this.getStringIfExists(currOU, PathsHandler.OUNAME, builder);
 		this.getStringIfExists(currOU, PathsHandler.OUNUMBER, builder);
 		this.getStringIfExists(currOU, PathsHandler.OUMETACLASS, builder);
 		this.getStringIfExists(currOU, PathsHandler.OUDN, builder);
 		this.getStringIfExists(currOU, PathsHandler.OUIDHOLDER, builder);
 		this.getStringIfExists(currOU, PathsHandler.OUADDRESS, builder);
-
+		
 		this.getDateTimeIfExists(currOU, PathsHandler.OUREMOVDATE, builder);
 		this.getDateTimeIfExists(currOU, PathsHandler.OUMODIFYDATE, builder);
 		this.getDateTimeIfExists(currOU, PathsHandler.OUCREATIONDATE, builder);
@@ -444,10 +451,10 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 		this.getLinkIfExists(currOU, PathsHandler.OUPARENT, builder);
 		this.getLinkIfExists(currOU, PathsHandler.OUMANAGER, builder);
 		this.getLinkIfExists(currOU, PathsHandler.OUICON, builder);
-
+		
 		new HashMap<>();
 		LOG.ok("Builder.build: {0}", builder.build());
-		return builder.build();
+        return builder.build();
 	}
 
 	private void getStringIfExists(JSONObject object, String attrName, ConnectorObjectBuilder builder) {
@@ -473,36 +480,36 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 	private void getDateIfExists(JSONObject object, String attrName, ConnectorObjectBuilder builder) {
 		if (object.has(attrName) && object.get(attrName) != null && !JSONObject.NULL.equals(object.get(attrName))) {
 			String currDate = object.getString(attrName);
-			String finDate = (currDate.replace(".", "-") + "T00:00:00.000+03:00");
+			String finDate = (currDate.replace(".", "-").substring(0, 10) + "T00:00:00.000+03:00");
 			this.addAttr(builder, attrName, finDate);
 		}
 	}
 
 	private void getLinkIfExists(JSONObject object, String attrName, ConnectorObjectBuilder builder) {
 		if (object.has(attrName) && object.get(attrName) != null && !JSONObject.NULL.equals(object.get(attrName))) {
-			JSONObject linksPool = object.getJSONObject(attrName); // new JSONObject(object.getString(attrName));
-			String objLink = linksPool.getString("UUID");
+			JSONObject linksPool = object.getJSONObject(attrName); //new JSONObject(object.getString(attrName));
+			String objLink = linksPool.getString("UUID");			
 			this.addAttr(builder, attrName, objLink);
-		}
+            }
 	}
 
 	private JSONObject JOReq(String reqPath) throws IOException {
-
+		
 		URL reqUrl = new URL(reqPath);
 		String response = "";
-
-		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				return new X509Certificate[0];
-			}
-
-			public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-
-			public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-		} };
-
+		
+		TrustManager[] trustAllCerts = new TrustManager[] {
+				new X509TrustManager() {
+					public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+						return new X509Certificate[0];
+						}
+					public void checkClientTrusted(
+						java.security.cert.X509Certificate[] certs, String authType) {} 
+			        public void checkServerTrusted( 
+			            java.security.cert.X509Certificate[] certs, String authType) {}
+			    }
+		};
+		
 		try {
 			SSLContext sc = SSLContext.getInstance("SSL");
 			sc.init(null, trustAllCerts, new java.security.SecureRandom());
@@ -510,39 +517,41 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 		} catch (GeneralSecurityException e) {
 			e.printStackTrace();
 		}
-
+		
 		HttpsURLConnection sslConn = (HttpsURLConnection) reqUrl.openConnection();
 		sslConn.setDoInput(true);
-		int responseCode = sslConn.getResponseCode();
-		if (responseCode == 200) {
-			String line;
-			BufferedReader br = new BufferedReader(new InputStreamReader(sslConn.getInputStream()));
-			while ((line = br.readLine()) != null) {
-				response += line;
-			}
-		} else {
-			response = "{}";
-		}
-		return new JSONObject(response);
+		int responseCode=sslConn.getResponseCode();
+        if (responseCode == 200) {
+            String line;
+            BufferedReader br=new BufferedReader(new InputStreamReader(sslConn.getInputStream()));
+            while ((line=br.readLine()) != null) {
+                response+=line;
+            }
+        }
+        else {
+            response="{}";
+        }
+        return new JSONObject(response);
 	}
+
 
 	private JSONArray JAReq(String reqPath) throws IOException {
-
+		
 		URL reqUrl = new URL(reqPath);
 		String response = "";
-
-		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				return new X509Certificate[0];
-			}
-
-			public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-
-			public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-		} };
-
+		
+		TrustManager[] trustAllCerts = new TrustManager[] {
+				new X509TrustManager() {
+					public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+						return new X509Certificate[0];
+						}
+					public void checkClientTrusted(
+						java.security.cert.X509Certificate[] certs, String authType) {} 
+			        public void checkServerTrusted( 
+			            java.security.cert.X509Certificate[] certs, String authType) {}
+			    }
+		};
+		
 		try {
 			SSLContext sc = SSLContext.getInstance("SSL");
 			sc.init(null, trustAllCerts, new java.security.SecureRandom());
@@ -550,62 +559,64 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 		} catch (GeneralSecurityException e) {
 			e.printStackTrace();
 		}
-
+		
 		HttpsURLConnection sslConn = (HttpsURLConnection) reqUrl.openConnection();
 		sslConn.setDoInput(true);
-		int responseCode = sslConn.getResponseCode();
-		if (responseCode == 200) {
-			String line;
-			BufferedReader br = new BufferedReader(new InputStreamReader(sslConn.getInputStream()));
-			while ((line = br.readLine()) != null) {
-				response += line;
-			}
-		} else {
-			response = "[]";
-		}
-		return new JSONArray(response);
+		int responseCode=sslConn.getResponseCode();
+        if (responseCode == 200) {
+            String line;
+            BufferedReader br=new BufferedReader(new InputStreamReader(sslConn.getInputStream()));
+            while ((line=br.readLine()) != null) {
+                response+=line;
+            }
+        }
+        else {
+            response="[]";
+        }
+        return new JSONArray(response);
 	}
+	
 
+	
 	@Override
 	public Uid create(ObjectClass objectClass, Set<Attribute> createAttributes, OperationOptions options) {
 		String uidValue = null;
 		if (objectClass.is("__ACCOUNT__")) {
 			try {
-				uidValue = this.createObject(PathsHandler.createAccount, createAttributes).replaceAll("employee$", "");
+				uidValue = this.createObject(PathsHandler.createAccount, createAttributes);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else if (objectClass.is("NaumenOU")) {
 			try {
-				uidValue = this.createObject(PathsHandler.createOU, createAttributes).replaceAll("ou$", "");
+				uidValue = this.createObject(PathsHandler.createOU, createAttributes);
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
+			}			
 		}
-		return new Uid(uidValue);
+		return new Uid(uidValue);		
 	}
 
 	private String createObject(String creationType, Set<Attribute> createAttributes) throws IOException {
 		final StringBuilder sb = new StringBuilder();
 		configuration.getAccessKey().access(chars -> sb.append(new String(chars)));
-
-		String reqPath = configuration.getServiceAddress() + creationType + "?" + PathsHandler.accessKeyPath
-				+ sb.toString();
+		
+		String reqPath = configuration.getServiceAddress() + creationType + "?" + PathsHandler.accessKeyPath + sb.toString();
 		URL reqUrl = new URL(reqPath);
 		String response = "";
-
-		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				return new X509Certificate[0];
-			}
-
-			public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-
-			public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-		} };
-
+		
+		TrustManager[] trustAllCerts = new TrustManager[] {
+				new X509TrustManager() {
+					public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+						return new X509Certificate[0];
+						}
+					public void checkClientTrusted(
+						java.security.cert.X509Certificate[] certs, String authType) {} 
+			        public void checkServerTrusted( 
+			            java.security.cert.X509Certificate[] certs, String authType) {}
+			    }
+		};
+		
 		try {
 			SSLContext sc = SSLContext.getInstance("SSL");
 			sc.init(null, trustAllCerts, new java.security.SecureRandom());
@@ -613,11 +624,11 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 		} catch (GeneralSecurityException e) {
 			e.printStackTrace();
 		}
-
+		
 		HttpsURLConnection sslConn = (HttpsURLConnection) reqUrl.openConnection();
 		sslConn.setRequestMethod("POST");
 		sslConn.setDoInput(true);
-		if (createAttributes != null && !createAttributes.isEmpty()) {
+		if(createAttributes != null && !createAttributes.isEmpty()) {
 			sslConn.setDoOutput(true);
 			sslConn.setRequestProperty("Content-Type", "multipart/form-data;boundary=yklmn");
 			Iterator<Attribute> attrIterator = createAttributes.iterator();
@@ -627,66 +638,62 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 				Attribute attr = attrIterator.next();
 				if (attr.getValue().toString().length() > 2) {
 					writer.append("--yklmn").append(LINE);
-					System.out.print("\n\n\n--yklmn" + LINE);
+					//System.out.print("\n\n\n--yklmn" + LINE);
 					if (attr.getName().contains(PathsHandler.PERSBIRTHDATE)) {
 						writer.append("Content-Disposition: form-data; name=\"" + attr.getName() + "\"").append(LINE);
 						writer.append("Content-Type: text/plain; charset=UTF8").append(LINE);
 						writer.append(LINE);
-						writer.append(
-								attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").substring(0, 10))
-								.append(LINE);
+						writer.append(attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("-",".").substring(0, 10)).append(LINE);
 						writer.flush();
-					} else {
+					}else {
 						writer.append("Content-Disposition: form-data; name=\"" + attr.getName() + "\"").append(LINE);
-						System.out.print("Content-Disposition: form-data; name=\"" + attr.getName() + "\"" + LINE);
+						//System.out.print("Content-Disposition: form-data; name=\"" + attr.getName() + "\"" + LINE);
 						writer.append("Content-Type: text/plain; charset=UTF8").append(LINE);
-						System.out.print("Content-Type: text/plain; charset=UTF8" + LINE + LINE);
+						//System.out.print("Content-Type: text/plain; charset=UTF8" + LINE + LINE);
 						writer.append(LINE);
-						writer.append(attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", ""))
-								.append(LINE);
-						System.out.print(attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "") + LINE);
+						writer.append(attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "")).append(LINE);
+						//System.out.print(attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "") + LINE);
 						writer.flush();
 					}
-
+					
 				}
 			}
-
+			
 			writer.append("--yklmn--");
-			System.out.print("--yklmn--\n\n\n" + sslConn.getCipherSuite() + "\n\n\n");
-			writer.flush();
-			writer.close();
-			os.close();
+			//System.out.print("--yklmn--\n\n\n" + sslConn.getCipherSuite() + "\n\n\n");
+            writer.flush();
+            writer.close();
+            os.close();            
 
 		}
-
+		
 		ByteArrayOutputStream result = new ByteArrayOutputStream();
-		byte[] buffer = new byte[1024];
-		int length;
-		while ((length = sslConn.getInputStream().read(buffer)) != -1) {
-			result.write(buffer, 0, length);
-		}
-		String preResponse = result.toString("UTF8");
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = sslConn.getInputStream().read(buffer)) != -1) {
+            result.write(buffer, 0, length);
+        }
+        String preResponse = result.toString("UTF8");
 		int responseCode = sslConn.getResponseCode();
-		if (responseCode == 304) {
-			throw new ConnectorIOException("Объект не обновлен: код " + responseCode);
-		} else if (responseCode == 200 || responseCode == 201) {
-			response = preResponse;
-		} else {
-			response = "{}";
+		if (responseCode == 304) {throw new ConnectorIOException("Объект не обновлен: код " + responseCode);}
+		else if (responseCode == 200 || responseCode == 201) {
+        	response = preResponse;
+        }
+        else {
+            response="{}";
 
-		}
-		LOG.ok("\n\nResponse - {0}\n", response);
-		JSONObject respJoBj = new JSONObject(response);
-		LOG.ok("\n\nUUID созданного сотрудника - {0}\n\n", respJoBj.getString("UUID"));
-		return respJoBj.getString("UUID");
+        }
+        LOG.ok("\n\nResponse - {0}\n", response);
+        JSONObject respJoBj = new JSONObject(response);
+        LOG.ok("\n\nUUID созданного сотрудника - {0}\n\n", respJoBj.getString("UUID"));
+        return respJoBj.getString("UUID");
 	}
 
 	@Override
 	public void test() {
+		//System.out.print("\n\n~~~ Запускаем тест ~~~\n\n");
 		ObjectClass accountObjectClass = new ObjectClass("__ACCOUNT__");
-		ResultsHandler rh = connectorObject -> {
-			return true;
-		};
+		ResultsHandler rh = connectorObject -> {return true;};
 		NaumenFilter filter = new NaumenFilter();
 		filter.byUid = "employee$2324404";
 		this.executeQuery(accountObjectClass, filter, rh, null);
@@ -694,76 +701,59 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 
 	@Override
 	public FilterTranslator<NaumenFilter> createFilterTranslator(ObjectClass objectClass, OperationOptions options) {
-		// TODO Auto-generated method stub
-		return null;
+		return new NaumenFilterTranslator();
 	}
 
 	@Override
 	public void delete(ObjectClass objectClass, Uid uid, OperationOptions options) {
-
+		
 		Set<Attribute> set = new HashSet<>();
-		set.add(AttributeBuilder.build("removed", "true"));
-
-		Uid curUid = null;
-
-		if (objectClass.is("__ACCOUNT__")) {
-			curUid = new Uid("employee$" + uid.toString());
-		} else if (objectClass.is("NaumenOU")) {
-			curUid = new Uid("ou$" + uid.toString());
-		}
-
+		set.add(AttributeBuilder.build("removed" , "true"));
 		try {
-			this.updateObject(curUid, set);
+			this.updateObject(uid, set);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 	}
 
 	@Override
 	public Uid update(ObjectClass objectClass, Uid uid, Set<Attribute> replaceAttributes, OperationOptions options) {
 		String uidValue = null;
-		Uid curUid = null;
-		
-		if (objectClass.is("__ACCOUNT__")) {
-			curUid = new Uid("employee$" + uid.toString());
-		} else if (objectClass.is("NaumenOU")) {
-			curUid = new Uid("ou$" + uid.toString());
-		}		
-		
 		try {
-			uidValue = this.updateObject(curUid, replaceAttributes);
+			uidValue = this.updateObject(uid, replaceAttributes);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return new Uid(uidValue);
 	}
-
-	private String updateObject(Uid uid, Set<Attribute> replaceAttributes) throws IOException {
-
+	
+	
+		
+		private String updateObject(Uid uid, Set<Attribute> replaceAttributes) throws IOException {
+			
 		final StringBuilder sb = new StringBuilder();
 		configuration.getAccessKey().access(chars -> sb.append(new String(chars)));
-
-		String updReqPath = configuration.getServiceAddress() + PathsHandler.updateObject + uid.getUidValue() + "?"
-				+ PathsHandler.accessKeyPath + sb.toString();
-
+		
+		String updReqPath = configuration.getServiceAddress() + PathsHandler.updateObject + uid.getUidValue() + "?"  + PathsHandler.accessKeyPath + sb.toString();
+		
 		URL reqUrl = new URL(updReqPath);
 		String response = "";
-
-		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				return new X509Certificate[0];
-			}
-
-			public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-
-			public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-		} };
-
+		
+		TrustManager[] trustAllCerts = new TrustManager[] {
+				new X509TrustManager() {
+					public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+						return new X509Certificate[0];
+						}
+					public void checkClientTrusted(
+						java.security.cert.X509Certificate[] certs, String authType) {} 
+			        public void checkServerTrusted( 
+			            java.security.cert.X509Certificate[] certs, String authType) {}
+			    }
+		};
+		
 		try {
 			SSLContext sc = SSLContext.getInstance("SSL");
 			sc.init(null, trustAllCerts, new java.security.SecureRandom());
@@ -771,11 +761,11 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 		} catch (GeneralSecurityException e) {
 			e.printStackTrace();
 		}
-
+		
 		HttpsURLConnection sslConn = (HttpsURLConnection) reqUrl.openConnection();
 		sslConn.setRequestMethod("POST");
 		sslConn.setDoInput(true);
-		if (replaceAttributes != null && !replaceAttributes.isEmpty()) {
+		if(replaceAttributes != null && !replaceAttributes.isEmpty()) {
 			sslConn.setDoOutput(true);
 			sslConn.setRequestProperty("Content-Type", "multipart/form-data;boundary=yklmn");
 			Iterator<Attribute> attrIterator = replaceAttributes.iterator();
@@ -785,59 +775,60 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration>
 				Attribute attr = attrIterator.next();
 				if (attr.getValue().toString().length() > 2) {
 					writer.append("--yklmn").append(LINE);
-					System.out.print("\n\n\n--yklmn" + LINE);
+					//System.out.print("\n\n\n--yklmn" + LINE);
 					if (attr.getName().contains(PathsHandler.PERSBIRTHDATE)) {
 						writer.append("Content-Disposition: form-data; name=\"" + attr.getName() + "\"").append(LINE);
 						writer.append("Content-Type: text/plain; charset=UTF8").append(LINE);
 						writer.append(LINE);
-						writer.append(
-								attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").substring(0, 10))
-								.append(LINE);
+						writer.append(attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("-",".").substring(0, 10)).append(LINE);
 						writer.flush();
-					} else {
+					}else {
 						writer.append("Content-Disposition: form-data; name=\"" + attr.getName() + "\"").append(LINE);
-						System.out.print("Content-Disposition: form-data; name=\"" + attr.getName() + "\"" + LINE);
+						//System.out.print("Content-Disposition: form-data; name=\"" + attr.getName() + "\"" + LINE);
 						writer.append("Content-Type: text/plain; charset=UTF8").append(LINE);
-						System.out.print("Content-Type: text/plain; charset=UTF8" + LINE + LINE);
+						//System.out.print("Content-Type: text/plain; charset=UTF8" + LINE + LINE);
 						writer.append(LINE);
-						writer.append(attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", ""))
-								.append(LINE);
-						System.out.print(attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "") + LINE);
+						writer.append(attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "")).append(LINE);
+						//System.out.print(attr.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "") + LINE);
 						writer.flush();
 					}
-
+					
 				}
 			}
-
+			
 			writer.append("--yklmn--");
-			System.out.print("--yklmn--\n\n\n" + sslConn.getCipherSuite() + "\n\n\n");
-			writer.flush();
-			writer.close();
-			os.close();
+			//System.out.print("--yklmn--\n\n\n" + sslConn.getCipherSuite() + "\n\n\n");
+            writer.flush();
+            writer.close();
+            os.close();            
 
 		}
-
+		
 		ByteArrayOutputStream result = new ByteArrayOutputStream();
-		byte[] buffer = new byte[1024];
-		int length;
-		while ((length = sslConn.getInputStream().read(buffer)) != -1) {
-			result.write(buffer, 0, length);
-		}
-		String preResponse = result.toString("UTF8");
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = sslConn.getInputStream().read(buffer)) != -1) {
+            result.write(buffer, 0, length);
+        }
+        String preResponse = result.toString("UTF8");
 		int responseCode = sslConn.getResponseCode();
-		if (responseCode == 304) {
-			throw new ConnectorIOException("Объект не обновлен: код " + responseCode);
-		} else if (responseCode == 200 || responseCode == 201) {
-			response = preResponse;
-		} else {
-			response = "{}";
+		if (responseCode == 304) {throw new ConnectorIOException("Объект не обновлен: код " + responseCode);}
+		else if (responseCode == 200 || responseCode == 201) {
+        	response = preResponse;
+        }
+        else {
+            response="{}";
 
-		}
-		LOG.ok("\n\nResponse - {0}\n", response);
-		JSONObject respJoBj = new JSONObject(response);
-		LOG.ok("\n\nUUID созданного сотрудника - {0}\n\n", respJoBj.getString("UUID"));
-
-		return respJoBj.getString("UUID");
+        }
+        LOG.ok("\n\nResponse - {0}\n", response);
+        JSONObject respJoBj = new JSONObject(response);
+        LOG.ok("\n\nUUID созданного сотрудника - {0}\n\n", respJoBj.getString("UUID"));
+        
+        return respJoBj.getString("UUID");
 	}
+
+	
+	
+	
 
 }

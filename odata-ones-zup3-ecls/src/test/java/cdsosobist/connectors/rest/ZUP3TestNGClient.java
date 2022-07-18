@@ -20,7 +20,9 @@ public class ZUP3TestNGClient {
     private static zup3Connector conn;
 
     private final ObjectClass empHistorySliceObjectClass = new ObjectClass("EmpHistorySlice");
-
+    private final ObjectClass gphContractObjectClass = new ObjectClass("GPH");
+    @SuppressWarnings("unused")
+    private final ObjectClass mainJobObjectClass = new ObjectClass("MainJob");
     
   @BeforeClass
   public static void setUp() throws Exception {
@@ -53,9 +55,9 @@ public class ZUP3TestNGClient {
       };
 
       zup3Filter filter = new zup3Filter();
-      filter.byUid = "dda126fa-ffef-11eb-baed-005056aa6551";
+      filter.byUid = "75a1b600-7360-11e7-80c3-005056bf108e";
 
-      conn.executeQuery(empHistorySliceObjectClass, filter, rh, null);
+      conn.executeQuery(mainJobObjectClass, filter, rh, null);
 
   }
 

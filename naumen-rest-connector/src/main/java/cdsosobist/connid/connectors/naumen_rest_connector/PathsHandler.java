@@ -42,6 +42,9 @@ public class PathsHandler {
 	static final String PERSICON = "icon";								//Иконка	(Элемент справочника)
 	static final String PERSTELEGRAMLOGIN = "telegram";					//Имя пользователя Telegram (username)	(Строка)
 	static final String PERSNEEDGENPASS = "isGenPass";					//Сгенерировать пароль и отправить сотруднику	(Логический)
+	static final String PERSEMPID = "employeeID";						//Табельный номер (Строка)
+	static final String PERSFLID = "fl1C";								//GUID физлица в 1С
+	static final String PERSCORPPHONE = "cPhForAddrBook";				//Корпоративный номер для адресных книг
 
 	
 	//Отдел

@@ -57,7 +57,7 @@ public class NaumenTests {
 	public void testFindById() {
         ResultsHandler rh = connectorObject -> {return true;};
         NaumenFilter filter = new NaumenFilter();
-        filter.byUid = "2324404";
+        filter.byUid = "employee$2324404";
 //        filter.byUid = "ou$8725602";
         conn.executeQuery(accountObjectClass, filter, rh, null);
 //        conn.executeQuery(ouObjectClass, filter, rh, null);

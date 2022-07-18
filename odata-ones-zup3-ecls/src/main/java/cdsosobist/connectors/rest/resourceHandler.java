@@ -38,5 +38,7 @@ public class resourceHandler {
     static final String GUID_PART_2 = "')";
     
     static final String MAIN_JOB_FINDER_PART_1 = "/InformationRegister_ВидыЗанятостиСотрудников_RecordType/SliceLast(,Condition=ФизическоеЛицо_Key%20eq%20guid'";
-    static final String MAIN_JOB_FINDER_PART_2 = "')?$format=json&$filter=ВидЗанятости%20eq%20'ОсновноеМестоРаботы'&$top=1&$orderby=Period%20desc";
+    static final String MAIN_JOB_FINDER_PART_2 = "')?$format=json&$filter=ВидЗанятости%20eq%20'ОсновноеМестоРаботы'%20or%20ВидЗанятости%20eq%20'Совместительство'&$orderby=ВидЗанятости";
+    static final String MAIN_JOB_STATUS_PART_1 = "/InformationRegister_ДанныеСостоянийСотрудников?$format=json&$filter=RecordSet/any(d:%20d/Сотрудник_Key%20eq%20guid'";
+    static final String MAIN_JOB_STATUS_PART_2 = "'%20and%20d/Состояние%20eq%20'Увольнение')";
 }

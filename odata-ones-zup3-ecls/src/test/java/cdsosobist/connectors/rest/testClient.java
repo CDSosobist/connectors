@@ -101,10 +101,10 @@ public class testClient {
         zup3Filter filter = new zup3Filter();
 //        filter.byUid = "fc3c2544-f0f6-11e5-9252-002590832293";
 //        filter.byUid = "500305a7-7e42-11e6-80bd-005056bf108e";
-        filter.byUid = "db05ea59-bc6b-11eb-badd-005056aa6551";
+        filter.byUid = "75a1b600-7360-11e7-80c3-005056bf108e";
 //        filter.byUid = "fff64e9b-ef23-11e5-83a1-089e0115534b";
 
-        conn.executeQuery(empHistorySliceObjectClass, filter, rh, null);
+        conn.executeQuery(mainJobObjectClass, filter, rh, null);
 
     }
 

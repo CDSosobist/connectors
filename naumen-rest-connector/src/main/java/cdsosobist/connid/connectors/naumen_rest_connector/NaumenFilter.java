@@ -10,6 +10,6 @@ public class NaumenFilter {
     }
 
     public String toString() {
-        return "NaumenFilter{byName='" + this.byName + '\'' + ", byUid=" + this.byUid + ", byEmailAddress='" + this.byEmailAddress + ", byPrivateCode='" + this.byPrivateCode + '\'' + '}';
+        return "NaumenFilter{byName='" + this.byName + "\', byUid='" + this.byUid + "', byEmailAddress='" + this.byEmailAddress + "', byPrivateCode='" + this.byPrivateCode + "\'" + '}';
     }
 }

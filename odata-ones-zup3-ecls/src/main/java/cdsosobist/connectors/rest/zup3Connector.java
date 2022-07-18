@@ -1066,7 +1066,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 			}
 		} else {
 
-			JSONArray employees = this.callRequest(request);
+			JSONArray employees = null;
+			try {
+				employees = this.callRequest(request);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 
 			for (int i = 0; i < employees.length(); ++i) {
 				JSONObject employee = employees.getJSONObject(i);
@@ -1113,7 +1118,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 			}
 		} else {
 
-			JSONArray positions = this.callRequest(request);
+			JSONArray positions = null;
+			try {
+				positions = this.callRequest(request);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 
 			for (int i = 0; i < positions.length(); ++i) {
 				JSONObject position = positions.getJSONObject(i);
@@ -1142,7 +1152,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 
 		} else {
 
-			JSONArray managers = this.callRequest(request);
+			JSONArray managers = null;
+			try {
+				managers = this.callRequest(request);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 
 			for (int i = 0; i < managers.length(); ++i) {
 				JSONObject manager = managers.getJSONObject(i);
@@ -1164,13 +1179,26 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 					(((zup3Configuration) this.getConfiguration()).getServiceAddress() + CURRENT_EMP_DATA + REQ_FORMAT
 							 + "&Condition=(ДействуетДо%20gt%20datetime'" + currentDateTime + "'%20or%20ДействуетДо%20eq%20datetime'0001-01-01T00:00:00')%20and%20Сотрудник_Key" + INFOREG_REQ_2 + filter.byUid + "'"));
 			LOG.ok("\n\nlastEventRequest - {0}\n\n", lastEventRequest);
-			JSONObject event = this.callRequest(lastEventRequest).getJSONObject(0);
+			JSONObject event = null;
+			try {
+				event = this.callRequest(lastEventRequest).getJSONObject(0);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			ZonedDateTime eventDate = LocalDateTime.parse(event.getString(CED_EVENT_DATE), formatter).atZone(timeZone);
 			boolean isDismiss = event.getString(CED_EVENT_TYPE).contains("Увольнение");
 
 			HttpGet fakeDissmissRequest = new HttpGet((((zup3Configuration) this.getConfiguration()).getServiceAddress()
 					+ EMPLOYEES + EMP_DETAILS_1 + filter.byUid + EMP_DETAILS_2 + '/' + EMP_ADD_REQ + REQ_FORMAT));
-			JSONArray additionalAttributes = this.callRequest(fakeDissmissRequest);
+			JSONArray additionalAttributes = null;
+			try {
+				additionalAttributes = this.callRequest(fakeDissmissRequest);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 			for (int i = 0; i < additionalAttributes.length(); i++) {
 				JSONObject addAttribute = additionalAttributes.getJSONObject(i);
 				if (addAttribute.getInt("LineNumber") == 2) {
@@ -1198,14 +1226,27 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 			}
 
 		} else {
-			JSONArray events = this.callRequest(request);
+			JSONArray events = null;
+			try {
+				events = this.callRequest(request);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 
 			for (int i = 0; i < events.length(); ++i) {
 				String mainJobIndKey = events.getJSONObject(i).getString(MAIN_JOB_EMP);
 				HttpGet lastEventRequest = new HttpGet(
 						(((zup3Configuration) this.getConfiguration()).getServiceAddress() + CURRENT_EMP_DATA + REQ_FORMAT
 								 + "&Condition=(ДействуетДо%20gt%20datetime'" + currentDateTime + "'%20or%20ДействуетДо%20eq%20datetime'0001-01-01T00:00:00')%20and%20Сотрудник_Key" + INFOREG_REQ_2 + mainJobIndKey + "'"));
-				JSONObject event = this.callRequest(lastEventRequest).getJSONObject(0);
+				JSONObject event = null;
+				try {
+					event = this.callRequest(lastEventRequest).getJSONObject(0);
+				} catch (JSONException e) {
+					throw new ConnectorIOException(e.toString());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				ZonedDateTime eventDate = LocalDateTime.parse(event.getString(CED_EVENT_DATE), formatter)
 						.atZone(timeZone);
 				boolean isDismiss = event.getString(CED_EVENT_TYPE).contains("Увольнение");
@@ -1213,7 +1254,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 				HttpGet fakeDissmissRequest = new HttpGet(
 						(((zup3Configuration) this.getConfiguration()).getServiceAddress() + EMPLOYEES + EMP_DETAILS_1
 								+ mainJobIndKey + EMP_DETAILS_2 + '/' + EMP_ADD_REQ + REQ_FORMAT));
-				JSONArray additionalAttributes = this.callRequest(fakeDissmissRequest);
+				JSONArray additionalAttributes = null;
+				try {
+					additionalAttributes = this.callRequest(fakeDissmissRequest);
+				} catch (JSONException e) {
+					throw new ConnectorIOException(e.toString());
+				}
 				for (int i1 = 0; i1 < additionalAttributes.length(); i1++) {
 					JSONObject addAttribute = additionalAttributes.getJSONObject(i1);
 					if (addAttribute.getInt("LineNumber") == 2) {
@@ -1258,7 +1304,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 
 		} else {
 
-			JSONArray organizations = this.callRequest(request);
+			JSONArray organizations = null;
+			try {
+				organizations = this.callRequest(request);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 
 			for (int i = 0; i < organizations.length(); i++) {
 				JSONObject organization = organizations.getJSONObject(i);
@@ -1287,7 +1338,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 
 		} else {
 
-			JSONArray orgUnits = this.callRequest(request);
+			JSONArray orgUnits = null;
+			try {
+				orgUnits = this.callRequest(request);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 
 			for (int i = 0; i < orgUnits.length(); i++) {
 				JSONObject orgUnit = orgUnits.getJSONObject(i);
@@ -1316,7 +1372,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 
 		} else {
 
-			JSONArray companies = this.callRequest(request);
+			JSONArray companies = null;
+			try {
+				companies = this.callRequest(request);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 
 			for (int i = 0; i < companies.length(); i++) {
 				JSONObject company = companies.getJSONObject(i);
@@ -1331,7 +1392,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 
 	private void handleContactInfo(HttpGet request, ResultsHandler handler, OperationOptions options)
 			throws IOException {
-		JSONArray contacts = this.callRequest(request);
+		JSONArray contacts = null;
+		try {
+			contacts = this.callRequest(request);
+		} catch (JSONException e) {
+			throw new ConnectorIOException(e.toString());
+		}
 
 		for (int i = 0; i < contacts.length(); i++) {
 			JSONObject contactInfo = contacts.getJSONObject(i);
@@ -1339,7 +1405,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 			HttpGet requestContactInfoDetail = new HttpGet(
 					((zup3Configuration) this.getConfiguration()).getServiceAddress() + CONTACT_INFO + REQ_FORMAT
 							+ INFOREG_REQ_1 + CIF_UID + INFOREG_REQ_2 + contactInfo.getString(CIF_UID) + INFOREG_REQ_3);
-			JSONArray contactInfos = this.callRequest(requestContactInfoDetail);
+			JSONArray contactInfos = null;
+			try {
+				contactInfos = this.callRequest(requestContactInfoDetail);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 			for (int j = 0; j < contactInfos.length(); j++) {
 				JSONObject contact = contactInfos.getJSONObject(j);
 				getConfiguration();
@@ -1353,7 +1424,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 	}
 
 	private void handleEmpRoles(HttpGet request, ResultsHandler handler, OperationOptions options) throws IOException {
-		JSONArray empRoles = this.callRequest(request);
+		JSONArray empRoles = null;
+		try {
+			empRoles = this.callRequest(request);
+		} catch (JSONException e) {
+			throw new ConnectorIOException(e.toString());
+		}
 
 		for (int i = 0; i < empRoles.length(); i++) {
 			JSONObject empRole = empRoles.getJSONObject(i);
@@ -1362,7 +1438,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 					((zup3Configuration) this.getConfiguration()).getServiceAddress() + EMP_ROLES + REQ_FORMAT
 							+ INFOREG_REQ_1 + ER_EMP_KEY + INFOREG_REQ_2 + empRole.getString(ER_EMP_KEY)
 							+ INFOREG_REQ_3);
-			JSONArray roles = this.callRequest(requestEmpRolesDetail);
+			JSONArray roles = null;
+			try {
+				roles = this.callRequest(requestEmpRolesDetail);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 			for (int j = 0; j < roles.length(); j++) {
 				JSONObject role = roles.getJSONObject(j);
 				ConnectorObject connectorObject = this.convertEmpRoleToConnectorObject(role);
@@ -1399,7 +1480,12 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 				return;
 		} else {
 
-			JSONArray individuals = this.callRequest(request);
+			JSONArray individuals = null;
+			try {
+				individuals = this.callRequest(request);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 
 			for (int i = 0; i < individuals.length(); i++) {
 				JSONObject individual = individuals.getJSONObject(i);
@@ -1428,10 +1514,15 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 			HttpGet requestEmpDetail = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
 					+ MAIN_EMP_OF_INDIVIDUALS + REQ_FORMAT + MAIN_EMP_REQ_1 + INFOREG_REQ_2 + filter.byUid
 					+ INFOREG_REQ_3 + FIND_EMP_LAST_EVENT);
-			JSONArray empTypes = this.callRequest(requestEmpDetail);
+			JSONArray empTypes = null;
+			try {
+				empTypes = this.callRequest(requestEmpDetail);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			}
 			for (int j = 0; j < empTypes.length(); j++) {
 				JSONObject mainEmp = empTypes.getJSONObject(j);
-				if (mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы")) {
+				if (mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы") || mainEmp.getString(MEI_EMP_TYPE).equals("Совместительство")) {
 					ConnectorObject connectorObject = this.convertMainEmpOfIndividualToConnectorObject(mainEmp);
 					boolean finish = !handler.handle(connectorObject);
 					if (finish) {
@@ -1453,7 +1544,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 
 				for (int j = 0; j < empTypes.length(); j++) {
 					JSONObject mainEmp = empTypes.getJSONObject(j);
-					if (mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы")) {
+					if (mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы") || mainEmp.getString(MEI_EMP_TYPE).equals("Совместительство")) {
 						ConnectorObject connectorObject = this.convertMainEmpOfIndividualToConnectorObject(mainEmp);
 						boolean finish = !handler.handle(connectorObject);
 						if (finish) {
@@ -1600,12 +1691,23 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 			throws IOException {
 		if (filter != null && filter.byUid != null) {
 			HttpGet requestJobDetail = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
-					+ MAIN_JOB_FINDER_PART_1 + filter.byUid + MAIN_JOB_FINDER_PART_2);
+					+ MAIN_JOB_FINDER_PART_1 + filter.byUid.substring(0,36) + MAIN_JOB_FINDER_PART_2);
+//			LOG.ok("\n\n\nСтрока запроса основного места работы: {0}", requestJobDetail.toString());
 			JSONArray empTypes = this.callRequest(requestJobDetail);
 
 			for (int j = 0; j < empTypes.length(); j++) {
 				JSONObject mainEmp = empTypes.getJSONObject(j);
-				if (mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы")) {
+				
+				String empGuid = mainEmp.getString(MAIN_JOB_EMP);
+				HttpGet requestEmpStatusIsFiredReq = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
+						+ MAIN_JOB_STATUS_PART_1 + empGuid + MAIN_JOB_STATUS_PART_2);
+				
+				JSONObject empStatus = this.callORequest(requestEmpStatusIsFiredReq);
+				JSONArray empStatusValue = empStatus.getJSONArray("value");
+//				LOG.ok("\n\nEmpstatusvalue is empty - {0}, like {1}\n\n", empStatusValue.isEmpty(), empStatusValue);
+				
+				
+				if ((mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы") || mainEmp.getString(MEI_EMP_TYPE).equals("Совместительство")) && empStatusValue.isEmpty()) {
 					ConnectorObject connectorObject = this.convertMainJobToConnectorObject(mainEmp);
 					boolean finish = !handler.handle(connectorObject);
 					if (finish) {
@@ -1623,8 +1725,19 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 				JSONArray empTypes = this.callRequest(requestJobDetail);
 
 				for (int j = 0; j < empTypes.length(); j++) {
+					
 					JSONObject mainEmp = empTypes.getJSONObject(j);
-					if (mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы")) {
+					
+					
+					String empGuid = mainEmp.getString(MAIN_JOB_EMP);
+					HttpGet requestEmpStatusIsFiredReq = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
+							+ MAIN_JOB_STATUS_PART_1 + empGuid + MAIN_JOB_STATUS_PART_2);
+					
+					JSONObject empStatus = this.callORequest(requestEmpStatusIsFiredReq);
+					JSONArray empStatusValue = empStatus.getJSONArray("value");
+
+					
+					if ((mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы") || mainEmp.getString(MEI_EMP_TYPE).equals("Совместительство")) && empStatusValue.isEmpty()) {
 						ConnectorObject connectorObject = this.convertMainJobToConnectorObject(mainEmp);
 						boolean finish = !handler.handle(connectorObject);
 						if (finish) {
@@ -1642,7 +1755,15 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 			HttpGet requestGphDetail = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
 					+ GPH + REQ_FORMAT + INFOREG_REQ_1 + GPH_IND_KEY + INFOREG_REQ_2 + filter.byUid + INFOREG_REQ_3
 					+ "&$orderby=ДатаНачала%20desc");
-			JSONObject gphContract = this.callRequest(requestGphDetail).getJSONObject(0);
+			JSONObject gphContract = null;
+			try {
+				gphContract = this.callRequest(requestGphDetail).getJSONObject(0);
+			} catch (JSONException e) {
+				throw new ConnectorIOException(e.toString());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			ZonedDateTime endofContract = LocalDateTime.parse(gphContract.getString(GPH_VALID_TO), formatter)
 					.atZone(ZoneId.systemDefault());
@@ -2315,8 +2436,8 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 
 	private ConnectorObject convertMainJobToConnectorObject(JSONObject mainJob) {
 		ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
-		builder.setUid(new Uid(mainJob.getString(MAIN_JOB_INDIVIDUAL)));
-		builder.setName(mainJob.getString(MAIN_JOB_INDIVIDUAL));
+		builder.setUid(new Uid(mainJob.getString(MAIN_JOB_INDIVIDUAL) + '_' + mainJob.getString(MAIN_JOB_EMP)));
+		builder.setName(mainJob.getString(MAIN_JOB_INDIVIDUAL) + '_' + mainJob.getString(MAIN_JOB_EMP));
 
 		this.getIfExists(mainJob, MAIN_JOB_EMP, builder);
 //        this.getIfExists(mainJob, "Period", builder);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="C:/Users/koshelevra/git/connectors2022/jars/naumen-rest-connector-1.0.0.1.jar"/>
+    <jar path="F:/conn-srvn/naumen-rest-connector-4.0.0.4.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/naumen-rest-connector/YOBA.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
