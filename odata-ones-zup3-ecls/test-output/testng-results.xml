@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="915" started-at="2022-06-30T17:58:50 MSK" finished-at="2022-06-30T17:58:51 MSK">
+  <suite started-at="2022-07-19T19:29:59 MSK" name="Default suite" finished-at="2022-07-19T19:30:03 MSK" duration-ms="4446">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="915" started-at="2022-06-30T17:58:50 MSK" finished-at="2022-06-30T17:58:51 MSK">
+    <test started-at="2022-07-19T19:29:59 MSK" name="Default test" finished-at="2022-07-19T19:30:03 MSK" duration-ms="4446">
       <class name="cdsosobist.connectors.rest.ZUP3TestNGClient">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:cdsosobist.connectors.rest.ZUP3TestNGClient@6ee52dcd]" name="setUp" is-config="true" duration-ms="301" started-at="2022-06-30T17:58:50 MSK" finished-at="2022-06-30T17:58:50 MSK">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:cdsosobist.connectors.rest.ZUP3TestNGClient@20ccf40b]" started-at="2022-07-19T19:29:59 MSK" name="setUp" finished-at="2022-07-19T19:29:59 MSK" duration-ms="451" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testByUid()[pri:0, instance:cdsosobist.connectors.rest.ZUP3TestNGClient@6ee52dcd]" name="testByUid" duration-ms="593" started-at="2022-06-30T17:58:50 MSK" finished-at="2022-06-30T17:58:51 MSK">
+        <test-method signature="testAll()[pri:0, instance:cdsosobist.connectors.rest.ZUP3TestNGClient@20ccf40b]" started-at="2022-07-19T19:29:59 MSK" name="testAll" finished-at="2022-07-19T19:30:03 MSK" duration-ms="3854" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testByUid -->
+        </test-method> <!-- testAll -->
       </class> <!-- cdsosobist.connectors.rest.ZUP3TestNGClient -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
