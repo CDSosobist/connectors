@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="F:/conn-srvn/cdsosobist.connectors.zup3-2.3.0.0.jar"/>
+    <jar path="//10.128.12.12/f$/conn-srvn/cdsosobist.connectors.zup3-2.3.1.1.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/odata-ones-zup3-ecls/YOBA.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>

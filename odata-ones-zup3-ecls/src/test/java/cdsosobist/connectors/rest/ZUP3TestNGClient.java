@@ -61,4 +61,17 @@ public class ZUP3TestNGClient {
 
   }
 
+  @Test
+  public void testAll() {
+
+      ResultsHandler rh = connectorObject -> {
+          return true;
+      };
+
+      zup3Filter filter = new zup3Filter();
+
+      conn.executeQuery(mainJobObjectClass, filter, rh, null);
+
+  }
+
 }

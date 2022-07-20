@@ -51,6 +51,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -1689,7 +1690,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 
 	private void handleMainJobs(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options)
 			throws IOException {
-		if (filter != null && filter.byUid != null) {
+		if (filter != null && filter.byUid != null) {			
 			HttpGet requestJobDetail = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
 					+ MAIN_JOB_FINDER_PART_1 + filter.byUid.substring(0,36) + MAIN_JOB_FINDER_PART_2);
 //			LOG.ok("\n\n\nСтрока запроса основного места работы: {0}", requestJobDetail.toString());
@@ -1716,37 +1717,90 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 				}
 			}
 		} else {
-			JSONArray mainJobs = this.callRequest(request);
-
-			for (int i = 0; i < mainJobs.length(); i++) {
-				String indKey = mainJobs.getJSONObject(i).getString(MAIN_JOB_INDIVIDUAL);
-				HttpGet requestJobDetail = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
-						+ MAIN_JOB_FINDER_PART_1 + indKey + MAIN_JOB_FINDER_PART_2);
-				JSONArray empTypes = this.callRequest(requestJobDetail);
-
-				for (int j = 0; j < empTypes.length(); j++) {
-					
-					JSONObject mainEmp = empTypes.getJSONObject(j);
-					
-					
-					String empGuid = mainEmp.getString(MAIN_JOB_EMP);
-					HttpGet requestEmpStatusIsFiredReq = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
-							+ MAIN_JOB_STATUS_PART_1 + empGuid + MAIN_JOB_STATUS_PART_2);
-					
-					JSONObject empStatus = this.callORequest(requestEmpStatusIsFiredReq);
-					JSONArray empStatusValue = empStatus.getJSONArray("value");
-
-					
-					if ((mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы") || mainEmp.getString(MEI_EMP_TYPE).equals("Совместительство")) && empStatusValue.isEmpty()) {
-						ConnectorObject connectorObject = this.convertMainJobToConnectorObject(mainEmp);
-						boolean finish = !handler.handle(connectorObject);
-						if (finish) {
-							return;
-						}
-					}
+			int mainCount = 0;
+			int firedCount = 0;
+			int usedCount = 0;
+			int handledCount = 0;
+			ArrayList<String> uuids = new ArrayList<>();
+			ArrayList<String> usedUUIDs = new ArrayList<>();
+			
+			HttpGet firedEmpsReq = new HttpGet(resourceHandler.DISMISSED_EMPS_FULL_REQ);
+			JSONArray firedEmps = this.callRequest(firedEmpsReq);
+			
+			for (int i = 0; i < firedEmps.length(); i++) {
+				JSONArray currentRecordSet = firedEmps.getJSONObject(i).getJSONArray("RecordSet");
+				for (int j = 0; j < currentRecordSet.length(); j++) {
+					JSONObject currEntry = currentRecordSet.getJSONObject(j);
+					String currUUID = currEntry.getString("Сотрудник_Key");
+					uuids.add(currUUID);
 				}
 			}
+			
+//			LOG.error("Fired emps: {0}", uuids);
+			String currReqStr = request.toString().substring(4, (request.toString().length() -9)) + "&$orderby=ВидЗанятости";
+			HttpGet currRequest = new HttpGet(currReqStr);
+			JSONArray mainJobs = this.callRequest(currRequest);
+			
+			for (int i = 0; i < mainJobs.length(); i++) {
+				mainCount ++;
+				JSONObject currEmp = mainJobs.getJSONObject(i);
+				
+				String empGuid = currEmp.getString(MAIN_JOB_EMP);
+				String persGuid = currEmp.getString(MAIN_JOB_INDIVIDUAL);
+				Boolean empNotInFiredEmps = !uuids.contains(empGuid);
+				Boolean guidIsNotUsed = !usedUUIDs.contains(persGuid);
+				
+				if ((currEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы") || currEmp.getString(MEI_EMP_TYPE).equals("Совместительство")) && empNotInFiredEmps && guidIsNotUsed) {
+					handledCount ++;
+					ConnectorObject connectorObject = this.convertMainJobToConnectorObject(currEmp);
+					usedUUIDs.add(persGuid);
+					boolean finish = !handler.handle(connectorObject);
+					if (finish) {
+						return;
+					}
+				} else if (!empNotInFiredEmps) {
+					firedCount ++;
+				} else if (!guidIsNotUsed) {
+					usedCount ++;
+				}
+				
+			}
+
+//			for (int i = 0; i < mainJobs.length(); i++) {
+//				mainCount ++;
+//				String indKey = mainJobs.getJSONObject(i).getString(MAIN_JOB_INDIVIDUAL);
+//				HttpGet requestJobDetail = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
+//						+ MAIN_JOB_FINDER_PART_1 + indKey + MAIN_JOB_FINDER_PART_2);
+//				JSONArray empTypes = this.callRequest(requestJobDetail);
+//
+//				for (int j = 0; j < empTypes.length(); j++) {
+//					
+//					JSONObject mainEmp = empTypes.getJSONObject(j);
+//					
+//					
+//					String empGuid = mainEmp.getString(MAIN_JOB_EMP);
+//					Boolean empNotInFiredEmps = !uuids.contains(empGuid);
+//					Boolean guidIsNotUsed = !usedUUIDs.contains(empGuid);
+////					HttpGet requestEmpStatusIsFiredReq = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
+////							+ MAIN_JOB_STATUS_PART_1 + empGuid + MAIN_JOB_STATUS_PART_2);
+////					
+////					JSONObject empStatus = this.callORequest(requestEmpStatusIsFiredReq);
+////					JSONArray empStatusValue = empStatus.getJSONArray("value");
+////
+////					
+//					if ((mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы") || mainEmp.getString(MEI_EMP_TYPE).equals("Совместительство")) && empNotInFiredEmps && guidIsNotUsed) {
+//						ConnectorObject connectorObject = this.convertMainJobToConnectorObject(mainEmp);
+//						usedUUIDs.add(empGuid);
+//						boolean finish = !handler.handle(connectorObject);
+//						if (finish) {
+//							return;
+//						}
+//					}
+//				}
+//			}
+//		LOG.error("Итого: \n\tВсего записей - {0}\n\tОбработано - {1}\n\tУволено - {2}\n\tПовторяется - {3}\n\nВ массиве использованных - {4}", mainCount, handledCount, firedCount, usedCount, usedUUIDs.size());
 		}
+		
 	}
 
 	private void handleGph(HttpGet request, zup3Filter filter, ResultsHandler handler, OperationOptions options)
