@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Built-By: CDSOsobist
 ConnectorBundle-FrameworkVersion: 1.4.2.14
-ConnectorBundle-Version: 2.3.1.1
+ConnectorBundle-Version: 2.3.1.2
 ConnectorBundle-Name: cdsosobist.connectors.zup3

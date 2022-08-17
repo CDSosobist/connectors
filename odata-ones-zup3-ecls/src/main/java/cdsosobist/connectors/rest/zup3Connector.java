@@ -742,17 +742,6 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 		schemaBuilder.defineObjectClass(ociBuilder.build());
 	}
 
-	private JSONObject callORequest(HttpRequestBase request) throws IOException {
-		request.setHeader("Content-Type", "application/json");
-		this.authHeader(request);
-		CloseableHttpResponse response;
-		response = this.execute(request);
-		this.processYResponseErrors(response);
-		String result = EntityUtils.toString(response.getEntity());
-		this.closeResponse(response);
-		return new JSONObject(result);
-	}
-
 	private void authHeader(HttpRequestBase request) {
 		final StringBuilder sb = new StringBuilder();
 		if (((zup3Configuration) this.getConfiguration()).getPassword() != null) {
@@ -769,10 +758,29 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 		request.setHeader("Content-Type", "application/json");
 		this.authHeader(request);
 		CloseableHttpResponse response = this.execute(request);
-		this.processYResponseErrors(response);
-		String result = EntityUtils.toString(response.getEntity());
-		this.closeResponse(response);
-		return new JSONObject(result).getJSONArray("value");
+		int statusCode = response.getStatusLine().getStatusCode();
+		if(statusCode == 200) {
+			String result = EntityUtils.toString(response.getEntity());
+			this.closeResponse(response);
+			return new JSONObject(result).getJSONArray("value");
+		} else {
+			throw new ConnectorIOException("Что-то пошло не так, код ответа сервера - " + statusCode);
+		}
+	}
+
+	private JSONObject callORequest(HttpRequestBase request) throws IOException {
+		request.setHeader("Content-Type", "application/json");
+		this.authHeader(request);
+		CloseableHttpResponse response;
+		response = this.execute(request);
+		int statusCode = response.getStatusLine().getStatusCode();
+		if(statusCode == 200) {
+			String result = EntityUtils.toString(response.getEntity());
+			this.closeResponse(response);
+			return new JSONObject(result);
+		} else {
+			throw new ConnectorIOException("Что-то пошло не так, код ответа сервера - " + statusCode);
+		}
 	}
 
 	private void processYResponseErrors(CloseableHttpResponse response) {
