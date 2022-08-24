@@ -217,6 +217,12 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration> 
 		AttributeInfoBuilder attrPersCorpPhoneBuilder = new AttributeInfoBuilder(PathsHandler.PERSCORPPHONE);
 		ociBuilder.addAttributeInfo(attrPersCorpPhoneBuilder.build());
 			
+		AttributeInfoBuilder attrPersSityPhoneFromSignBuilder = new AttributeInfoBuilder(PathsHandler.PERSCITYPHONEFORSIGN);
+		ociBuilder.addAttributeInfo(attrPersSityPhoneFromSignBuilder.build());
+			
+		AttributeInfoBuilder attrPersPhoneNumberBuilder = new AttributeInfoBuilder(PathsHandler.PERSPHONENUMBER);
+		ociBuilder.addAttributeInfo(attrPersPhoneNumberBuilder.build());
+			
 		schemaBuilder.defineObjectClass(ociBuilder.build());
 	}
 
@@ -400,6 +406,8 @@ public class NaumenConnector extends AbstractRestConnector<NaumenConfiguration> 
 		this.getStringIfExists(currAccount, PathsHandler.PERSEMPID, builder);
 		this.getStringIfExists(currAccount, PathsHandler.PERSFLID, builder);
 		this.getStringIfExists(currAccount, PathsHandler.PERSCORPPHONE, builder);
+		this.getStringIfExists(currAccount, PathsHandler.PERSCITYPHONEFORSIGN, builder);
+		this.getStringIfExists(currAccount, PathsHandler.PERSPHONENUMBER, builder);
 		
 		this.getDateTimeIfExists(currAccount, PathsHandler.PERSREMOVALDATE, builder);
 		this.getDateTimeIfExists(currAccount, PathsHandler.PERSMODIFDATE, builder);

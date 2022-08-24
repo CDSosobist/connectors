@@ -45,6 +45,8 @@ public class PathsHandler {
 	static final String PERSEMPID = "employeeID";						//Табельный номер (Строка)
 	static final String PERSFLID = "fl1C";								//GUID физлица в 1С
 	static final String PERSCORPPHONE = "cPhForAddrBook";				//Корпоративный номер для адресных книг
+	static final String PERSCITYPHONEFORSIGN = "cityPhoneAddrB";		//Общий городской номер для адресной книги
+	static final String PERSPHONENUMBER = "persNumAddrB";				//Личный номер телефона для указания в адресной книге
 
 	
 	//Отдел
