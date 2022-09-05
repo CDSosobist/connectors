@@ -80,6 +80,7 @@ import static cdsosobist.connectors.rest.resourceHandler.*;
 import static cdsosobist.connectors.rest.staffListHandler.*;
 import static cdsosobist.connectors.rest.subordinationOfOrgHandler.*;
 import static cdsosobist.connectors.rest.usersHandler.*;
+import static cdsosobist.connectors.rest.EmpsOfStaffPositionsHandler.*;
 
 @SuppressWarnings("unused")
 @ConnectorClass(displayNameKey = "zup3.connector.display", configurationClass = zup3Configuration.class)
@@ -169,6 +170,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 		this.buildGphObjectClass(schemaBuilder);
 		this.buildFIOChangeClass(schemaBuilder);
 		this.buildEmpStatusClass(schemaBuilder);
+		this.buildEmpsOfStaffPositionsClass(schemaBuilder);
 		return schemaBuilder.build();
 	}
 
@@ -742,6 +744,42 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 		schemaBuilder.defineObjectClass(ociBuilder.build());
 	}
 
+	private void buildEmpsOfStaffPositionsClass(SchemaBuilder schemaBuilder) {
+		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+		ociBuilder.setType("EmpOfStaff");
+		
+		AttributeInfoBuilder attrEmpOfStaffRecTypeBuilder = new AttributeInfoBuilder(EMP_OF_STAFF_REC_TYPE);
+		ociBuilder.addAttributeInfo(attrEmpOfStaffRecTypeBuilder.build());
+
+		AttributeInfoBuilder attrEmpOfStaffIsActiveBuilder = new AttributeInfoBuilder(EMP_OF_STAFF_IS_ACTIVE);
+		attrEmpOfStaffIsActiveBuilder.setType(boolean.class);
+		ociBuilder.addAttributeInfo(attrEmpOfStaffIsActiveBuilder.build());
+
+		AttributeInfoBuilder attrEmpOfStaffEmpKeyBuilder = new AttributeInfoBuilder(EMP_OF_STAFF_EMP_KEY);
+		ociBuilder.addAttributeInfo(attrEmpOfStaffEmpKeyBuilder.build());
+
+		AttributeInfoBuilder attrEmpOfStaffHeadOrgKeyBuilder = new AttributeInfoBuilder(EMP_OF_STAFF_HEAD_ORG_KEY);
+		ociBuilder.addAttributeInfo(attrEmpOfStaffHeadOrgKeyBuilder.build());
+
+		AttributeInfoBuilder attrEmpOfStaffIndKeyBuilder = new AttributeInfoBuilder(EMP_OF_STAFF_IND_KEY);
+		ociBuilder.addAttributeInfo(attrEmpOfStaffIndKeyBuilder.build());
+
+		AttributeInfoBuilder attrEmpOfStaffStaffKeyBuilder = new AttributeInfoBuilder(EMP_OF_STAFF_STAFF_KEY);
+		ociBuilder.addAttributeInfo(attrEmpOfStaffStaffKeyBuilder.build());
+
+		AttributeInfoBuilder attrEmpOfStaffEndDateBuilder = new AttributeInfoBuilder(EMP_OF_STAFF_END_DATE);
+		ociBuilder.addAttributeInfo(attrEmpOfStaffEndDateBuilder.build());
+
+		AttributeInfoBuilder attrEmpOfStaffReplaceEmpKeyBuilder = new AttributeInfoBuilder(EMP_OF_STAFF_REPLACE_EMP_KEY);
+		ociBuilder.addAttributeInfo(attrEmpOfStaffReplaceEmpKeyBuilder.build());
+
+		AttributeInfoBuilder attrEmpOfStaffPlannedEndDateBuilder = new AttributeInfoBuilder(EMP_OF_STAFF_PLANNED_END_DATE);
+		ociBuilder.addAttributeInfo(attrEmpOfStaffPlannedEndDateBuilder.build());
+
+		
+		schemaBuilder.defineObjectClass(ociBuilder.build());
+	}
+
 	private void authHeader(HttpRequestBase request) {
 		final StringBuilder sb = new StringBuilder();
 		if (((zup3Configuration) this.getConfiguration()).getPassword() != null) {
@@ -1035,6 +1073,15 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 					((zup3Configuration) this.getConfiguration()).getServiceAddress() + EMPSTATUS + REQ_FORMAT);
 			try {
 				this.handleEmpStatus(request, query, handler, options);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else if (objectClass.is("EmpOfStaff")) {
+
+			HttpGet request = new HttpGet(
+					((zup3Configuration) this.getConfiguration()).getServiceAddress() + EMPS_OF_STAFF_POSITIONS_FIRST_PART + currentDateTime + EMPS_OF_STAFF_POSITIONS_SECOND_PART);
+			try {
+				this.handleEmpsOfStaffPositions(request, query, handler, options);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -1774,39 +1821,40 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 				
 			}
 
-//			for (int i = 0; i < mainJobs.length(); i++) {
-//				mainCount ++;
-//				String indKey = mainJobs.getJSONObject(i).getString(MAIN_JOB_INDIVIDUAL);
-//				HttpGet requestJobDetail = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
-//						+ MAIN_JOB_FINDER_PART_1 + indKey + MAIN_JOB_FINDER_PART_2);
-//				JSONArray empTypes = this.callRequest(requestJobDetail);
-//
-//				for (int j = 0; j < empTypes.length(); j++) {
-//					
-//					JSONObject mainEmp = empTypes.getJSONObject(j);
-//					
-//					
-//					String empGuid = mainEmp.getString(MAIN_JOB_EMP);
-//					Boolean empNotInFiredEmps = !uuids.contains(empGuid);
-//					Boolean guidIsNotUsed = !usedUUIDs.contains(empGuid);
-////					HttpGet requestEmpStatusIsFiredReq = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
-////							+ MAIN_JOB_STATUS_PART_1 + empGuid + MAIN_JOB_STATUS_PART_2);
-////					
-////					JSONObject empStatus = this.callORequest(requestEmpStatusIsFiredReq);
-////					JSONArray empStatusValue = empStatus.getJSONArray("value");
-////
-////					
-//					if ((mainEmp.getString(MEI_EMP_TYPE).equals("ОсновноеМестоРаботы") || mainEmp.getString(MEI_EMP_TYPE).equals("Совместительство")) && empNotInFiredEmps && guidIsNotUsed) {
-//						ConnectorObject connectorObject = this.convertMainJobToConnectorObject(mainEmp);
-//						usedUUIDs.add(empGuid);
-//						boolean finish = !handler.handle(connectorObject);
-//						if (finish) {
-//							return;
-//						}
-//					}
-//				}
-//			}
-//		LOG.error("Итого: \n\tВсего записей - {0}\n\tОбработано - {1}\n\tУволено - {2}\n\tПовторяется - {3}\n\nВ массиве использованных - {4}", mainCount, handledCount, firedCount, usedCount, usedUUIDs.size());
+		}
+		
+	}
+
+	private void handleEmpsOfStaffPositions(HttpGet request, zup3Filter filter, ResultsHandler handler,	OperationOptions options) throws IOException, JSONException{
+		if (filter != null && filter.byUid != null) {
+			HttpGet empOfStaffPositionRequest = new HttpGet(
+					((zup3Configuration) this.getConfiguration()).getServiceAddress() + FIRST_PART_OF_EOSP_REQ + currentDateTime + SECOND_PART_OF_EOSP_REQ + filter.byUid + THIRD_PART_OF_EOSP_REQ
+					);
+			JSONObject empOfStaffPosition = this.callRequest(empOfStaffPositionRequest).getJSONObject(0);
+			ConnectorObject connectorObject = this.convertEmpOfStaffPositionToConnectorObject(empOfStaffPosition);
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+			}
+		} else {
+			ArrayList<String> usedUUIDs = new ArrayList<>();
+			
+			JSONArray empsOfStaffPositions = this.callRequest(request);
+			for (int i = 0; i < empsOfStaffPositions.length(); i++) {
+				JSONObject empOfStaffPosition = empsOfStaffPositions.getJSONObject(i);
+				String eospGuid = empOfStaffPosition.getString(EMP_OF_STAFF_STAFF_KEY);
+				Boolean guidIsNotUsed = !usedUUIDs.contains(eospGuid);
+				
+				if (guidIsNotUsed) {
+					ConnectorObject connectorObject = this.convertEmpOfStaffPositionToConnectorObject(empOfStaffPosition);
+					usedUUIDs.add(eospGuid);
+					boolean finish = !handler.handle(connectorObject);
+					if (finish) {
+						return;
+					}
+				}
+				
+			}
 		}
 		
 	}
@@ -2346,6 +2394,30 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 		this.getIfExists(empRole, ER_EMP_KEY, builder);
 		this.getIfExists(empRole, ER_EMP_ROLE, builder);
 
+		new HashMap<>();
+		LOG.ok("Builder.build: {0}", builder.build());
+		return builder.build();
+	}
+
+	private ConnectorObject convertEmpOfStaffPositionToConnectorObject(JSONObject empOfStaffPosition) throws IOException{
+		ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
+		builder.setUid(new Uid(empOfStaffPosition.getString(EMP_OF_STAFF_STAFF_KEY)));
+		builder.setName(empOfStaffPosition.getString(EMP_OF_STAFF_STAFF_KEY));
+		
+		this.getIfExists(empOfStaffPosition, EMP_OF_STAFF_REC_TYPE, builder);
+		this.getIfExists(empOfStaffPosition, EMP_OF_STAFF_IS_ACTIVE, builder);
+		this.getIfExists(empOfStaffPosition, EMP_OF_STAFF_EMP_KEY, builder);
+		this.getIfExists(empOfStaffPosition, EMP_OF_STAFF_HEAD_ORG_KEY, builder);
+		this.getIfExists(empOfStaffPosition, EMP_OF_STAFF_IND_KEY, builder);
+		this.getIfExists(empOfStaffPosition, EMP_OF_STAFF_STAFF_KEY, builder);
+		this.getIfExists(empOfStaffPosition, EMP_OF_STAFF_REPLACE_EMP_KEY, builder);
+		
+		ZonedDateTime endDateValue = LocalDateTime.parse(empOfStaffPosition.getString(EMP_OF_STAFF_END_DATE), formatter).atZone(timeZone);
+		this.addAttr(builder, EMP_OF_STAFF_END_DATE, endDateValue);
+		
+		ZonedDateTime plannedEndDateValue = LocalDateTime.parse(empOfStaffPosition.getString(EMP_OF_STAFF_PLANNED_END_DATE), formatter).atZone(timeZone);
+		this.addAttr(builder, EMP_OF_STAFF_PLANNED_END_DATE, plannedEndDateValue);
+		
 		new HashMap<>();
 		LOG.ok("Builder.build: {0}", builder.build());
 		return builder.build();
