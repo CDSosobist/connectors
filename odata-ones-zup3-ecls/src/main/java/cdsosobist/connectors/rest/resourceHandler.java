@@ -26,6 +26,7 @@ public class resourceHandler {
     static final String EMPSTATUS = "/InformationRegister_ДанныеСостоянийСотрудников";
     static final String EMPS_OF_STAFF_POSITIONS_FIRST_PART = "/InformationRegister_ЗанятостьПозицийШтатногоРасписания_RecordType/SliceLast(Condition='ВидЗанятостиПозиции%20eq%20'Занята'%20and%20(ДействуетДо%20gt%20datetime'";
     static final String EMPS_OF_STAFF_POSITIONS_SECOND_PART = "'%20or%20ДействуетДо%20eq%20datetime'0001-01-01T00:00:00')')?$format=json&$orderby=Period%20desc";
+    static final String EMPS_OF_DISP_STAFF = "/InformationRegister_ЭЛРОС_ЗанятыеСтавкиДиспетчеров_RecordType";
 
     static final String INFOREG_REQ_1 = "&$filter=";
     static final String INFOREG_REQ_2 = "%20eq%20guid'";

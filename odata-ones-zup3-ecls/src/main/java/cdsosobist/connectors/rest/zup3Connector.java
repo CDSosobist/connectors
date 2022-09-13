@@ -81,6 +81,7 @@ import static cdsosobist.connectors.rest.staffListHandler.*;
 import static cdsosobist.connectors.rest.subordinationOfOrgHandler.*;
 import static cdsosobist.connectors.rest.usersHandler.*;
 import static cdsosobist.connectors.rest.EmpsOfStaffPositionsHandler.*;
+import static cdsosobist.connectors.rest.DispetcherHandler.*;
 
 @SuppressWarnings("unused")
 @ConnectorClass(displayNameKey = "zup3.connector.display", configurationClass = zup3Configuration.class)
@@ -171,6 +172,7 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 		this.buildFIOChangeClass(schemaBuilder);
 		this.buildEmpStatusClass(schemaBuilder);
 		this.buildEmpsOfStaffPositionsClass(schemaBuilder);
+		this.buildEmpsOfDispStaffClass(schemaBuilder);
 		return schemaBuilder.build();
 	}
 
@@ -209,6 +211,30 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 
 		AttributeInfoBuilder attrEmpNeedADBuilder = new AttributeInfoBuilder("УЗДляAD");
 		ociBuilder.addAttributeInfo(attrEmpNeedADBuilder.build());
+
+		schemaBuilder.defineObjectClass(ociBuilder.build());
+	}
+
+	private void buildEmpsOfDispStaffClass(SchemaBuilder schemaBuilder) {
+		ObjectClassInfoBuilder ociBuilder = new ObjectClassInfoBuilder();
+		ociBuilder.setType("DispStaffs");
+		
+		AttributeInfoBuilder attrDispObjOfBuildingBuilder = new AttributeInfoBuilder(DISP_OBJ_OF_BUILDING);
+		ociBuilder.addAttributeInfo(attrDispObjOfBuildingBuilder.build());		
+
+		AttributeInfoBuilder attrDispOrgKeyBuilder = new AttributeInfoBuilder(DISP_ORG_KEY);
+		ociBuilder.addAttributeInfo(attrDispOrgKeyBuilder.build());		
+
+		AttributeInfoBuilder attrDispEmpKeyBuilder = new AttributeInfoBuilder(DISP_EMP_KEY);
+		ociBuilder.addAttributeInfo(attrDispEmpKeyBuilder.build());		
+
+		AttributeInfoBuilder attrDispStartDateBuilder = new AttributeInfoBuilder(DISP_START_DATE);
+		ociBuilder.addAttributeInfo(attrDispStartDateBuilder.build());
+		attrDispStartDateBuilder.setType(ZonedDateTime.class);
+
+		AttributeInfoBuilder attrDispEndDateBuilder = new AttributeInfoBuilder(DISP_END_DATE);
+		ociBuilder.addAttributeInfo(attrDispEndDateBuilder.build());
+		attrDispEndDateBuilder.setType(ZonedDateTime.class);
 
 		schemaBuilder.defineObjectClass(ociBuilder.build());
 	}
@@ -1085,6 +1111,15 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		} else if (objectClass.is("DispStaffs")) {
+
+			HttpGet request = new HttpGet(
+					((zup3Configuration) this.getConfiguration()).getServiceAddress() + EMPS_OF_DISP_STAFF + REQ_FORMAT);
+			try {
+				this.handleEmpsOfDispStaffs(request, query, handler, options);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -1156,6 +1191,35 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 			}
 			getConfiguration();
 			employees.length();
+		}
+	}
+
+	private void handleEmpsOfDispStaffs(HttpGet request, zup3Filter filter, ResultsHandler handler,
+			OperationOptions options) throws IOException{
+		if (filter != null && filter.byUid != null) {
+			HttpGet filteredReqest = new HttpGet(((zup3Configuration) this.getConfiguration()).getServiceAddress()
+					+ REQ_FORMAT + "&$filter=Сотрудник_Key%20eq%20guid' " + filter.byUid + "'");
+			JSONObject empOfDisp = this.callORequest(filteredReqest);
+			ConnectorObject connectorObject = this.convrtEmpOfDispStaffToConnectorObject(empOfDisp);
+			boolean finish = !handler.handle(connectorObject);
+			if (finish) {
+				return;
+			}
+		} else {
+			try {
+				JSONArray empsOfDispStaffs = this.callRequest(request);
+				LOG.ok("Полученный empsOfDispStaffs - {0}", empsOfDispStaffs);
+				for (int i = 0; i < empsOfDispStaffs.length(); i++) {
+					JSONObject empOfDisp = empsOfDispStaffs.getJSONObject(i);
+					ConnectorObject connectorObject = this.convrtEmpOfDispStaffToConnectorObject(empOfDisp);
+					boolean finish = !handler.handle(connectorObject);
+					if (finish) {
+						return;
+					}
+				}
+			} catch (Exception e) {
+				throw new ConnectorIOException(e.toString());
+			}
 		}
 	}
 
@@ -2143,6 +2207,26 @@ public class zup3Connector extends AbstractRestConnector<zup3Configuration>
 
 		this.getIfExists(manager, MAN_STAF_POS_KEY, builder);
 
+		new HashMap<>();
+		LOG.ok("Builder.build: {0}", builder.build());
+		return builder.build();
+	}
+
+	private ConnectorObject convrtEmpOfDispStaffToConnectorObject(JSONObject empOfDisp) {
+		ConnectorObjectBuilder builder = new ConnectorObjectBuilder();
+		builder.setUid(empOfDisp.getString(DISP_EMP_KEY));
+		builder.setName(empOfDisp.getString(DISP_EMP_KEY));
+		
+		this.getIfExists(empOfDisp, DISP_OBJ_OF_BUILDING, builder);
+		this.getIfExists(empOfDisp, DISP_ORG_KEY, builder);
+		this.getIfExists(empOfDisp, DISP_EMP_KEY, builder);
+		
+		ZonedDateTime dispStartDate = LocalDateTime.parse(empOfDisp.getString(DISP_START_DATE), formatter).atZone(timeZone);
+		this.addAttr(builder, DISP_START_DATE, dispStartDate);
+		
+		ZonedDateTime dispEndDate = LocalDateTime.parse(empOfDisp.getString(DISP_END_DATE), formatter).atZone(timeZone);
+		this.addAttr(builder, DISP_END_DATE, dispEndDate);
+		
 		new HashMap<>();
 		LOG.ok("Builder.build: {0}", builder.build());
 		return builder.build();
